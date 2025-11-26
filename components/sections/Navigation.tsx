@@ -38,28 +38,29 @@ export function Navigation() {
     }, []);
 
     React.useEffect(() => {
-        const sections = navLinks
-            .map(link => document.getElementById(link.id))
-            .filter(Boolean) as HTMLElement[];
+        const handleActiveSection = () => {
+            const scrollPos = window.scrollY + 160; // account for sticky nav and some padding
+            let current = navLinks[0]?.id ?? 'home';
 
-        if (!sections.length) return;
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActiveSection(entry.target.id);
-                    }
-                });
-            },
-            {
-                rootMargin: '-35% 0px -45% 0px',
-                threshold: [0.2, 0.5, 1],
+            for (const link of navLinks) {
+                const el = document.getElementById(link.id);
+                if (!el) continue;
+                const sectionTop = el.getBoundingClientRect().top + window.scrollY;
+                if (scrollPos >= sectionTop) {
+                    current = link.id;
+                }
             }
-        );
 
-        sections.forEach((section) => observer.observe(section));
-        return () => observer.disconnect();
+            setActiveSection(current);
+        };
+
+        handleActiveSection();
+        window.addEventListener('scroll', handleActiveSection, { passive: true });
+        window.addEventListener('resize', handleActiveSection);
+        return () => {
+            window.removeEventListener('scroll', handleActiveSection);
+            window.removeEventListener('resize', handleActiveSection);
+        };
     }, []);
 
     return (
