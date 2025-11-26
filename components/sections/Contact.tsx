@@ -56,7 +56,7 @@ export function Contact() {
                 <div className="text-center mb-2xl">
                     <h2>Let's Talk</h2>
                     <p className="text-large max-w-[600px] mx-auto">
-                        Tell us about your project. We'll respond within 24 hours with next steps.
+                        Tell us about your project. Most of our engagements range from €500 - €5,000+.
                     </p>
                 </div>
 
@@ -140,10 +140,10 @@ export function Contact() {
                                     disabled={isSubmitting}
                                 >
                                     <option value="">Select budget range</option>
-                                    <option value="<5k">Less than €5,000</option>
-                                    <option value="5k-10k">€5,000 - €10,000</option>
-                                    <option value="10k-25k">€10,000 - €25,000</option>
-                                    <option value="25k+">€25,000+</option>
+                                    <option value="<1000">Less than €1,000</option>
+                                    <option value="1000-2500">€1,000 - €2,500</option>
+                                    <option value="2500-5000">€2,500 - €5,000</option>
+                                    <option value="5000+">€5,000+</option>
                                     <option value="not-sure">Not sure yet</option>
                                 </Select>
                             </div>
