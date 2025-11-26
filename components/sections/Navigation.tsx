@@ -5,10 +5,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
+const showPortfolio = false; // Set to true to re-enable portfolio section and menu link
+
 const navLinks = [
     { href: '#home', label: 'Home' },
     { href: '#services', label: 'Services' },
-    { href: '#portfolio', label: 'Portfolio' },
+    ...(showPortfolio ? [{ href: '#portfolio', label: 'Portfolio' as const }] : []),
     { href: '#about', label: 'About' },
     { href: '#process', label: 'Process' },
     { href: '#pricing', label: 'Pricing' },

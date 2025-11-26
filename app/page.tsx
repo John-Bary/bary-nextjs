@@ -8,13 +8,15 @@ import { Pricing } from '@/components/sections/Pricing';
 import { Contact } from '@/components/sections/Contact';
 import { Footer } from '@/components/sections/Footer';
 
+const showPortfolio = false; // Toggle to true when projects are ready to display
+
 export default function Home() {
   return (
     <main>
       <Navigation />
       <Hero />
       <Services />
-      <Portfolio />
+      {showPortfolio && <Portfolio />}
       <About />
       <Process />
       <Pricing />
