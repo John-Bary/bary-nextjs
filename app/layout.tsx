@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   description: "Strategic consulting and creative services that drive measurable growth. We help businesses scale through planning, brand development, and digital innovation.",
   keywords: ["business consulting", "creative services", "digital solutions", "brand development", "Lithuania", "Vilnius"],
   authors: [{ name: "BARY" }],
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     title: "bary.lt | Business Consulting & Creative Services",
     description: "Strategic consulting and creative services that drive measurable growth.",
