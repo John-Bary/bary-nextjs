@@ -80,15 +80,15 @@ export function Services() {
                 </div>
 
                 <motion.div
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg items-stretch"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
                 >
                     {services.map((service, index) => (
-                        <motion.div key={index} variants={itemVariants}>
-                            <Card className="text-center">
+                        <motion.div key={index} variants={itemVariants} className="h-full">
+                            <Card className="text-center h-full flex flex-col">
                                 <div
                                     className={`w-16 h-16 mx-auto mb-md rounded-full flex items-center justify-center transition-all duration-base ${service.color === 'cerulean' ? 'bg-cerulean/10 text-cerulean' :
                                             service.color === 'orange' ? 'bg-orange/10 text-orange' :
@@ -101,7 +101,7 @@ export function Services() {
                                     {service.icon}
                                 </div>
                                 <h4 className="mb-sm">{service.title}</h4>
-                                <p className="mb-md text-text-gray">{service.description}</p>
+                                <p className="mb-md text-text-gray flex-grow">{service.description}</p>
                                 <Link
                                     href={service.link}
                                     className={`no-underline font-semibold ${service.color === 'cerulean' ? 'text-cerulean' :
