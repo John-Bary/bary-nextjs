@@ -212,6 +212,24 @@
 }
 
 /* Focus visible for keyboard navigation */
-:focus-visible {
+  :focus-visible {
   @apply outline-2 outline-cerulean outline-offset-2;
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .section-compact {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .section-hero {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+    min-height: 75vh;
+  }
 }

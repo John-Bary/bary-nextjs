@@ -7,7 +7,10 @@ import { Button } from '@/components/ui/button';
 
 export function Hero() {
     return (
-        <section id="home" className="section-hero relative overflow-hidden">
+        <section
+            id="home"
+            className="relative overflow-hidden min-h-[80vh] flex items-center pt-16 pb-16 sm:pt-24 sm:pb-28"
+        >
             {/* Floating glass shapes */}
             <div className="absolute top-[10%] right-[10%] w-[300px] h-[300px] rounded-full glass animate-float" />
             <div className="absolute bottom-[20%] left-[5%] w-[200px] h-[200px] rounded-full glass animate-float-reverse" />
@@ -24,16 +27,16 @@ export function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h1 className="display gradient-text mb-lg">
+                    <h1 className="display gradient-text mb-4 sm:mb-6">
                         We Turn Strategy Into Results
                     </h1>
 
-                    <p className="text-large mt-lg mb-xl max-w-[700px] mx-auto">
+                    <p className="text-large mt-4 mb-8 sm:mt-6 sm:mb-10 max-w-[700px] mx-auto">
                         Business consulting and creative services that drive measurable growth. We help companies scale
                         through strategic planning, brand development, and digital innovation.
                     </p>
 
-                    <div className="flex flex-col items-stretch justify-center gap-sm sm:flex-row sm:items-center sm:gap-md mb-2xl">
+                    <div className="flex flex-col items-stretch justify-center gap-sm sm:flex-row sm:items-center sm:gap-md mb-10 sm:mb-12">
                         <Link href="#contact" className="w-full sm:w-auto">
                             <Button size="lg" className="w-full sm:w-auto">Start Your Project</Button>
                         </Link>
@@ -44,7 +47,7 @@ export function Hero() {
 
                     {/* Trust Indicators */}
                     <motion.div
-                        className="flex gap-xl justify-center flex-wrap"
+                        className="flex gap-6 sm:gap-xl justify-center flex-wrap"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.3, duration: 0.6 }}
