@@ -331,8 +331,8 @@ npm run build
 ## 🤝 Support
 
 For questions or issues:
-- Email: hello@bary.lt
-- Phone: +370 600 00000
+- Email: jonas.barysasirko@gmail.com
+
 
 ---
 

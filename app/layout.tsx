@@ -15,8 +15,14 @@ export const metadata: Metadata = {
   keywords: ["business consulting", "creative services", "digital solutions", "brand development", "Lithuania", "Vilnius"],
   authors: [{ name: "BARY" }],
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
+  manifest: "/site.webmanifest",
   openGraph: {
     title: "bary.lt | Business Consulting & Creative Services",
     description: "Strategic consulting and creative services that drive measurable growth.",
