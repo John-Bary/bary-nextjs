@@ -8,16 +8,18 @@ import { Button } from '@/components/ui/button';
 const showPortfolio = false; // Set to true to re-enable portfolio section and menu link
 
 const navLinks = [
-    { href: '#home', label: 'Home' },
-    { href: '#services', label: 'Services' },
-    ...(showPortfolio ? [{ href: '#portfolio', label: 'Portfolio' as const }] : []),
-    { href: '#about', label: 'About' },
-    { href: '#process', label: 'Process' },
-    { href: '#pricing', label: 'Pricing' },
+    { href: '#home', label: 'Home', id: 'home' },
+    { href: '#services', label: 'Services', id: 'services' },
+    ...(showPortfolio ? [{ href: '#portfolio', label: 'Portfolio' as const, id: 'portfolio' }] : []),
+    { href: '#about', label: 'About', id: 'about' },
+    { href: '#process', label: 'Process', id: 'process' },
+    { href: '#pricing', label: 'Pricing', id: 'pricing' },
 ];
 
 export function Navigation() {
     const [isOpen, setIsOpen] = React.useState(false);
+    const [isScrolled, setIsScrolled] = React.useState(false);
+    const [activeSection, setActiveSection] = React.useState<string>('home');
 
     React.useEffect(() => {
         if (isOpen) {
@@ -28,8 +30,44 @@ export function Navigation() {
         return () => document.body.classList.remove('overflow-hidden');
     }, [isOpen]);
 
+    React.useEffect(() => {
+        const handleScroll = () => setIsScrolled(window.scrollY > 32);
+        handleScroll();
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    React.useEffect(() => {
+        const sections = navLinks
+            .map(link => document.getElementById(link.id))
+            .filter(Boolean) as HTMLElement[];
+
+        if (!sections.length) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(entry.target.id);
+                    }
+                });
+            },
+            {
+                rootMargin: '-35% 0px -45% 0px',
+                threshold: [0.2, 0.5, 1],
+            }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+        return () => observer.disconnect();
+    }, []);
+
     return (
-        <nav className="sticky top-0 z-50 glass border-b border-white/30 py-md transition-all duration-base">
+        <nav
+            className={`sticky top-0 z-50 glass border-b border-white/30 transition-all duration-300 ${
+                isScrolled ? 'py-sm shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur-xl bg-white/80' : 'py-md'
+            }`}
+        >
             <div className="container">
                 <div className="flex items-center justify-between">
                     <Link href="#home" className="flex items-center no-underline">
@@ -45,13 +83,18 @@ export function Navigation() {
 
                     <ul className="hidden md:flex gap-lg list-none">
                         {navLinks.map((link) => (
-                            <li key={link.href}>
+                            <li key={link.href} className="relative">
                                 <Link
                                     href={link.href}
-                                    className="text-text-gray no-underline font-medium transition-colors duration-fast hover:text-cerulean"
+                                    className="text-text-gray no-underline font-medium transition-colors duration-fast hover:text-cerulean px-1 py-2 inline-block"
                                 >
                                     {link.label}
                                 </Link>
+                                <span
+                                    className={`absolute left-0 right-0 -bottom-1 h-[3px] rounded-full bg-gradient-to-r from-cerulean to-orange transition-transform transition-opacity duration-200 origin-center ${
+                                        activeSection === link.id ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                                    }`}
+                                />
                             </li>
                         ))}
                         <li>
