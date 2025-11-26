@@ -5,7 +5,27 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
+const navLinks = [
+    { href: '#home', label: 'Home' },
+    { href: '#services', label: 'Services' },
+    { href: '#portfolio', label: 'Portfolio' },
+    { href: '#about', label: 'About' },
+    { href: '#process', label: 'Process' },
+    { href: '#pricing', label: 'Pricing' },
+];
+
 export function Navigation() {
+    const [isOpen, setIsOpen] = React.useState(false);
+
+    React.useEffect(() => {
+        if (isOpen) {
+            document.body.classList.add('overflow-hidden');
+        } else {
+            document.body.classList.remove('overflow-hidden');
+        }
+        return () => document.body.classList.remove('overflow-hidden');
+    }, [isOpen]);
+
     return (
         <nav className="sticky top-0 z-50 glass border-b border-white/30 py-md transition-all duration-base">
             <div className="container">
@@ -14,50 +34,74 @@ export function Navigation() {
                         <Image
                             src="/logo.png"
                             alt="bary.lt"
-                            width={120}
-                            height={40}
-                            className="h-10 w-auto"
+                            width={140}
+                            height={48}
+                            className="h-12 w-auto md:h-10"
+                            priority
                         />
                     </Link>
 
                     <ul className="hidden md:flex gap-lg list-none">
-                        <li>
-                            <Link href="#home" className="text-text-gray no-underline font-medium transition-colors duration-fast hover:text-cerulean">
-                                Home
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#services" className="text-text-gray no-underline font-medium transition-colors duration-fast hover:text-cerulean">
-                                Services
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#portfolio" className="text-text-gray no-underline font-medium transition-colors duration-fast hover:text-cerulean">
-                                Portfolio
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#about" className="text-text-gray no-underline font-medium transition-colors duration-fast hover:text-cerulean">
-                                About
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#process" className="text-text-gray no-underline font-medium transition-colors duration-fast hover:text-cerulean">
-                                Process
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#pricing" className="text-text-gray no-underline font-medium transition-colors duration-fast hover:text-cerulean">
-                                Pricing
-                            </Link>
-                        </li>
+                        {navLinks.map((link) => (
+                            <li key={link.href}>
+                                <Link
+                                    href={link.href}
+                                    className="text-text-gray no-underline font-medium transition-colors duration-fast hover:text-cerulean"
+                                >
+                                    {link.label}
+                                </Link>
+                            </li>
+                        ))}
                         <li>
                             <Link href="#contact">
                                 <Button size="sm">Contact</Button>
                             </Link>
                         </li>
                     </ul>
+
+                    <button
+                        className="md:hidden inline-flex items-center justify-center w-12 h-12 rounded-lg glass-subtle border border-white/40 hover:border-white/60 transition-all duration-200"
+                        onClick={() => setIsOpen((prev) => !prev)}
+                        aria-label="Toggle navigation menu"
+                        aria-expanded={isOpen}
+                    >
+                        <span className="sr-only">Toggle navigation menu</span>
+                        <div className="flex flex-col items-center gap-[6px]">
+                            <span
+                                className={`block h-0.5 w-6 rounded-sm bg-dark-gray transition-transform duration-300 ${isOpen ? 'translate-y-1.5 rotate-45' : ''
+                                    }`}
+                            />
+                            <span
+                                className={`block h-0.5 w-6 rounded-sm bg-dark-gray transition-opacity duration-300 ${isOpen ? 'opacity-0' : ''
+                                    }`}
+                            />
+                            <span
+                                className={`block h-0.5 w-6 rounded-sm bg-dark-gray transition-transform duration-300 ${isOpen ? '-translate-y-1.5 -rotate-45' : ''
+                                    }`}
+                            />
+                        </div>
+                    </button>
                 </div>
+
+                {isOpen && (
+                    <div className="md:hidden mt-sm">
+                        <div className="glass-subtle rounded-xl shadow-xl border border-white/40 p-lg space-y-sm">
+                            {navLinks.map((link) => (
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className="block w-full no-underline text-dark-gray font-semibold py-2 px-2 rounded-lg hover:bg-white/70 transition-colors duration-200"
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
+                            <Link href="#contact" onClick={() => setIsOpen(false)} className="block">
+                                <Button className="w-full">Contact</Button>
+                            </Link>
+                        </div>
+                    </div>
+                )}
             </div>
         </nav>
     );

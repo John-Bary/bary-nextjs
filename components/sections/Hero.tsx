@@ -33,12 +33,12 @@ export function Hero() {
                         through strategic planning, brand development, and digital innovation.
                     </p>
 
-                    <div className="flex items-center justify-center gap-md mb-2xl">
-                        <Link href="#contact">
-                            <Button size="lg">Start Your Project</Button>
+                    <div className="flex flex-col items-stretch justify-center gap-sm sm:flex-row sm:items-center sm:gap-md mb-2xl">
+                        <Link href="#contact" className="w-full sm:w-auto">
+                            <Button size="lg" className="w-full sm:w-auto">Start Your Project</Button>
                         </Link>
-                        <Link href="#services">
-                            <Button variant="glass" size="lg">Our Services</Button>
+                        <Link href="#services" className="w-full sm:w-auto">
+                            <Button variant="glass" size="lg" className="w-full sm:w-auto">Our Services</Button>
                         </Link>
                     </div>
 
