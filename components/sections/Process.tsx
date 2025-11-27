@@ -3,7 +3,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 
@@ -21,7 +20,7 @@ export function Process() {
                     </p>
                 </div>
 
-                <div className="max-w-[900px] mx-auto mb-2xl space-y-lg glass-subtle frosted-card rounded-2xl p-xl border border-white/30 shadow-[0_16px_56px_rgba(0,0,0,0.08)]">
+                <div className="max-w-[900px] mx-auto mb-2xl space-y-lg">
                     {t.process.steps.map((step, index) => (
                         <motion.div
                             key={index}
@@ -30,13 +29,13 @@ export function Process() {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                         >
-                            <Card className="text-center">
+                            <div className="text-center rounded-2xl p-xl">
                                 <div className={`w-15 h-15 mx-auto mb-md rounded-full ${stepColors[index]} text-white flex items-center justify-center text-h3 font-bold shadow-[0_4px_16px_rgba(34,116,165,0.3)]`}>
                                     {index + 1}
                                 </div>
                                 <h4 className="mb-md">{step.title}</h4>
                                 <p className="m-0">{step.description}</p>
-                            </Card>
+                            </div>
                         </motion.div>
                     ))}
                 </div>

@@ -50,7 +50,7 @@ export function Hero() {
 
                     {/* Trust Indicators */}
                     <motion.div
-                        className="glass-subtle frosted-card rounded-2xl border border-white/40 px-6 py-4 flex gap-6 sm:gap-xl justify-center flex-wrap shadow-[0_16px_48px_rgba(0,0,0,0.08)]"
+                        className="rounded-2xl px-6 py-4 flex gap-6 sm:gap-xl justify-center flex-wrap"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.3, duration: 0.6 }}
