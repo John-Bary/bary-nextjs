@@ -3,51 +3,28 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { BarChart3, Palette, Cpu } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 
 const services = [
     {
         title: "Business Consulting",
         description: "Strategic planning and market analysis that identifies opportunities and eliminates inefficiencies. We help you make data-driven decisions, optimize operations, and build sustainable competitive advantages.",
-        icon: (
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 3v18h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M18 17l-5-5-3 3-4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <circle cx="18" cy="17" r="1.5" fill="currentColor" />
-                <circle cx="13" cy="12" r="1.5" fill="currentColor" />
-                <circle cx="10" cy="15" r="1.5" fill="currentColor" />
-                <circle cx="6" cy="11" r="1.5" fill="currentColor" />
-            </svg>
-        ),
+        icon: <BarChart3 className="h-9 w-9" strokeWidth={2.2} />,
         color: "cerulean",
         link: "#contact"
     },
     {
         title: "Creative Services",
         description: "Brand identity and visual design that captures attention and builds recognition. From logo design to complete brand systems, we create cohesive visual languages that resonate with your target audience.",
-        icon: (
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <circle cx="7" cy="7" r="2" fill="currentColor" opacity="0.3" />
-                <circle cx="17" cy="7" r="2" fill="currentColor" opacity="0.5" />
-                <circle cx="7" cy="17" r="2" fill="currentColor" opacity="0.7" />
-                <circle cx="17" cy="17" r="2" fill="currentColor" opacity="0.4" />
-            </svg>
-        ),
+        icon: <Palette className="h-9 w-9" strokeWidth={2.2} />,
         color: "orange",
         link: "#contact"
     },
     {
         title: "Digital Solutions",
         description: "Custom web applications and digital products built with modern technologies. We develop scalable platforms that enhance user experience, streamline operations, and drive business growth.",
-        icon: (
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2" />
-                <path d="M8 12l2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M7 7h2M7 17h10M17 7h-2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-        ),
+        icon: <Cpu className="h-9 w-9" strokeWidth={2.2} />,
         color: "emerald",
         link: "#contact"
     }
