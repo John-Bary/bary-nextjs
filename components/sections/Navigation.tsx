@@ -121,7 +121,7 @@ export function Navigation() {
                                     alt={`${languageDisplay[nextLanguage].full} flag`}
                                     width={20}
                                     height={14}
-                                    className="rounded-sm shadow-sm"
+                                    className="h-[14px] w-[20px] rounded-[3px] border border-black/10 shadow-sm shrink-0"
                                 />
                                 <span className="font-semibold">{languageDisplay[nextLanguage].short}</span>
                             </Button>
@@ -185,7 +185,7 @@ export function Navigation() {
                                     alt={`${languageDisplay[nextLanguage].full} flag`}
                                     width={24}
                                     height={16}
-                                    className="rounded-sm shadow-sm"
+                                    className="h-4 w-6 rounded-[3px] border border-black/10 shadow-sm shrink-0"
                                 />
                                 <span className="font-semibold">{languageDisplay[nextLanguage].full}</span>
                             </Button>

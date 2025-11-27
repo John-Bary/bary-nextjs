@@ -1,5 +1,16 @@
 <svg width="64" height="48" viewBox="0 0 64 48" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="48" fill="#F5F5F5"/>
-  <rect x="26" width="12" height="48" fill="#C8102E"/>
-  <rect y="18" width="64" height="12" fill="#C8102E"/>
+  <defs>
+    <clipPath id="clip">
+      <rect width="64" height="48" />
+    </clipPath>
+  </defs>
+  <g clip-path="url(#clip)">
+    <rect width="64" height="48" fill="#012169"/>
+    <path d="M0 0L64 48M64 0L0 48" stroke="#F5F5F5" stroke-width="12"/>
+    <path d="M0 0L64 48M64 0L0 48" stroke="#C8102E" stroke-width="6"/>
+    <rect y="19" width="64" height="10" fill="#F5F5F5"/>
+    <rect x="26" width="12" height="48" fill="#F5F5F5"/>
+    <rect y="21" width="64" height="6" fill="#C8102E"/>
+    <rect x="28" width="8" height="48" fill="#C8102E"/>
+  </g>
 </svg>
