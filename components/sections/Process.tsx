@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export function Process() {
@@ -29,13 +30,13 @@ export function Process() {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                         >
-                            <div className="text-center rounded-2xl p-xl">
-                                <div className={`w-15 h-15 mx-auto mb-md rounded-full ${stepColors[index]} text-white flex items-center justify-center text-h3 font-bold shadow-[0_4px_16px_rgba(34,116,165,0.3)]`}>
+                            <Card className="text-center rounded-2xl p-xl glass frosted-card shadow-[0_16px_48px_rgba(0,0,0,0.08)] backdrop-blur-lg border border-white/25">
+                                <div className={`w-full max-w-[520px] mx-auto mb-md h-14 rounded-full ${stepColors[index]} text-white flex items-center justify-center text-h4 font-bold shadow-[0_6px_24px_rgba(34,116,165,0.28)]`}>
                                     {index + 1}
                                 </div>
                                 <h4 className="mb-md">{step.title}</h4>
                                 <p className="m-0">{step.description}</p>
-                            </div>
+                            </Card>
                         </motion.div>
                     ))}
                 </div>
