@@ -4,11 +4,16 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { useLanguage, type Translations } from '@/components/providers/LanguageProvider';
+import { useLanguage, type Language, type Translations } from '@/components/providers/LanguageProvider';
 
 const showPortfolio = false; // Set to true to re-enable portfolio section and menu link
 
 type NavKey = keyof Translations["navigation"]["links"];
+
+const languageDisplay: Record<Language, { flag: string; short: string; full: string }> = {
+    en: { flag: '/flags/en.svg', short: 'EN', full: 'English' },
+    lt: { flag: '/flags/lt.svg', short: 'LT', full: 'Lietuvių' },
+};
 
 const navLinks: { href: string; id: NavKey }[] = [
     { href: '#home', id: 'home' },
@@ -24,6 +29,7 @@ export function Navigation() {
     const [isScrolled, setIsScrolled] = React.useState(false);
     const [activeSection, setActiveSection] = React.useState<NavKey>('home');
     const { language, toggleLanguage, t } = useLanguage();
+    const nextLanguage: Language = language === 'en' ? 'lt' : 'en';
 
     React.useEffect(() => {
         if (isOpen) {
@@ -108,9 +114,16 @@ export function Navigation() {
                                 variant="glass"
                                 onClick={toggleLanguage}
                                 aria-label={t.navigation.languageAria}
-                                className="min-w-[64px]"
+                                className="min-w-[96px] flex items-center gap-2"
                             >
-                                {language === 'en' ? 'LT' : 'EN'}
+                                <Image
+                                    src={languageDisplay[nextLanguage].flag}
+                                    alt={`${languageDisplay[nextLanguage].full} flag`}
+                                    width={20}
+                                    height={14}
+                                    className="rounded-sm shadow-sm"
+                                />
+                                <span className="font-semibold">{languageDisplay[nextLanguage].short}</span>
                             </Button>
                         </li>
                         <li>
@@ -165,9 +178,16 @@ export function Navigation() {
                                     setIsOpen(false);
                                 }}
                                 aria-label={t.navigation.languageAria}
-                                className="w-full"
+                                className="w-full flex items-center justify-center gap-3"
                             >
-                                {language === 'en' ? 'Lietuvių' : 'English'}
+                                <Image
+                                    src={languageDisplay[nextLanguage].flag}
+                                    alt={`${languageDisplay[nextLanguage].full} flag`}
+                                    width={24}
+                                    height={16}
+                                    className="rounded-sm shadow-sm"
+                                />
+                                <span className="font-semibold">{languageDisplay[nextLanguage].full}</span>
                             </Button>
                             <Link href="#contact" onClick={() => setIsOpen(false)} className="block">
                                 <Button className="w-full">{t.navigation.contactCta}</Button>
