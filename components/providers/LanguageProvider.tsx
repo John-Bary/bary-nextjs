@@ -4,7 +4,123 @@ import React from "react";
 
 export type Language = "en" | "lt";
 
-const translations = {
+const translations: Record<Language, {
+    navigation: {
+        links: {
+            home: string;
+            services: string;
+            portfolio: string;
+            about: string;
+            process: string;
+            pricing: string;
+            contact: string;
+        };
+        contactCta: string;
+        languageAria: string;
+        menuToggle: string;
+    };
+    hero: {
+        title: string;
+        subtitle: string;
+        primaryCta: string;
+        secondaryCta: string;
+        stats: { projects: string; satisfaction: string; years: string };
+    };
+    services: {
+        heading: string;
+        description: string;
+        learnMore: string;
+        items: {
+            consulting: { title: string; description: string };
+            creative: { title: string; description: string };
+            digital: { title: string; description: string };
+        };
+    };
+    about: {
+        heading: string;
+        paragraphs: string[];
+        cta: string;
+        stats: {
+            projects: { label: string; description: string };
+            satisfaction: { label: string; description: string };
+            years: { label: string; description: string };
+            team: { label: string; description: string };
+        };
+    };
+    process: {
+        heading: string;
+        description: string;
+        steps: { title: string; description: string }[];
+        cta: string;
+    };
+    pricing: {
+        heading: string;
+        description: string;
+        sections: {
+            left: { title: string; items: string[] }[];
+            right: { title: string; items: string[] }[];
+        };
+        ctaHeading: string;
+        ctaDescription: string;
+        ctaButton: string;
+    };
+    portfolio: {
+        heading: string;
+        description: string;
+        viewCaseStudy: string;
+        projects: {
+            title: string;
+            category: string;
+            description: string;
+            result: string;
+            gradient: string;
+            badgeVariant: "cerulean" | "orange" | "emerald" | "berry";
+        }[];
+    };
+    contact: {
+        heading: string;
+        description: string;
+        form: {
+            labels: {
+                name: string;
+                email: string;
+                phone: string;
+                service: string;
+                budget: string;
+                message: string;
+            };
+            placeholders: {
+                name: string;
+                email: string;
+                phone: string;
+                message: string;
+            };
+            serviceOptions: { value: string; label: string }[];
+            budgetOptions: { value: string; label: string }[];
+            submit: string;
+            submitting: string;
+            errors: {
+                nameMin: string;
+                nameMax: string;
+                email: string;
+                service: string;
+                messageMin: string;
+                messageMax: string;
+            };
+        };
+        toasts: {
+            success: string;
+            error: string;
+            invalid: string;
+            server: string;
+        };
+        direct: { intro: string; emailLabel: string; phoneLabel: string };
+    };
+    footer: {
+        privacy: string;
+        tagline: string;
+    };
+}> = {
     en: {
         navigation: {
             links: {
@@ -505,7 +621,7 @@ const translations = {
     },
 } as const;
 
-export type Translations = typeof translations.en;
+export type Translations = (typeof translations)[Language];
 
 type LanguageContextValue = {
     language: Language;
