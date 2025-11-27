@@ -30,8 +30,8 @@ export function Process() {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                         >
-                            <Card className="text-center rounded-2xl p-xl glass frosted-card shadow-[0_16px_48px_rgba(0,0,0,0.08)] backdrop-blur-lg border border-white/25">
-                                <div className={`w-full max-w-[520px] mx-auto mb-md h-14 rounded-full ${stepColors[index]} text-white flex items-center justify-center text-h4 font-bold shadow-[0_6px_24px_rgba(34,116,165,0.28)]`}>
+                            <Card className="text-center rounded-2xl px-6 py-8 sm:p-xl glass frosted-card shadow-[0_16px_48px_rgba(0,0,0,0.08)] backdrop-blur-lg border border-white/25">
+                                <div className={`w-full max-w-[420px] sm:max-w-[520px] mx-auto mb-md h-12 sm:h-14 rounded-full ${stepColors[index]} text-white flex items-center justify-center text-h5 sm:text-h4 font-bold shadow-[0_6px_24px_rgba(34,116,165,0.28)]`}>
                                     {index + 1}
                                 </div>
                                 <h4 className="mb-md">{step.title}</h4>

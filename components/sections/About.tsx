@@ -63,8 +63,8 @@ export function About() {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                         >
-                            <Card className="flex h-full w-full min-h-[260px] flex-col items-center justify-center text-center aspect-[3/4]">
-                                <div className={`text-h1 font-bold leading-none mb-xs ${stat.color === 'cerulean' ? 'text-cerulean' :
+                            <Card className="flex h-full w-full max-w-[340px] sm:max-w-full mx-auto min-h-[220px] sm:min-h-[260px] flex-col items-center justify-center text-center aspect-auto sm:aspect-[3/4] p-lg sm:p-xl">
+                                <div className={`text-[38px] sm:text-h1 font-bold leading-none mb-xs ${stat.color === 'cerulean' ? 'text-cerulean' :
                                         stat.color === 'orange' ? 'text-orange' :
                                             stat.color === 'emerald' ? 'text-emerald' :
                                                 'text-berry'
