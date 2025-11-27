@@ -17,23 +17,15 @@ export function Hero() {
             className="relative overflow-hidden min-h-[80vh] flex items-center pt-16 pb-16 sm:pt-24 sm:pb-28"
         >
             {/* Floating glass shapes */}
-            <div className="absolute top-[10%] right-[10%] w-[300px] h-[300px] rounded-full glass animate-float flex items-center justify-center">
+            <div className="absolute top-[10%] right-[10%] w-[300px] h-[300px] rounded-full glass animate-float" />
+            <div className="absolute bottom-[20%] left-[5%] w-[200px] h-[200px] rounded-full glass animate-float-reverse" />
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none opacity-80 w-[260px] h-[260px] sm:w-[320px] sm:h-[320px]">
                 <Image
                     src="/logonobackground.png"
                     alt="bary.lt"
-                    width={240}
-                    height={240}
-                    className="w-[70%] h-[70%] object-contain opacity-80"
-                    priority
-                />
-            </div>
-            <div className="absolute bottom-[20%] left-[5%] w-[200px] h-[200px] rounded-full glass animate-float-reverse flex items-center justify-center">
-                <Image
-                    src="/logonobackground.png"
-                    alt="bary.lt"
-                    width={180}
-                    height={180}
-                    className="w-[70%] h-[70%] object-contain opacity-80"
+                    width={320}
+                    height={320}
+                    className="w-full h-full object-contain"
                     priority
                 />
             </div>
