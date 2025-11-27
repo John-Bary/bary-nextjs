@@ -62,41 +62,58 @@ function About3DAnimation() {
                 transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
             >
                 {layers.map((layer, index) => (
-                    <motion.div
+                    <div
                         key={layer.id}
-                        className="absolute inset-0 rounded-[32px] border border-white/25 shadow-lg"
-                        style={{
-                            translateZ: layer.z,
-                            scale: layer.scale,
-                            background: layer.gradient,
-                            boxShadow: layer.glow,
-                            transformStyle: 'preserve-3d',
-                        }}
-                        animate={{ y: [0, -10, 0], rotateZ: [0, 1.5, 0] }}
-                        transition={{ duration: 6 + index * 1.5, repeat: Infinity, ease: 'easeInOut' }}
-                    />
+                        className="absolute inset-0"
+                        style={{ transformStyle: 'preserve-3d', transform: `translateZ(${layer.z}px) scale(${layer.scale})` }}
+                    >
+                        <motion.div
+                            className="absolute inset-0 rounded-[32px] border border-white/25 shadow-lg"
+                            style={{
+                                background: layer.gradient,
+                                boxShadow: layer.glow,
+                                transformStyle: 'preserve-3d',
+                            }}
+                            animate={{ y: [0, -10, 0], rotateZ: [0, 1.5, 0] }}
+                            transition={{ duration: 6 + index * 1.5, repeat: Infinity, ease: 'easeInOut' }}
+                        />
+                    </div>
                 ))}
 
-                <motion.div
-                    className="absolute inset-[14%] rounded-[28px] bg-white/18 backdrop-blur-lg border border-white/20"
-                    style={{ translateZ: 72, boxShadow: '0 18px 48px rgba(0,0,0,0.08)' }}
-                    animate={{ y: [-6, 6, -6] }}
-                    transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-                />
+                <div
+                    className="absolute inset-[14%]"
+                    style={{ transformStyle: 'preserve-3d', transform: 'translateZ(72px)' }}
+                >
+                    <motion.div
+                        className="absolute inset-0 rounded-[28px] bg-white/18 backdrop-blur-lg border border-white/20"
+                        style={{ boxShadow: '0 18px 48px rgba(0,0,0,0.08)' }}
+                        animate={{ y: [-6, 6, -6] }}
+                        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                    />
+                </div>
 
-                <motion.div
-                    className="absolute inset-[8%] rounded-full border border-white/50 shadow-[0_10px_28px_rgba(0,0,0,0.12)]"
-                    style={{ translateZ: 80 }}
-                    animate={{ rotateZ: 360 }}
-                    transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
-                />
+                <div
+                    className="absolute inset-[8%]"
+                    style={{ transformStyle: 'preserve-3d', transform: 'translateZ(80px)' }}
+                >
+                    <motion.div
+                        className="absolute inset-0 rounded-full border border-white/50 shadow-[0_10px_28px_rgba(0,0,0,0.12)]"
+                        animate={{ rotateZ: 360 }}
+                        transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
+                    />
+                </div>
 
-                <motion.div
-                    className="absolute inset-[30%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.9),rgba(255,255,255,0))]"
-                    style={{ translateZ: 90, mixBlendMode: 'screen' }}
-                    animate={{ scale: [0.9, 1.05, 0.9], opacity: [0.7, 1, 0.7] }}
-                    transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                />
+                <div
+                    className="absolute inset-[30%]"
+                    style={{ transformStyle: 'preserve-3d', transform: 'translateZ(90px)' }}
+                >
+                    <motion.div
+                        className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.9),rgba(255,255,255,0))]"
+                        style={{ mixBlendMode: 'screen' }}
+                        animate={{ scale: [0.9, 1.05, 0.9], opacity: [0.7, 1, 0.7] }}
+                        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                    />
+                </div>
             </motion.div>
         </div>
     );
@@ -109,7 +126,7 @@ export function About() {
         <section id="about" className="section">
             <div className="container">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-2xl items-center mb-2xl">
-                    <div className="w-full h-[400px] lg:h-[400px] rounded-2xl flex items-center justify-center bg-gradient-to-br from-cerulean/15 to-orange/15 glass-medium frosted-card border border-white/30 shadow-[0_16px_56px_rgba(0,0,0,0.1)] overflow-hidden">
+                    <div className="relative w-full h-[400px] lg:h-[400px] rounded-2xl flex items-center justify-center overflow-visible">
                         <About3DAnimation />
                     </div>
 
