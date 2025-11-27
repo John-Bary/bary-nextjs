@@ -53,17 +53,18 @@ export function About() {
                 </div>
 
                 {/* Stats Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg">
+                <div className="grid auto-rows-fr grid-cols-1 gap-lg sm:grid-cols-2 lg:grid-cols-4">
                     {stats.map((stat, index) => (
                         <motion.div
                             key={index}
+                            className="h-full"
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                         >
-                            <Card className="text-center">
-                                <div className={`text-h1 font-bold mb-xs ${stat.color === 'cerulean' ? 'text-cerulean' :
+                            <Card className="flex h-full min-h-[240px] flex-col items-center justify-center text-center">
+                                <div className={`text-h1 font-bold leading-none mb-xs ${stat.color === 'cerulean' ? 'text-cerulean' :
                                         stat.color === 'orange' ? 'text-orange' :
                                             stat.color === 'emerald' ? 'text-emerald' :
                                                 'text-berry'
