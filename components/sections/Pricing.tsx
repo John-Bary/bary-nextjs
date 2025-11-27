@@ -25,8 +25,8 @@ export function Pricing() {
                         <div>
                             {t.pricing.sections.left.map((section, index) => (
                                 <div key={index} className={index > 0 ? "mt-xl" : ""}>
-                                    <h4 className="mb-lg text-dark-gray">{section.title}</h4>
-                                    <ul className="list-none m-0 space-y-sm text-dark-gray">
+                                    <h4 className="mb-lg">{section.title}</h4>
+                                    <ul className="list-none m-0 space-y-sm">
                                         {section.items.map((item, i) => (
                                             <li key={i} className="flex items-center gap-sm">
                                                 <span className="text-emerald font-bold text-h5">✓</span>
@@ -42,8 +42,8 @@ export function Pricing() {
                         <div>
                             {t.pricing.sections.right.map((section, index) => (
                                 <div key={index} className={index > 0 ? "mt-xl" : ""}>
-                                    <h4 className="mb-lg text-dark-gray">{section.title}</h4>
-                                    <ul className="list-none m-0 space-y-sm text-dark-gray">
+                                    <h4 className="mb-lg">{section.title}</h4>
+                                    <ul className="list-none m-0 space-y-sm">
                                         {section.items.map((item, i) => (
                                             <li key={i} className="flex items-center gap-sm">
                                                 <span className="text-emerald font-bold text-h5">✓</span>
@@ -57,8 +57,8 @@ export function Pricing() {
                     </div>
 
                     <div className="text-center mt-2xl pt-xl border-t border-white/30">
-                        <h3 className="mb-md text-dark-gray">{t.pricing.ctaHeading}</h3>
-                        <p className="text-large mb-xl text-dark-gray">
+                        <h3 className="mb-md">{t.pricing.ctaHeading}</h3>
+                        <p className="text-large mb-xl text-text-gray">
                             {t.pricing.ctaDescription}
                         </p>
                         <Link href="#contact">
