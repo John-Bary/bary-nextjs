@@ -4,6 +4,7 @@ import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
+import { FloatingPrismsBackground } from "@/components/visuals/FloatingPrisms";
 import "./globals.css";
 
 const inter = Inter({
@@ -41,9 +42,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={inter.className}>
+      <body className={`${inter.className} relative overflow-x-hidden`}>
         <LanguageProvider>
-          {children}
+          <FloatingPrismsBackground />
+          <div className="relative z-10">
+            {children}
+          </div>
           <Analytics />
           <SpeedInsights />
           <Toaster position="top-center" richColors />
