@@ -219,7 +219,7 @@ const translations: Record<Language, {
             cta: "Ready to Start?",
         },
         pricing: {
-            heading: "What's Included",
+            heading: "Our Services",
             description: "Every project is tailored to your specific needs. Here's what you can expect when working with us.",
             cards: [
                 {
@@ -473,7 +473,7 @@ const translations: Record<Language, {
             cta: "Pasiruošę pradėti?",
         },
         pricing: {
-            heading: "Kas įeina į paslaugas",
+            heading: "Mūsų paslaugos",
             description: "Kiekvieną projektą pritaikome konkretiems poreikiams. Štai ko galite tikėtis dirbdami su mumis.",
             cards: [
                 {

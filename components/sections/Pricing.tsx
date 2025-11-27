@@ -2,12 +2,14 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { Briefcase, Palette, Cpu, Megaphone } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export function Pricing() {
     const { t } = useLanguage();
+    const cardIcons = [Briefcase, Palette, Cpu, Megaphone];
 
     return (
         <section id="pricing" className="section">
@@ -22,7 +24,10 @@ export function Pricing() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-lg lg:gap-xl max-w-5xl mx-auto">
                     {t.pricing.cards.map((card, idx) => (
                         <Card key={idx} className="h-full rounded-2xl p-xl glass frosted-card shadow-[0_16px_48px_rgba(0,0,0,0.08)] border border-white/30">
-                            <h4 className="mb-sm text-dark-gray">{card.title}</h4>
+                            <div className="flex items-center gap-2 mb-sm text-dark-gray">
+                                {React.createElement(cardIcons[idx] ?? Briefcase, { className: "h-6 w-6 text-cerulean" })}
+                                <h4 className="m-0 text-dark-gray">{card.title}</h4>
+                            </div>
                             <p className="text-text-gray mb-md">{card.description}</p>
                             <p className="text-small font-semibold uppercase tracking-wide text-dark-gray mb-sm">
                                 {t.pricing.servicesLabel}
