@@ -5,28 +5,25 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { BarChart3, Palette, Cpu } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import { useLanguage, type Translations } from '@/components/providers/LanguageProvider';
 
-const services = [
+type ServiceKey = keyof Translations["services"]["items"];
+
+const services: { key: ServiceKey; icon: React.ReactNode; color: "cerulean" | "orange" | "emerald" }[] = [
     {
-        title: "Business Consulting",
-        description: "Strategic planning and market analysis that identifies opportunities and eliminates inefficiencies. We help you make data-driven decisions, optimize operations, and build sustainable competitive advantages.",
+        key: "consulting",
         icon: <BarChart3 className="h-9 w-9" strokeWidth={2.2} />,
         color: "cerulean",
-        link: "#contact"
     },
     {
-        title: "Creative Services",
-        description: "Brand identity and visual design that captures attention and builds recognition. From logo design to complete brand systems, we create cohesive visual languages that resonate with your target audience.",
+        key: "creative",
         icon: <Palette className="h-9 w-9" strokeWidth={2.2} />,
         color: "orange",
-        link: "#contact"
     },
     {
-        title: "Digital Solutions",
-        description: "Custom web applications and digital products built with modern technologies. We develop scalable platforms that enhance user experience, streamline operations, and drive business growth.",
+        key: "digital",
         icon: <Cpu className="h-9 w-9" strokeWidth={2.2} />,
         color: "emerald",
-        link: "#contact"
     }
 ];
 
@@ -46,13 +43,15 @@ const itemVariants = {
 };
 
 export function Services() {
+    const { t } = useLanguage();
+
     return (
         <section id="services" className="section">
             <div className="container">
                 <div className="text-center mb-2xl">
-                    <h2>What We Do</h2>
+                    <h2>{t.services.heading}</h2>
                     <p className="text-large max-w-[600px] mx-auto">
-                        We combine strategic thinking with creative execution to solve complex business challenges.
+                        {t.services.description}
                     </p>
                 </div>
 
@@ -77,16 +76,16 @@ export function Services() {
                                 >
                                     {service.icon}
                                 </div>
-                                <h4 className="mb-sm">{service.title}</h4>
-                                <p className="mb-md text-text-gray flex-grow">{service.description}</p>
+                                <h4 className="mb-sm">{t.services.items[service.key].title}</h4>
+                                <p className="mb-md text-text-gray flex-grow">{t.services.items[service.key].description}</p>
                                 <Link
-                                    href={service.link}
+                                    href="#contact"
                                     className={`no-underline font-semibold ${service.color === 'cerulean' ? 'text-cerulean' :
                                             service.color === 'orange' ? 'text-orange' :
                                                 'text-emerald'
                                         }`}
                                 >
-                                    Learn more →
+                                    {t.services.learnMore}
                                 </Link>
                             </Card>
                         </motion.div>

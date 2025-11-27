@@ -7,20 +7,25 @@ import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { AnimatedCounter } from '@/components/ui/animated-counter';
+import { useLanguage, type Translations } from '@/components/providers/LanguageProvider';
 
-const stats = [
-    { value: 50, suffix: "+", label: "Projects Completed", description: "Across multiple industries", color: "cerulean" },
-    { value: 98, suffix: "%", label: "Client Satisfaction", description: "Based on post-project surveys", color: "orange" },
-    { value: 5, suffix: "+", label: "Years of Excellence", description: "Consistent quality delivery", color: "emerald" },
-    { value: 10, suffix: "+", label: "Expert Team", description: "Specialists in their fields", color: "berry" }
+type AboutStatKey = keyof Translations["about"]["stats"];
+
+const stats: { value: number; suffix: string; key: AboutStatKey; color: "cerulean" | "orange" | "emerald" | "berry" }[] = [
+    { value: 50, suffix: "+", key: "projects", color: "cerulean" },
+    { value: 98, suffix: "%", key: "satisfaction", color: "orange" },
+    { value: 5, suffix: "+", key: "years", color: "emerald" },
+    { value: 10, suffix: "+", key: "team", color: "berry" }
 ];
 
 export function About() {
+    const { t } = useLanguage();
+
     return (
         <section id="about" className="section">
             <div className="container">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-2xl items-center mb-2xl">
-                    <div className="w-full h-[400px] lg:h-[400px] rounded-xl flex items-center justify-center bg-gradient-to-br from-cerulean/10 to-orange/10">
+                    <div className="w-full h-[400px] lg:h-[400px] rounded-2xl flex items-center justify-center bg-gradient-to-br from-cerulean/15 to-orange/15 glass-medium frosted-card border border-white/30 shadow-[0_16px_56px_rgba(0,0,0,0.1)] overflow-hidden">
                         <Image
                             src="/logo.png"
                             alt="bary.lt"
@@ -31,24 +36,18 @@ export function About() {
                     </div>
 
                     <div>
-                        <h2 className="mb-lg">About BARY</h2>
+                        <h2 className="mb-lg">{t.about.heading}</h2>
                         <p className="text-large mb-md">
-                            We're a strategic consulting and creative agency based in Vilnius, Lithuania. Since 2019, we've
-                            helped businesses across Europe transform their operations, strengthen their brands, and build
-                            digital products that scale.
+                            {t.about.paragraphs[0]}
                         </p>
                         <p className="mb-md">
-                            Our approach is straightforward: understand the problem, develop a clear strategy, and execute
-                            with precision. We don't believe in unnecessary complexity or drawn-out timelines. We believe in
-                            delivering measurable results.
+                            {t.about.paragraphs[1]}
                         </p>
                         <p className="mb-xl">
-                            Our team brings together expertise in business strategy, design, and technology. This
-                            combination allows us to tackle challenges holistically—from initial concept through final
-                            implementation.
+                            {t.about.paragraphs[2]}
                         </p>
                         <Link href="#contact">
-                            <Button>Work With Us</Button>
+                            <Button>{t.about.cta}</Button>
                         </Link>
                     </div>
                 </div>
@@ -72,8 +71,8 @@ export function About() {
                                     }`}>
                                     <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                                 </div>
-                                <h5 className="mb-xs">{stat.label}</h5>
-                                <p className="text-small m-0 text-text-gray">{stat.description}</p>
+                                <h5 className="mb-xs">{t.about.stats[stat.key].label}</h5>
+                                <p className="text-small m-0 text-text-gray">{t.about.stats[stat.key].description}</p>
                             </Card>
                         </motion.div>
                     ))}

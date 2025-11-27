@@ -16,7 +16,10 @@
   body {
     @apply text-body text-text-gray antialiased;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background:
+      radial-gradient(circle at 20% 20%, rgba(34, 116, 165, 0.12), transparent 40%),
+      radial-gradient(circle at 80% 0%, rgba(247, 92, 3, 0.1), transparent 35%),
+      linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   }
 
   h1,
@@ -57,28 +60,70 @@
 
   /* Glassmorphism utilities */
   .glass {
-    @apply bg-white/70 backdrop-blur-glass border border-white/30 shadow-lg;
+    @apply backdrop-blur-[22px];
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.52));
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    box-shadow:
+      0 12px 48px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
   }
 
   .glass-medium {
-    @apply bg-white/50 backdrop-blur-glass-medium border border-white/20;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    @apply backdrop-blur-[26px];
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.6));
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    box-shadow:
+      0 16px 56px rgba(0, 0, 0, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
   }
 
   .glass-subtle {
-    @apply bg-white/90 backdrop-blur-glass-subtle border border-white/40 shadow-sm;
+    @apply backdrop-blur-[16px];
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.28);
   }
 
   .glass-cerulean {
-    @apply backdrop-blur-glass border;
-    background: rgba(34, 116, 165, 0.1);
-    border-color: rgba(34, 116, 165, 0.2);
+    @apply backdrop-blur-[20px] border;
+    background: linear-gradient(150deg, rgba(34, 116, 165, 0.16), rgba(34, 116, 165, 0.1));
+    border-color: rgba(34, 116, 165, 0.25);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
   }
 
   .glass-orange {
-    @apply backdrop-blur-glass border;
-    background: rgba(247, 92, 3, 0.1);
-    border-color: rgba(247, 92, 3, 0.2);
+    @apply backdrop-blur-[20px] border;
+    background: linear-gradient(150deg, rgba(247, 92, 3, 0.16), rgba(247, 92, 3, 0.1));
+    border-color: rgba(247, 92, 3, 0.22);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+
+  .frosted-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .frosted-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.55), transparent 45%);
+    opacity: 0.8;
+    pointer-events: none;
+  }
+
+  .frosted-card::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 55%);
+    filter: blur(6px);
+    pointer-events: none;
   }
 
   /* Gradient text */

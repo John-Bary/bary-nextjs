@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -41,10 +42,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
-        {children}
-        <Analytics />
-        <SpeedInsights />
-        <Toaster position="top-center" richColors />
+        <LanguageProvider>
+          {children}
+          <Analytics />
+          <SpeedInsights />
+          <Toaster position="top-center" richColors />
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -5,8 +5,11 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { AnimatedCounter } from '@/components/ui/animated-counter';
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export function Hero() {
+    const { t } = useLanguage();
+
     return (
         <section
             id="home"
@@ -29,41 +32,40 @@ export function Hero() {
                     transition={{ duration: 0.6 }}
                 >
                     <h1 className="display gradient-text mb-4 sm:mb-6">
-                        We Turn Strategy Into Results
+                        {t.hero.title}
                     </h1>
 
                     <p className="text-large mt-4 mb-8 sm:mt-6 sm:mb-10 max-w-[700px] mx-auto">
-                        Business consulting and creative services that drive measurable growth. We help companies scale
-                        through strategic planning, brand development, and digital innovation.
+                        {t.hero.subtitle}
                     </p>
 
                     <div className="flex flex-col items-stretch justify-center gap-sm sm:flex-row sm:items-center sm:gap-md mb-10 sm:mb-12">
                         <Link href="#contact" className="w-full sm:w-auto">
-                            <Button size="lg" className="w-full sm:w-auto">Start Your Project</Button>
+                            <Button size="lg" className="w-full sm:w-auto">{t.hero.primaryCta}</Button>
                         </Link>
                         <Link href="#services" className="w-full sm:w-auto">
-                            <Button variant="glass" size="lg" className="w-full sm:w-auto">Our Services</Button>
+                            <Button variant="glass" size="lg" className="w-full sm:w-auto">{t.hero.secondaryCta}</Button>
                         </Link>
                     </div>
 
                     {/* Trust Indicators */}
                     <motion.div
-                        className="flex gap-6 sm:gap-xl justify-center flex-wrap"
+                        className="glass-subtle frosted-card rounded-2xl border border-white/40 px-6 py-4 flex gap-6 sm:gap-xl justify-center flex-wrap shadow-[0_16px_48px_rgba(0,0,0,0.08)]"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.3, duration: 0.6 }}
                     >
                         <div className="text-center">
                             <AnimatedCounter value={50} suffix="+" className="text-h2 font-bold gradient-text mb-xs" />
-                            <p className="text-small m-0 text-text-gray">Projects</p>
+                            <p className="text-small m-0 text-text-gray">{t.hero.stats.projects}</p>
                         </div>
                         <div className="text-center">
                             <AnimatedCounter value={98} suffix="%" className="text-h2 font-bold gradient-text mb-xs" />
-                            <p className="text-small m-0 text-text-gray">Satisfaction</p>
+                            <p className="text-small m-0 text-text-gray">{t.hero.stats.satisfaction}</p>
                         </div>
                         <div className="text-center">
                             <AnimatedCounter value={5} suffix="+" className="text-h2 font-bold gradient-text mb-xs" />
-                            <p className="text-small m-0 text-text-gray">Years</p>
+                            <p className="text-small m-0 text-text-gray">{t.hero.stats.years}</p>
                         </div>
                     </motion.div>
                 </motion.div>

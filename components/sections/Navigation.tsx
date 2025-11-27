@@ -4,22 +4,26 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { useLanguage, type Translations } from '@/components/providers/LanguageProvider';
 
 const showPortfolio = false; // Set to true to re-enable portfolio section and menu link
 
-const navLinks = [
-    { href: '#home', label: 'Home', id: 'home' },
-    { href: '#services', label: 'Services', id: 'services' },
-    ...(showPortfolio ? [{ href: '#portfolio', label: 'Portfolio' as const, id: 'portfolio' }] : []),
-    { href: '#about', label: 'About', id: 'about' },
-    { href: '#process', label: 'Process', id: 'process' },
-    { href: '#pricing', label: 'Pricing', id: 'pricing' },
+type NavKey = keyof Translations["navigation"]["links"];
+
+const navLinks: { href: string; id: NavKey }[] = [
+    { href: '#home', id: 'home' },
+    { href: '#services', id: 'services' },
+    ...(showPortfolio ? [{ href: '#portfolio', id: 'portfolio' as const }] : []),
+    { href: '#about', id: 'about' },
+    { href: '#process', id: 'process' },
+    { href: '#pricing', id: 'pricing' },
 ];
 
 export function Navigation() {
     const [isOpen, setIsOpen] = React.useState(false);
     const [isScrolled, setIsScrolled] = React.useState(false);
-    const [activeSection, setActiveSection] = React.useState<string>('home');
+    const [activeSection, setActiveSection] = React.useState<NavKey>('home');
+    const { language, toggleLanguage, t } = useLanguage();
 
     React.useEffect(() => {
         if (isOpen) {
@@ -65,8 +69,8 @@ export function Navigation() {
 
     return (
         <nav
-            className={`sticky top-0 z-50 glass border-b border-white/30 transition-all duration-300 ${
-                isScrolled ? 'py-sm shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur-xl bg-white/80' : 'py-md'
+            className={`sticky top-0 z-50 glass-medium frosted-card border-b border-white/30 transition-all duration-300 ${
+                isScrolled ? 'py-sm shadow-[0_12px_34px_rgba(0,0,0,0.12)] bg-white/80' : 'py-md'
             }`}
         >
             <div className="container">
@@ -89,7 +93,7 @@ export function Navigation() {
                                     href={link.href}
                                     className="text-text-gray no-underline font-medium transition-colors duration-fast hover:text-cerulean px-1 py-2 inline-block"
                                 >
-                                    {link.label}
+                                    {t.navigation.links[link.id]}
                                 </Link>
                                 <span
                                     className={`absolute left-0 right-0 -bottom-1 h-[3px] rounded-full bg-gradient-to-r from-cerulean to-orange transition-transform transition-opacity duration-200 origin-center ${
@@ -99,8 +103,19 @@ export function Navigation() {
                             </li>
                         ))}
                         <li>
+                            <Button
+                                size="sm"
+                                variant="glass"
+                                onClick={toggleLanguage}
+                                aria-label={t.navigation.languageAria}
+                                className="min-w-[64px]"
+                            >
+                                {language === 'en' ? 'LT' : 'EN'}
+                            </Button>
+                        </li>
+                        <li>
                             <Link href="#contact">
-                                <Button size="sm">Contact</Button>
+                                <Button size="sm">{t.navigation.contactCta}</Button>
                             </Link>
                         </li>
                     </ul>
@@ -108,10 +123,10 @@ export function Navigation() {
                     <button
                         className="md:hidden inline-flex items-center justify-center w-12 h-12 rounded-lg glass-subtle border border-white/40 hover:border-white/60 transition-all duration-200"
                         onClick={() => setIsOpen((prev) => !prev)}
-                        aria-label="Toggle navigation menu"
+                        aria-label={t.navigation.menuToggle}
                         aria-expanded={isOpen}
                     >
-                        <span className="sr-only">Toggle navigation menu</span>
+                        <span className="sr-only">{t.navigation.menuToggle}</span>
                         <div className="flex flex-col items-center gap-[6px]">
                             <span
                                 className={`block h-0.5 w-6 rounded-sm bg-dark-gray transition-transform duration-300 ${isOpen ? 'translate-y-1.5 rotate-45' : ''
@@ -139,11 +154,23 @@ export function Navigation() {
                                     onClick={() => setIsOpen(false)}
                                     className="block w-full no-underline text-dark-gray font-semibold py-2 px-2 rounded-lg hover:bg-white/70 transition-colors duration-200"
                                 >
-                                    {link.label}
+                                    {t.navigation.links[link.id]}
                                 </Link>
                             ))}
+                            <Button
+                                size="sm"
+                                variant="glass"
+                                onClick={() => {
+                                    toggleLanguage();
+                                    setIsOpen(false);
+                                }}
+                                aria-label={t.navigation.languageAria}
+                                className="w-full"
+                            >
+                                {language === 'en' ? 'Lietuvių' : 'English'}
+                            </Button>
                             <Link href="#contact" onClick={() => setIsOpen(false)} className="block">
-                                <Button className="w-full">Contact</Button>
+                                <Button className="w-full">{t.navigation.contactCta}</Button>
                             </Link>
                         </div>
                     </div>

@@ -7,11 +7,17 @@ import { toast } from 'sonner';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input, Textarea, Select } from '@/components/ui/input';
-import { contactFormSchema, type ContactFormData } from '@/lib/validations';
+import { createContactFormSchema, type ContactFormData } from '@/lib/validations';
 import { Loader2 } from 'lucide-react';
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export function Contact() {
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const { t } = useLanguage();
+    const contactFormSchema = React.useMemo(
+        () => createContactFormSchema(t.contact.form.errors),
+        [t]
+    );
 
     const {
         register,
@@ -37,13 +43,13 @@ export function Contact() {
             const result = await response.json();
 
             if (response.ok) {
-                toast.success(result.message || "Thank you! We'll be in touch soon.");
+                toast.success(t.contact.toasts.success);
                 reset();
             } else {
-                toast.error(result.error || 'Something went wrong. Please try again.');
+                toast.error(result.error || t.contact.toasts.error);
             }
         } catch (error) {
-            toast.error('Failed to send message. Please try again later.');
+            toast.error(t.contact.toasts.server);
             console.error('Contact form error:', error);
         } finally {
             setIsSubmitting(false);
@@ -54,9 +60,9 @@ export function Contact() {
         <section id="contact" className="section bg-light-gray">
             <div className="container">
                 <div className="text-center mb-2xl">
-                    <h2>Let's Talk</h2>
+                    <h2>{t.contact.heading}</h2>
                     <p className="text-large max-w-[600px] mx-auto">
-                        Tell us about your project. Most of our engagements range from €500 - €5,000+.
+                        {t.contact.description}
                     </p>
                 </div>
 
@@ -65,11 +71,11 @@ export function Contact() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
                             <div>
                                 <label htmlFor="name" className="block mb-xs font-medium">
-                                    Name *
+                                    {t.contact.form.labels.name}
                                 </label>
                                 <Input
                                     id="name"
-                                    placeholder="Your full name"
+                                    placeholder={t.contact.form.placeholders.name}
                                     {...register('name')}
                                     disabled={isSubmitting}
                                 />
@@ -80,12 +86,12 @@ export function Contact() {
 
                             <div>
                                 <label htmlFor="email" className="block mb-xs font-medium">
-                                    Email *
+                                    {t.contact.form.labels.email}
                                 </label>
                                 <Input
                                     id="email"
                                     type="email"
-                                    placeholder="your@company.com"
+                                    placeholder={t.contact.form.placeholders.email}
                                     {...register('email')}
                                     disabled={isSubmitting}
                                 />
@@ -97,12 +103,12 @@ export function Contact() {
 
                         <div>
                             <label htmlFor="phone" className="block mb-xs font-medium">
-                                Phone
+                                {t.contact.form.labels.phone}
                             </label>
                             <Input
                                 id="phone"
                                 type="tel"
-                                placeholder="+370 XXX XXXXX"
+                                placeholder={t.contact.form.placeholders.phone}
                                 {...register('phone')}
                                 disabled={isSubmitting}
                             />
@@ -111,19 +117,18 @@ export function Contact() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
                             <div>
                                 <label htmlFor="service" className="block mb-xs font-medium">
-                                    Service Interest *
+                                    {t.contact.form.labels.service}
                                 </label>
                                 <Select
                                     id="service"
                                     {...register('service')}
                                     disabled={isSubmitting}
                                 >
-                                    <option value="">Select a service</option>
-                                    <option value="consulting">Business Consulting</option>
-                                    <option value="creative">Creative Services</option>
-                                    <option value="digital">Digital Solutions</option>
-                                    <option value="marketing">Marketing Strategy</option>
-                                    <option value="other">Other</option>
+                                    {t.contact.form.serviceOptions.map((option) => (
+                                        <option key={option.value || 'empty'} value={option.value}>
+                                            {option.label}
+                                        </option>
+                                    ))}
                                 </Select>
                                 {errors.service && (
                                     <p className="text-small text-berry mt-xs">{errors.service.message}</p>
@@ -132,30 +137,29 @@ export function Contact() {
 
                             <div>
                                 <label htmlFor="budget" className="block mb-xs font-medium">
-                                    Budget Range
+                                    {t.contact.form.labels.budget}
                                 </label>
                                 <Select
                                     id="budget"
                                     {...register('budget')}
                                     disabled={isSubmitting}
                                 >
-                                    <option value="">Select budget range</option>
-                                    <option value="<1000">Less than €1,000</option>
-                                    <option value="1000-2500">€1,000 - €2,500</option>
-                                    <option value="2500-5000">€2,500 - €5,000</option>
-                                    <option value="5000+">€5,000+</option>
-                                    <option value="not-sure">Not sure yet</option>
+                                    {t.contact.form.budgetOptions.map((option) => (
+                                        <option key={option.value || 'empty'} value={option.value}>
+                                            {option.label}
+                                        </option>
+                                    ))}
                                 </Select>
                             </div>
                         </div>
 
                         <div>
                             <label htmlFor="message" className="block mb-xs font-medium">
-                                Message *
+                                {t.contact.form.labels.message}
                             </label>
                             <Textarea
                                 id="message"
-                                placeholder="Tell us about your project, timeline, and objectives..."
+                                placeholder={t.contact.form.placeholders.message}
                                 rows={6}
                                 {...register('message')}
                                 disabled={isSubmitting}
@@ -174,26 +178,26 @@ export function Contact() {
                             {isSubmitting ? (
                                 <>
                                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                    Sending...
+                                    {t.contact.form.submitting}
                                 </>
                             ) : (
-                                'Send Message'
+                                t.contact.form.submit
                             )}
                         </Button>
                     </form>
 
                     <div className="text-center mt-xl pt-xl border-t border-medium-gray">
                         <p className="text-small text-text-gray mb-md">
-                            Or reach us directly:
+                            {t.contact.direct.intro}
                         </p>
                         <p className="mb-sm">
-                            <strong>Email:</strong>{' '}
+                            <strong>{t.contact.direct.emailLabel}:</strong>{' '}
                             <a href="mailto:hello@bary.lt" className="text-cerulean no-underline font-medium hover:underline">
                                 hello@bary.lt
                             </a>
                         </p>
                         <p className="m-0">
-                            <strong>Phone:</strong>{' '}
+                            <strong>{t.contact.direct.phoneLabel}:</strong>{' '}
                             <a href="tel:+37060000000" className="text-cerulean no-underline font-medium hover:underline">
                                 +370 600 00000
                             </a>

@@ -2,20 +2,23 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { useLanguage, type Translations } from '@/components/providers/LanguageProvider';
 
 const showPortfolio = false; // Keep in sync with navigation
 
-const footerLinks = [
-    { href: '#home', label: 'Home' },
-    { href: '#services', label: 'Services' },
-    ...(showPortfolio ? [{ href: '#portfolio', label: 'Portfolio' as const }] : []),
-    { href: '#about', label: 'About' },
-    { href: '#process', label: 'Process' },
-    { href: '#pricing', label: 'Pricing' },
-    { href: '#contact', label: 'Contact' },
+const footerLinks: { href: string; id: keyof Translations["navigation"]["links"] }[] = [
+    { href: '#home', id: 'home' },
+    { href: '#services', id: 'services' },
+    ...(showPortfolio ? [{ href: '#portfolio', id: 'portfolio' as const }] : []),
+    { href: '#about', id: 'about' },
+    { href: '#process', id: 'process' },
+    { href: '#pricing', id: 'pricing' },
+    { href: '#contact', id: 'contact' },
 ];
 
 export function Footer() {
+    const { t } = useLanguage();
+
     return (
         <footer className="section-compact bg-dark-gray text-white">
             <div className="container">
@@ -29,19 +32,19 @@ export function Footer() {
                                     href={link.href}
                                     className="text-white/80 hover:text-white no-underline transition-colors duration-150"
                                 >
-                                    {link.label}
+                                    {t.navigation.links[link.id]}
                                 </Link>
                             </li>
                         ))}
                         <li>
                             <Link href="/privacy" className="text-white hover:text-cerulean no-underline">
-                                Privacy Policy
+                                {t.footer.privacy}
                             </Link>
                         </li>
                     </ul>
 
                     <p className="text-small text-white/70 m-0">
-                        Business Consulting & Creative Services © {new Date().getFullYear()}
+                        {t.footer.tagline} © {new Date().getFullYear()}
                     </p>
                 </div>
             </div>
