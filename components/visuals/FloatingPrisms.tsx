@@ -11,93 +11,59 @@ type PrismProps = {
   spinDirection?: 1 | -1;
 };
 
-function Prism({ size = 160, className, animationDuration = 12, spinDirection = 1 }: PrismProps) {
-  const layers = [
-    {
-      id: "front",
-      z: 36,
-      scale: 1,
-      gradient: "linear-gradient(135deg, rgba(110, 231, 255, 0.95), rgba(142, 241, 226, 0.95))",
-      glow: "0 12px 32px rgba(0, 0, 0, 0.12)",
-    },
-    {
-      id: "middle",
-      z: 22,
-      scale: 0.9,
-      gradient: "linear-gradient(135deg, rgba(247, 92, 3, 0.75), rgba(247, 196, 107, 0.55))",
-      glow: "0 10px 28px rgba(247, 92, 3, 0.18)",
-    },
-    {
-      id: "back",
-      z: 12,
-      scale: 0.82,
-      gradient: "linear-gradient(140deg, rgba(34, 116, 165, 0.9), rgba(96, 164, 255, 0.48))",
-      glow: "0 8px 22px rgba(34, 116, 165, 0.16)",
-    },
+function Orb({ size = 140, className, animationDuration = 14, spinDirection = 1 }: PrismProps) {
+  const rings = [
+    { inset: "0%", stroke: "rgba(255,255,255,0.16)", blur: "0 10px 24px rgba(0,0,0,0.08)" },
+    { inset: "12%", stroke: "rgba(255,255,255,0.12)", blur: "0 8px 20px rgba(0,0,0,0.06)" },
+    { inset: "24%", stroke: "rgba(255,255,255,0.1)", blur: "0 6px 18px rgba(0,0,0,0.05)" },
   ];
+
+  const shellGradient = "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.55), rgba(180,206,255,0.18) 40%, rgba(110,157,200,0.08) 65%, rgba(120,140,180,0.04) 100%)";
+  const glowGradient = "radial-gradient(circle, rgba(120,190,240,0.2), rgba(90,140,200,0.0) 60%)";
 
   return (
     <motion.div
       className={cn("relative", className)}
       style={{ width: size, height: size, perspective: 1000, transformStyle: "preserve-3d" }}
       animate={{
-        rotateX: [12, -10, 12],
-        rotateY: [-10, 10, -10],
-        rotateZ: [2 * spinDirection, -2 * spinDirection, 2 * spinDirection],
+        rotateX: [10, -8, 10],
+        rotateY: [-8, 8, -8],
+        rotateZ: [1.5 * spinDirection, -1.5 * spinDirection, 1.5 * spinDirection],
       }}
       transition={{ duration: animationDuration, repeat: Infinity, ease: "easeInOut" }}
     >
-      {layers.map((layer, index) => (
-        <div
-          key={layer.id}
-          className="absolute inset-0"
-          style={{ transformStyle: "preserve-3d", transform: `translateZ(${layer.z}px) scale(${layer.scale})` }}
-        >
-          <motion.div
-            className="absolute inset-0 rounded-[28px] border border-white/25 shadow-lg"
-            style={{
-              background: layer.gradient,
-              boxShadow: layer.glow,
-              transformStyle: "preserve-3d",
-            }}
-            animate={{ y: [0, -8, 0], rotateZ: [0, 1.2, 0] }}
-            transition={{ duration: 6 + index * 1.2, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </div>
+      <motion.div
+        className="absolute inset-0 rounded-full"
+        style={{ background: glowGradient, filter: "blur(10px)" }}
+        animate={{ scale: [0.9, 1.05, 0.9], opacity: [0.35, 0.5, 0.35] }}
+        transition={{ duration: animationDuration * 0.6, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <div className="absolute inset-0 rounded-full" style={{ background: shellGradient, border: "1px solid rgba(255,255,255,0.25)" }} />
+
+      {rings.map((ring, index) => (
+        <motion.div
+          key={index}
+          className="absolute rounded-full"
+          style={{
+            inset: ring.inset,
+            border: `1px solid ${ring.stroke}`,
+            boxShadow: ring.blur,
+          }}
+          animate={{ rotateZ: [0, 360 * spinDirection] }}
+          transition={{ duration: animationDuration + index * 2, repeat: Infinity, ease: "linear" }}
+        />
       ))}
 
       <div
-        className="absolute inset-[16%]"
-        style={{ transformStyle: "preserve-3d", transform: "translateZ(48px)" }}
+        className="absolute inset-[26%]"
+        style={{ transformStyle: "preserve-3d", transform: "translateZ(32px)" }}
       >
         <motion.div
-          className="absolute inset-0 rounded-[24px] bg-white/14 backdrop-blur-lg border border-white/20"
-          style={{ boxShadow: "0 14px 38px rgba(0,0,0,0.08)" }}
-          animate={{ y: [-5, 5, -5] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
-
-      <div
-        className="absolute inset-[12%]"
-        style={{ transformStyle: "preserve-3d", transform: "translateZ(58px)" }}
-      >
-        <motion.div
-          className="absolute inset-0 rounded-full border border-white/40 shadow-[0_8px_22px_rgba(0,0,0,0.12)]"
-          animate={{ rotateZ: 360 * spinDirection }}
-          transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
-        />
-      </div>
-
-      <div
-        className="absolute inset-[34%]"
-        style={{ transformStyle: "preserve-3d", transform: "translateZ(64px)" }}
-      >
-        <motion.div
-          className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.9),rgba(255,255,255,0))]"
+          className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.55),rgba(255,255,255,0))]"
           style={{ mixBlendMode: "screen" }}
-          animate={{ scale: [0.85, 1.05, 0.85], opacity: [0.65, 1, 0.65] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ scale: [0.9, 1.08, 0.9], opacity: [0.5, 0.9, 0.5] }}
+          transition={{ duration: animationDuration * 0.7, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
     </motion.div>
@@ -105,11 +71,11 @@ function Prism({ size = 160, className, animationDuration = 12, spinDirection = 
 }
 
 const prismField = [
-  { top: "12%", left: "12%", size: 140, duration: 15, float: { x: [-12, 12, -12], y: [-18, 18, -18] } },
-  { top: "22%", right: "10%", size: 120, duration: 13, float: { x: [10, -10, 10], y: [-14, 14, -14] }, direction: -1 },
-  { top: "48%", left: "26%", size: 110, duration: 17, float: { x: [-8, 8, -8], y: [12, -12, 12] } },
-  { top: "62%", right: "18%", size: 130, duration: 16, float: { x: [6, -6, 6], y: [14, -14, 14] }, direction: -1 },
-  { top: "78%", left: "8%", size: 100, duration: 14, float: { x: [-10, 10, -10], y: [10, -10, 10] } },
+  { top: "10%", left: "14%", size: 120, duration: 18, float: { x: [-10, 10, -10], y: [-16, 16, -16] } },
+  { top: "24%", right: "12%", size: 110, duration: 17, float: { x: [9, -9, 9], y: [-12, 12, -12] }, direction: -1 },
+  { top: "46%", left: "24%", size: 100, duration: 20, float: { x: [-6, 6, -6], y: [10, -10, 10] } },
+  { top: "64%", right: "16%", size: 115, duration: 19, float: { x: [5, -5, 5], y: [12, -12, 12] }, direction: -1 },
+  { top: "80%", left: "10%", size: 95, duration: 16, float: { x: [-8, 8, -8], y: [9, -9, 9] } },
 ];
 
 export function FloatingPrismsBackground() {
@@ -118,12 +84,12 @@ export function FloatingPrismsBackground() {
       {prismField.map((prism, index) => (
         <motion.div
           key={index}
-          className="absolute opacity-70"
+          className="absolute opacity-50"
           style={{ top: prism.top, left: prism.left, right: prism.right, width: prism.size, height: prism.size }}
           animate={{ x: prism.float.x, y: prism.float.y }}
           transition={{ duration: prism.duration, repeat: Infinity, ease: "easeInOut" }}
         >
-          <Prism size={prism.size} animationDuration={prism.duration} spinDirection={prism.direction === -1 ? -1 : 1} />
+          <Orb size={prism.size} animationDuration={prism.duration} spinDirection={prism.direction === -1 ? -1 : 1} />
         </motion.div>
       ))}
     </div>
