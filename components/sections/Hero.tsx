@@ -18,6 +18,16 @@ export function Hero() {
             {/* Floating glass shapes */}
             <div className="absolute top-[10%] right-[10%] w-[300px] h-[300px] rounded-full glass animate-float" />
             <div className="absolute bottom-[20%] left-[5%] w-[200px] h-[200px] rounded-full glass animate-float-reverse" />
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none opacity-80 w-[260px] h-[260px] sm:w-[320px] sm:h-[320px]">
+                <Image
+                    src="/logonobackground.png"
+                    alt="bary.lt"
+                    width={320}
+                    height={320}
+                    className="w-full h-full object-contain"
+                    priority
+                />
+            </div>
 
             {/* Radial gradient background */}
             <div className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] animate-float opacity-10">
