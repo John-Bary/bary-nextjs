@@ -56,10 +56,8 @@ const translations: Record<Language, {
     pricing: {
         heading: string;
         description: string;
-        sections: {
-            left: { title: string; items: string[] }[];
-            right: { title: string; items: string[] }[];
-        };
+        cards: { title: string; description: string; items: string[] }[];
+        servicesLabel: string;
         ctaHeading: string;
         ctaDescription: string;
         ctaButton: string;
@@ -223,48 +221,53 @@ const translations: Record<Language, {
         pricing: {
             heading: "What's Included",
             description: "Every project is tailored to your specific needs. Here's what you can expect when working with us.",
-            sections: {
-                left: [
-                    {
-                        title: "Strategy & Planning",
-                        items: [
-                            "Initial consultation and discovery",
-                            "Comprehensive strategy development",
-                            "Market analysis and research",
-                            "Roadmap and timeline planning",
-                        ],
-                    },
-                    {
-                        title: "Design & Creative",
-                        items: [
-                            "Brand identity system",
-                            "Visual design and UI/UX",
-                            "Marketing collateral",
-                            "Design system documentation",
-                        ],
-                    },
-                ],
-                right: [
-                    {
-                        title: "Development & Implementation",
-                        items: [
-                            "Custom web applications",
-                            "Responsive development",
-                            "Quality assurance testing",
-                            "Performance optimization",
-                        ],
-                    },
-                    {
-                        title: "Support & Growth",
-                        items: [
-                            "Project management",
-                            "Post-launch support",
-                            "Performance monitoring",
-                            "Ongoing optimization",
-                        ],
-                    },
-                ],
-            },
+            cards: [
+                {
+                    title: "Business Consulting",
+                    description: "Data-driven guidance to improve performance and growth.",
+                    items: [
+                        "Business strategy & planning",
+                        "Market and competitor analysis",
+                        "Operations & workflow optimization",
+                        "KPI and performance tracking",
+                        "Digital transformation guidance",
+                    ],
+                },
+                {
+                    title: "Creative Services",
+                    description: "Visual design that builds trust, recognition, and consistency.",
+                    items: [
+                        "Brand identity & logo design",
+                        "Full visual guidelines",
+                        "Graphic design (print & digital)",
+                        "UI/UX design for websites & apps",
+                        "Marketing visuals & content creation",
+                    ],
+                },
+                {
+                    title: "Digital Solutions",
+                    description: "Modern, scalable digital products tailored to your business needs.",
+                    items: [
+                        "Website development",
+                        "Custom software & dashboards",
+                        "API integrations",
+                        "Automation systems",
+                        "Website optimization & maintenance",
+                    ],
+                },
+                {
+                    title: "Marketing Strategies",
+                    description: "Performance-focused marketing that drives visibility and growth.",
+                    items: [
+                        "Marketing strategy & campaign planning",
+                        "Social media strategy",
+                        "Performance ads (Google / Meta / LinkedIn)",
+                        "SEO & content visibility",
+                        "Analytics & monthly reporting",
+                    ],
+                },
+            ],
+            servicesLabel: "Services include:",
             ctaHeading: "Ready to Get Started?",
             ctaDescription: "Projects typically range from €500 to €10,000+ depending on scope and complexity.",
             ctaButton: "Request a Quote",
@@ -472,48 +475,53 @@ const translations: Record<Language, {
         pricing: {
             heading: "Kas įeina į paslaugas",
             description: "Kiekvieną projektą pritaikome konkretiems poreikiams. Štai ko galite tikėtis dirbdami su mumis.",
-            sections: {
-                left: [
-                    {
-                        title: "Strategija ir planavimas",
-                        items: [
-                            "Pirminė konsultacija ir poreikių analizė",
-                            "Išsami strategijos rengimas",
-                            "Rinkos analizė ir tyrimai",
-                            "Kelrodžiai ir terminų planavimas",
-                        ],
-                    },
-                    {
-                        title: "Dizainas ir kūryba",
-                        items: [
-                            "Prekės ženklo identitetas",
-                            "Vizualinis dizainas ir UI/UX",
-                            "Marketingo priemonės",
-                            "Dizaino sistemos dokumentacija",
-                        ],
-                    },
-                ],
-                right: [
-                    {
-                        title: "Vystymas ir įgyvendinimas",
-                        items: [
-                            "Individualios žiniatinklio aplikacijos",
-                            "Prisitaikantis (responsive) kūrimas",
-                            "Kokybės užtikrinimo testavimas",
-                            "Našumo optimizavimas",
-                        ],
-                    },
-                    {
-                        title: "Palaikymas ir augimas",
-                        items: [
-                            "Projektų valdymas",
-                            "Palaikymas po paleidimo",
-                            "Rezultatų stebėsena",
-                            "Nuolatinis optimizavimas",
-                        ],
-                    },
-                ],
-            },
+            cards: [
+                {
+                    title: "Verslo konsultacijos",
+                    description: "Duomenimis grįstas konsultavimas gerinantis veiklos rezultatus ir augimą.",
+                    items: [
+                        "Verslo strategija ir planavimas",
+                        "Rinkos ir konkurentų analizė",
+                        "Operacijų ir procesų optimizavimas",
+                        "KPI ir rezultatų stebėsena",
+                        "Skaitmeninės transformacijos gairės",
+                    ],
+                },
+                {
+                    title: "Kūrybinės paslaugos",
+                    description: "Vizualinis dizainas, kuriantis pasitikėjimą, atpažįstamumą ir nuoseklumą.",
+                    items: [
+                        "Prekės ženklo identitetas ir logotipo kūrimas",
+                        "Pilnos vizualinės gairės",
+                        "Grafinis dizainas (spausdinta ir skaitmena)",
+                        "UI/UX dizainas svetainėms ir programėlėms",
+                        "Marketingo vizualai ir turinio kūrimas",
+                    ],
+                },
+                {
+                    title: "Skaitmeniniai sprendimai",
+                    description: "Šiuolaikiniai, lengvai plečiami skaitmeniniai sprendimai pagal jūsų poreikius.",
+                    items: [
+                        "Svetainių kūrimas",
+                        "Individuali programinė įranga ir valdymo skydai",
+                        "API integracijos",
+                        "Automatizavimo sistemos",
+                        "Svetainių optimizavimas ir priežiūra",
+                    ],
+                },
+                {
+                    title: "Marketingo strategijos",
+                    description: "Rezultatams orientuotas marketingas, didinantis matomumą ir augimą.",
+                    items: [
+                        "Marketingo strategija ir kampanijų planavimas",
+                        "Socialinių tinklų strategija",
+                        "Rezultatinė reklama (Google / Meta / LinkedIn)",
+                        "SEO ir turinio matomumas",
+                        "Analitika ir mėnesinės ataskaitos",
+                    ],
+                },
+            ],
+            servicesLabel: "Teikiamos paslaugos:",
             ctaHeading: "Norite pradėti?",
             ctaDescription: "Projektų biudžetai dažniausiai svyruoja nuo €500 iki €10,000+ priklausomai nuo apimties ir sudėtingumo.",
             ctaButton: "Gauti pasiūlymą",

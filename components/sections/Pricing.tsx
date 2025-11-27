@@ -19,53 +19,35 @@ export function Pricing() {
                     </p>
                 </div>
 
-                <Card variant="featured" className="max-w-[800px] mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-xl">
-                        {/* Left Column */}
-                        <div>
-                            {t.pricing.sections.left.map((section, index) => (
-                                <div key={index} className={index > 0 ? "mt-xl" : ""}>
-                                    <h4 className="mb-lg">{section.title}</h4>
-                                    <ul className="list-none m-0 space-y-sm">
-                                        {section.items.map((item, i) => (
-                                            <li key={i} className="flex items-center gap-sm">
-                                                <span className="text-emerald font-bold text-h5">✓</span>
-                                                <span>{item}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
-                        </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-lg lg:gap-xl max-w-5xl mx-auto">
+                    {t.pricing.cards.map((card, idx) => (
+                        <Card key={idx} className="h-full rounded-2xl p-xl glass frosted-card shadow-[0_16px_48px_rgba(0,0,0,0.08)] border border-white/30">
+                            <h4 className="mb-sm text-dark-gray">{card.title}</h4>
+                            <p className="text-text-gray mb-md">{card.description}</p>
+                            <p className="text-small font-semibold uppercase tracking-wide text-dark-gray mb-sm">
+                                {t.pricing.servicesLabel}
+                            </p>
+                            <ul className="list-none m-0 space-y-sm text-dark-gray">
+                                {card.items.map((item, i) => (
+                                    <li key={i} className="flex items-center gap-sm">
+                                        <span className="text-emerald font-bold text-h5 leading-none">✓</span>
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </Card>
+                    ))}
+                </div>
 
-                        {/* Right Column */}
-                        <div>
-                            {t.pricing.sections.right.map((section, index) => (
-                                <div key={index} className={index > 0 ? "mt-xl" : ""}>
-                                    <h4 className="mb-lg">{section.title}</h4>
-                                    <ul className="list-none m-0 space-y-sm">
-                                        {section.items.map((item, i) => (
-                                            <li key={i} className="flex items-center gap-sm">
-                                                <span className="text-emerald font-bold text-h5">✓</span>
-                                                <span>{item}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="text-center mt-2xl pt-xl border-t border-white/30">
-                        <h3 className="mb-md">{t.pricing.ctaHeading}</h3>
-                        <p className="text-large mb-xl text-text-gray">
-                            {t.pricing.ctaDescription}
-                        </p>
-                        <Link href="#contact">
-                            <Button size="lg">{t.pricing.ctaButton}</Button>
-                        </Link>
-                    </div>
-                </Card>
+                <div className="text-center mt-2xl">
+                    <h3 className="mb-md text-dark-gray">{t.pricing.ctaHeading}</h3>
+                    <p className="text-large mb-xl text-text-gray">
+                        {t.pricing.ctaDescription}
+                    </p>
+                    <Link href="#contact">
+                        <Button size="lg">{t.pricing.ctaButton}</Button>
+                    </Link>
+                </div>
             </div>
         </section>
     );
