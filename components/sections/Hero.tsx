@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, easeOut, easeInOut } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { AnimatedCounter } from '@/components/ui/animated-counter';
 import { useLanguage } from '@/components/providers/LanguageProvider';
@@ -14,16 +14,16 @@ export function Hero() {
         show: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.65, ease: 'easeOut', staggerChildren: 0.12 },
+            transition: { duration: 0.65, ease: easeOut, staggerChildren: 0.12 },
         },
     };
     const itemVariants = {
         hidden: { opacity: 0, y: 16 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
+        show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: easeOut } },
     };
     const statVariants = {
         hidden: { opacity: 0, y: 12 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+        show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: easeOut } },
     };
 
     return (
@@ -37,7 +37,7 @@ export function Hero() {
                     aria-hidden
                     className="absolute top-[-45%] left-[-45%] w-[190%] h-[190%] opacity-10"
                     animate={{ rotate: [0, 1.5, 0], scale: [1, 1.03, 1] }}
-                    transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
+                    transition={{ duration: 22, repeat: Infinity, ease: easeInOut }}
                 >
                     <div className="w-full h-full bg-[radial-gradient(circle,rgba(34,116,165,0.3)_0%,transparent_70%)]" />
                 </motion.div>
@@ -46,25 +46,25 @@ export function Hero() {
                     aria-hidden
                     className="hero-aurora hero-aurora--cerulean"
                     animate={{ x: ['-6%', '6%', '-2%'], y: ['-4%', '6%', '0%'], scale: [1, 1.05, 1] }}
-                    transition={{ duration: 16, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+                    transition={{ duration: 16, repeat: Infinity, repeatType: 'mirror', ease: easeInOut }}
                 />
                 <motion.div
                     aria-hidden
                     className="hero-aurora hero-aurora--orange"
                     animate={{ x: ['5%', '-4%', '8%'], y: ['4%', '-2%', '6%'], scale: [1.05, 1, 1.08], rotate: [0, -2, 0] }}
-                    transition={{ duration: 18, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+                    transition={{ duration: 18, repeat: Infinity, repeatType: 'mirror', ease: easeInOut }}
                 />
                 <motion.div
                     aria-hidden
                     className="hero-grid"
                     animate={{ rotate: [0, 2, -2, 0], opacity: [0.1, 0.14, 0.1] }}
-                    transition={{ duration: 24, repeat: Infinity, ease: 'easeInOut' }}
+                    transition={{ duration: 24, repeat: Infinity, ease: easeInOut }}
                 />
                 <motion.div
                     aria-hidden
                     className="hero-orbit glass"
                     animate={{ scale: [1, 1.04, 1], opacity: [0.55, 0.85, 0.55] }}
-                    transition={{ duration: 12, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+                    transition={{ duration: 12, repeat: Infinity, repeatType: 'mirror', ease: easeInOut }}
                 />
             </div>
 
