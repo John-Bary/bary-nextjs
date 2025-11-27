@@ -45,17 +45,6 @@ function About3DAnimation() {
     return (
         <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
             <motion.div
-                className="absolute inset-[-20%] bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.9),transparent_45%)] blur-3xl opacity-60"
-                animate={{ rotate: [0, 10, -6, 0] }}
-                transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut' }}
-            />
-            <motion.div
-                className="absolute inset-[-18%] bg-[radial-gradient(circle_at_80%_20%,rgba(34,116,165,0.16),transparent_50%)] blur-3xl opacity-70"
-                animate={{ rotate: [0, -8, 6, 0] }}
-                transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
-            />
-
-            <motion.div
                 className="relative w-[260px] h-[260px]"
                 style={{ perspective: 1200, transformStyle: 'preserve-3d' }}
                 animate={{ rotateX: [14, -10, 14], rotateY: [-12, 12, -12], rotateZ: [2, -2, 2] }}
