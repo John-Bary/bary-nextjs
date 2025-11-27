@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { AnimatedCounter } from '@/components/ui/animated-counter';
 
 export function Hero() {
     return (
@@ -53,15 +54,15 @@ export function Hero() {
                         transition={{ delay: 0.3, duration: 0.6 }}
                     >
                         <div className="text-center">
-                            <div className="text-h2 font-bold gradient-text mb-xs">50+</div>
+                            <AnimatedCounter value={50} suffix="+" className="text-h2 font-bold gradient-text mb-xs" />
                             <p className="text-small m-0 text-text-gray">Projects</p>
                         </div>
                         <div className="text-center">
-                            <div className="text-h2 font-bold gradient-text mb-xs">98%</div>
+                            <AnimatedCounter value={98} suffix="%" className="text-h2 font-bold gradient-text mb-xs" />
                             <p className="text-small m-0 text-text-gray">Satisfaction</p>
                         </div>
                         <div className="text-center">
-                            <div className="text-h2 font-bold gradient-text mb-xs">5+</div>
+                            <AnimatedCounter value={5} suffix="+" className="text-h2 font-bold gradient-text mb-xs" />
                             <p className="text-small m-0 text-text-gray">Years</p>
                         </div>
                     </motion.div>
