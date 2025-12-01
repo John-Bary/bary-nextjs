@@ -1,14 +1,16 @@
 import * as React from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: "primary" | "secondary" | "glass" | "orange" | "emerald" | "berry";
     size?: "sm" | "md" | "lg";
+    liquid?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ className, variant = "primary", size = "md", ...props }, ref) => {
-        const baseStyles = "inline-flex items-center justify-center gap-xs font-semibold rounded-md transition-all duration-base cursor-pointer border-none focus:outline-none focus:ring-4 focus:ring-cerulean/20";
+    ({ className, variant = "primary", size = "md", liquid = true, children, ...props }, ref) => {
+        const baseStyles = "relative overflow-hidden isolate inline-flex items-center justify-center gap-xs font-semibold rounded-md transition-all duration-base cursor-pointer border-none focus:outline-none focus:ring-4 focus:ring-cerulean/20";
 
         const variants = {
             primary: "bg-cerulean text-white shadow-[0_4px_16px_rgba(34,116,165,0.24)] hover:bg-[#1a5a82] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(34,116,165,0.32)] active:translate-y-0 active:shadow-[0_2px_8px_rgba(34,116,165,0.16)]",
@@ -25,12 +27,52 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             lg: "px-10 py-[18px] text-lg rounded-[14px]",
         };
 
+        const [hovered, setHovered] = React.useState(false);
+
+        const rippleVariants = {
+            initial: { scale: 0.2, opacity: 0 },
+            hover: { scale: 2.2, opacity: 0.12 },
+        };
+
+        const glowVariants = {
+            initial: { scale: 0.6, opacity: 0 },
+            hover: { scale: 1.6, opacity: 0.07 },
+        };
+
         return (
-            <button
+            <motion.button
                 className={cn(baseStyles, variants[variant], sizes[size], className)}
                 ref={ref}
+                onMouseEnter={(e) => {
+                    setHovered(true);
+                    props.onMouseEnter?.(e);
+                }}
+                onMouseLeave={(e) => {
+                    setHovered(false);
+                    props.onMouseLeave?.(e);
+                }}
                 {...props}
-            />
+            >
+                {liquid && (
+                    <>
+                        <motion.span
+                            className="pointer-events-none absolute inset-[-20%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.6),rgba(255,255,255,0))]"
+                            variants={rippleVariants}
+                            animate={hovered ? "hover" : "initial"}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                        />
+                        <motion.span
+                            className="pointer-events-none absolute inset-[-10%] rounded-full bg-[radial-gradient(circle,rgba(34,116,165,0.32),rgba(34,116,165,0))]"
+                            variants={glowVariants}
+                            animate={hovered ? "hover" : "initial"}
+                            transition={{ duration: 0.9, ease: "easeOut" }}
+                        />
+                    </>
+                )}
+                <span className="relative z-10 flex items-center gap-2">
+                    {children}
+                </span>
+            </motion.button>
         );
     }
 );
