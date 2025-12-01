@@ -112,14 +112,20 @@ export function About() {
     const { t } = useLanguage();
 
     return (
-        <section id="about" className="section">
-            <div className="container">
+        <section id="about" className="section relative overflow-hidden">
+            <div className="container relative">
+                <div className="absolute inset-x-0 top-[40px] flex justify-center md:hidden pointer-events-none z-0">
+                    <div className="w-[240px] h-[240px] opacity-65">
+                        <About3DAnimation />
+                    </div>
+                </div>
+
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-2xl items-center mb-2xl">
-                    <div className="relative w-full h-[400px] lg:h-[400px] rounded-2xl flex items-center justify-center overflow-visible">
+                    <div className="relative w-full h-[400px] lg:h-[400px] rounded-2xl flex items-center justify-center overflow-visible hidden md:flex">
                         <About3DAnimation />
                     </div>
 
-                    <div>
+                    <div className="relative z-10">
                         <h2 className="mb-lg">{t.about.heading}</h2>
                         <p className="text-large mb-md">
                             {t.about.paragraphs[0]}
