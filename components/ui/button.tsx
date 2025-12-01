@@ -2,7 +2,9 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+type MotionButtonProps = React.ComponentPropsWithoutRef<typeof motion.button>;
+
+export interface ButtonProps extends Omit<MotionButtonProps, "ref"> {
     variant?: "primary" | "secondary" | "glass" | "orange" | "emerald" | "berry";
     size?: "sm" | "md" | "lg";
     liquid?: boolean;
