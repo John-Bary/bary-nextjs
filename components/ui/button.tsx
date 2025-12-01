@@ -4,7 +4,8 @@ import { cn } from "@/lib/utils";
 
 type MotionButtonProps = React.ComponentPropsWithoutRef<typeof motion.button>;
 
-export interface ButtonProps extends Omit<MotionButtonProps, "ref"> {
+export interface ButtonProps extends Omit<MotionButtonProps, "ref" | "children"> {
+    children?: React.ReactNode;
     variant?: "primary" | "secondary" | "glass" | "orange" | "emerald" | "berry";
     size?: "sm" | "md" | "lg";
     liquid?: boolean;
