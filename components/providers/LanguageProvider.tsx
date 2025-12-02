@@ -75,43 +75,42 @@ const translations: Record<Language, {
             badgeVariant: "cerulean" | "orange" | "emerald" | "berry";
         }[];
     };
-    contact: {
-        heading: string;
-        description: string;
-        form: {
-            labels: {
-                name: string;
-                email: string;
-                service: string;
-                budget: string;
-                message: string;
+        contact: {
+            heading: string;
+            description: string;
+            form: {
+                labels: {
+                    name: string;
+                    email: string;
+                    service: string;
+                    budget: string;
+                    message: string;
+                };
+                placeholders: {
+                    name: string;
+                    email: string;
+                    message: string;
+                };
+                serviceOptions: { value: string; label: string }[];
+                budgetOptions: { value: string; label: string }[];
+                submit: string;
+                submitting: string;
+                errors: {
+                    nameMin: string;
+                    nameMax: string;
+                    email: string;
+                    service: string;
+                    messageMin: string;
+                    messageMax: string;
+                };
             };
-            placeholders: {
-                name: string;
-                email: string;
-                message: string;
-            };
-            serviceOptions: { value: string; label: string }[];
-            budgetOptions: { value: string; label: string }[];
-            submit: string;
-            submitting: string;
-            errors: {
-                nameMin: string;
-                nameMax: string;
-                email: string;
-                service: string;
-                messageMin: string;
-                messageMax: string;
+            toasts: {
+                success: string;
+                error: string;
+                invalid: string;
+                server: string;
             };
         };
-        toasts: {
-            success: string;
-            error: string;
-            invalid: string;
-            server: string;
-        };
-        direct: { intro: string; emailLabel: string };
-    };
     footer: {
         privacy: string;
         tagline: string;
@@ -357,10 +356,6 @@ const translations: Record<Language, {
                 error: "Something went wrong. Please try again.",
                 invalid: "Please fix the errors in the form.",
                 server: "Failed to send message. Please try again later.",
-            },
-            direct: {
-                intro: "Or reach us directly:",
-                emailLabel: "Email",
             },
         },
         footer: {
@@ -608,10 +603,6 @@ const translations: Record<Language, {
                 error: "Įvyko klaida. Pabandykite dar kartą.",
                 invalid: "Patikslinkite laukelius formoje.",
                 server: "Nepavyko išsiųsti žinutės. Pabandykite vėliau.",
-            },
-            direct: {
-                intro: "Susisiekite tiesiogiai:",
-                emailLabel: "El. paštas",
             },
         },
         footer: {

@@ -172,18 +172,6 @@ export function Contact() {
                             )}
                         </Button>
                     </form>
-
-                    <div className="text-center mt-xl pt-xl border-t border-medium-gray">
-                        <p className="text-small text-text-gray mb-md">
-                            {t.contact.direct.intro}
-                        </p>
-                        <p className="mb-sm">
-                            <strong>{t.contact.direct.emailLabel}:</strong>{' '}
-                            <a href="mailto:hello@bary.lt" className="text-cerulean no-underline font-medium hover:underline">
-                                hello@bary.lt
-                            </a>
-                        </p>
-                    </div>
                 </Card>
             </div>
         </section>
