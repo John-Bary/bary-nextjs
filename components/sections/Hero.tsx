@@ -21,22 +21,17 @@ export function Hero() {
                     className="object-cover object-center"
                     sizes="100vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/55 to-black/35" />
+                <div className="absolute inset-0 bg-black/65" />
             </div>
 
-            <div className="container relative z-10 py-14 sm:py-20 lg:py-24">
+            <div className="container relative z-10 flex items-center min-h-[70vh] sm:min-h-[80vh]">
                 <motion.div
-                    className="max-w-3xl bg-white/12 backdrop-blur-xl border border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.35)] rounded-3xl p-8 sm:p-10 space-y-6 text-left text-white"
-                    initial={{ opacity: 0, y: 24 }}
+                    className="max-w-3xl w-full md:w-auto bg-white/12 backdrop-blur-2xl border border-white/20 shadow-[0_16px_48px_rgba(0,0,0,0.35)] rounded-2xl p-6 sm:p-8 space-y-5 text-left text-white"
+                    initial={{ opacity: 0, y: 18 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7 }}
                 >
-                    <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/10 text-white/85 text-small border border-white/20">
-                        <span className="h-2 w-2 rounded-full bg-emerald inline-block" />
-                        {t.hero.secondaryCta}
-                    </div>
-
-                    <h1 className="display leading-tight text-white drop-shadow-[0_15px_30px_rgba(0,0,0,0.45)]">
+                    <h1 className="display leading-tight text-white drop-shadow-[0_12px_28px_rgba(0,0,0,0.45)]">
                         {t.hero.title}
                     </h1>
 
@@ -44,20 +39,20 @@ export function Hero() {
                         {t.hero.subtitle}
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-sm sm:gap-md">
+                    <div className="flex flex-col sm:flex-row gap-sm sm:gap-md pt-2">
                         <Link href="#contact" className="w-full sm:w-auto">
                             <Button
                                 size="lg"
-                                className="w-full sm:w-auto shadow-[0_15px_40px_rgba(6,182,212,0.35)] bg-gradient-to-r from-cerulean to-emerald text-white border border-white/20"
+                                className="w-full sm:w-auto shadow-[0_15px_40px_rgba(6,182,212,0.35)] bg-gradient-to-r from-cerulean to-emerald text-white border border-white/10"
                             >
                                 {t.hero.primaryCta}
                             </Button>
                         </Link>
                         <Link href="#services" className="w-full sm:w-auto">
                             <Button
-                                variant="glass"
+                                variant="outline"
                                 size="lg"
-                                className="w-full sm:w-auto border-white/40 text-white hover:bg-white/15"
+                                className="w-full sm:w-auto border-white/60 text-white hover:bg-white/10"
                             >
                                 {t.hero.secondaryCta}
                             </Button>

@@ -75,8 +75,8 @@ export function Navigation() {
 
     return (
         <nav
-            className={`sticky top-0 z-50 glass-medium frosted-card border-b border-white/30 transition-all duration-300 ${
-                isScrolled ? 'py-sm shadow-[0_12px_34px_rgba(0,0,0,0.12)] bg-white/80' : 'py-md'
+            className={`sticky top-0 z-50 backdrop-blur-xl transition-all duration-300 ${
+                isScrolled ? 'py-sm shadow-[0_12px_34px_rgba(0,0,0,0.12)] bg-white/75 border-b border-white/50' : 'py-md bg-white/60 border-b border-white/40'
             }`}
         >
             <div className="container">
