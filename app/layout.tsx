@@ -1,17 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { FloatingPrismsBackground } from "@/components/visuals/FloatingPrisms";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-inter',
-});
 
 export const metadata: Metadata = {
   title: "bary.lt | Business Consulting & Creative Services",
@@ -42,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} relative overflow-x-hidden`}>
+      <body className="relative overflow-x-hidden font-sans">
         <LanguageProvider>
           <FloatingPrismsBackground />
           <div className="relative z-10">
