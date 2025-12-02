@@ -1,6 +1,15 @@
 "use client";
 
-import BrandBuilderGame from "@/components/BrandBuilderGame";
+import dynamic from "next/dynamic";
+
+const BrandBuilderGame = dynamic(() => import("@/components/BrandBuilderGame"), {
+  ssr: false,
+  loading: () => (
+    <div className="rounded-2xl border border-slate-200 bg-white p-6 text-sm text-gray-600 shadow-sm">
+      Loading Brand Builder...
+    </div>
+  ),
+});
 
 export function BrandBuilderSection() {
   return (
