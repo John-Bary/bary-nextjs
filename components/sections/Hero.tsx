@@ -38,13 +38,23 @@ export function Hero() {
                         {t.hero.secondaryCta}
                     </div>
 
-                    <h1 className="display text-white drop-shadow-xl leading-tight">
+                    <motion.h1
+                        className="display leading-tight bg-gradient-to-r from-white via-white to-emerald-200 bg-[length:200%_200%] bg-clip-text text-transparent drop-shadow-[0_10px_30px_rgba(0,0,0,0.35)]"
+                        initial={{ opacity: 0, y: 12, backgroundPosition: "0% 50%" }}
+                        animate={{ opacity: 1, y: 0, backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+                        transition={{ duration: 1.1, backgroundPosition: { duration: 6, repeat: Infinity, ease: "easeInOut" } }}
+                    >
                         {t.hero.title}
-                    </h1>
+                    </motion.h1>
 
-                    <p className="text-large sm:text-xl mt-3 mb-8 max-w-3xl text-white/85">
+                    <motion.p
+                        className="text-large sm:text-xl mt-3 mb-8 max-w-3xl text-white/85 drop-shadow"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1, duration: 0.6 }}
+                    >
                         {t.hero.subtitle}
-                    </p>
+                    </motion.p>
 
                     <div className="flex flex-col sm:flex-row gap-sm sm:gap-md mb-12">
                         <Link href="#contact" className="w-full sm:w-auto">
@@ -58,27 +68,6 @@ export function Hero() {
                             </Button>
                         </Link>
                     </div>
-
-                    {/* Trust Indicators */}
-                    <motion.div
-                        className="rounded-2xl px-6 py-5 sm:px-8 sm:py-6 bg-white/10 border border-white/15 backdrop-blur-lg flex gap-6 sm:gap-xl justify-center flex-wrap text-white shadow-[0_15px_45px_rgba(0,0,0,0.25)]"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3, duration: 0.6 }}
-                    >
-                        <div className="text-center">
-                            <AnimatedCounter value={10} suffix="+" className="text-h2 font-bold mb-xs text-white drop-shadow" />
-                            <p className="text-small m-0 text-white/80">{t.hero.stats.projects}</p>
-                        </div>
-                        <div className="text-center">
-                            <AnimatedCounter value={99} suffix="%" className="text-h2 font-bold mb-xs text-white drop-shadow" />
-                            <p className="text-small m-0 text-white/80">{t.hero.stats.satisfaction}</p>
-                        </div>
-                        <div className="text-center">
-                            <AnimatedCounter value={2} suffix="+" className="text-h2 font-bold mb-xs text-white drop-shadow" />
-                            <p className="text-small m-0 text-white/80">{t.hero.stats.years}</p>
-                        </div>
-                    </motion.div>
                 </motion.div>
             </div>
         </section>
