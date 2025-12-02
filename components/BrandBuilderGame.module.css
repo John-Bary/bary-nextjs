@@ -53,6 +53,61 @@
   align-self: end;
 }
 
+.stepNav {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+.stepNavButton {
+  width: 100%;
+  border: 1px solid var(--panel-border);
+  background: #0f1520;
+  color: var(--text);
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: border 160ms ease, transform 160ms ease, color 160ms ease;
+}
+
+.stepNavButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.stepNavIndex {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(89, 210, 255, 0.12);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.stepNavTitle {
+  font-weight: 600;
+}
+
+.stepNavActive {
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px -12px rgba(89, 210, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.stepNavDone {
+  border-color: var(--accent-3);
+  color: var(--accent-3);
+}
+
 .progressLabel {
   font-size: 13px;
   color: var(--muted);
@@ -175,6 +230,19 @@
   font-size: 13px;
 }
 
+.helperRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.helperActions {
+  display: inline-flex;
+  gap: 8px;
+}
+
 .resultCard {
   animation: popUp 320ms ease;
 }
@@ -246,6 +314,48 @@
   line-height: 1.5;
 }
 
+.secondaryButton {
+  background: transparent;
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--panel-border);
+  cursor: pointer;
+  transition: border 160ms ease, transform 160ms ease;
+}
+
+.secondaryButton:hover,
+.secondaryButton:focus-visible {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.insightBlock {
+  margin: 14px 0;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px dashed var(--panel-border);
+  background: #0f1520;
+}
+
+.insightTitle {
+  margin: 0 0 6px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+}
+
+.insightList {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  display: grid;
+  gap: 6px;
+  line-height: 1.4;
+}
+
 .actions {
   margin-top: 14px;
 }
@@ -303,5 +413,14 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+  }
+
+  .stepNav {
+    grid-template-columns: 1fr;
+  }
+
+  .helperRow {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

@@ -163,10 +163,14 @@ export default function BrandBuilderGame() {
   const [isComplete, setIsComplete] = useState(false);
   const [score, setScore] = useState<number | null>(null);
 
+  const completedCount = Object.keys(selections).length;
+
   const progressPercent = useMemo(() => {
-    const completedSteps = isComplete ? steps.length : currentStep + 1;
+    const completedSteps = isComplete
+      ? steps.length
+      : Math.max(currentStep + 1, Math.min(completedCount + 1, steps.length));
     return Math.min(100, Math.round((completedSteps / steps.length) * 100));
-  }, [currentStep, isComplete]);
+  }, [completedCount, currentStep, isComplete]);
 
   const personality = useMemo(
     () => (isComplete ? buildPersonalitySummary(selections) : ""),
@@ -175,6 +179,19 @@ export default function BrandBuilderGame() {
 
   const current = steps[currentStep];
 
+  const completeGame = (updatedSelections: Record<string, Option>) => {
+    setIsComplete(true);
+    setScore(calculateScore(updatedSelections));
+  };
+
+  const navigateToStep = (index: number) => {
+    const canJumpBack = index <= completedCount && index < steps.length;
+    if (canJumpBack) {
+      setIsComplete(false);
+      setCurrentStep(index);
+    }
+  };
+
   const handleSelect = (option: Option) => {
     const updatedSelections = { ...selections, [current.id]: option };
     setSelections(updatedSelections);
@@ -182,8 +199,7 @@ export default function BrandBuilderGame() {
     if (currentStep < steps.length - 1) {
       setCurrentStep((prev) => prev + 1);
     } else {
-      setIsComplete(true);
-      setScore(calculateScore(updatedSelections));
+      completeGame(updatedSelections);
     }
   };
 
@@ -192,6 +208,11 @@ export default function BrandBuilderGame() {
     setSelections({});
     setIsComplete(false);
     setScore(null);
+  };
+
+  const handleBack = () => {
+    setIsComplete(false);
+    setCurrentStep((prev) => Math.max(0, prev - 1));
   };
 
   return (
@@ -214,6 +235,30 @@ export default function BrandBuilderGame() {
           </div>
         </div>
       </div>
+
+      <ol className={styles.stepNav} aria-label="Step navigation">
+        {steps.map((step, index) => {
+          const isActive = index === currentStep && !isComplete;
+          const isDone = selections[step.id];
+          const canGo = index <= completedCount;
+          return (
+            <li key={step.id}>
+              <button
+                type="button"
+                onClick={() => navigateToStep(index)}
+                className={`${styles.stepNavButton} ${isActive ? styles.stepNavActive : ""} ${
+                  isDone ? styles.stepNavDone : ""
+                }`}
+                disabled={!canGo}
+                aria-current={isActive ? "step" : undefined}
+              >
+                <span className={styles.stepNavIndex}>{index + 1}</span>
+                <span className={styles.stepNavTitle}>{step.title}</span>
+              </button>
+            </li>
+          );
+        })}
+      </ol>
 
       {!isComplete ? (
         <section className={styles.card}>
@@ -238,7 +283,24 @@ export default function BrandBuilderGame() {
               );
             })}
           </div>
-          <p className={styles.helperText}>Tap an option to lock it in. You can finish the whole journey in under a minute.</p>
+          <div className={styles.helperRow}>
+            <p className={styles.helperText}>
+              Tap an option to lock it in. You can finish the whole journey in under a minute.
+            </p>
+            <div className={styles.helperActions}>
+              <button
+                type="button"
+                className={styles.secondaryButton}
+                onClick={handleBack}
+                disabled={currentStep === 0}
+              >
+                Back
+              </button>
+              <button type="button" className={styles.secondaryButton} onClick={() => completeGame(selections)}>
+                Jump to summary
+              </button>
+            </div>
+          </div>
         </section>
       ) : (
         <section className={`${styles.card} ${styles.resultCard}`}>
@@ -251,16 +313,26 @@ export default function BrandBuilderGame() {
           <div className={styles.summaryList}>
             {steps.map((step) => {
               const choice = selections[step.id];
+              const tagText = choice ? tagCopy[choice.serviceTag] : "choose next";
               return (
                 <div key={step.id} className={styles.summaryItem}>
                   <div>
                     <p className={styles.summaryLabel}>{step.title}</p>
                     <p className={styles.summaryValue}>{choice?.label ?? "No choice"}</p>
                   </div>
-                  <span className={styles.summaryTag}>{tagCopy[choice?.serviceTag ?? "digital"]}</span>
+                  <span className={styles.summaryTag}>{tagText}</span>
                 </div>
               );
             })}
+          </div>
+
+          <div className={styles.insightBlock}>
+            <p className={styles.insightTitle}>Service hooks</p>
+            <ul className={styles.insightList}>
+              <li>Digital quick wins: ready-to-launch assets and site updates that match your picks.</li>
+              <li>Marketing lift: campaign cadences that mirror your social style and palette.</li>
+              <li>Creative polish: concepting and design support to refine your chosen voice.</li>
+            </ul>
           </div>
 
           <div className={styles.scoreBlock}>
