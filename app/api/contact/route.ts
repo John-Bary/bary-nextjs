@@ -15,7 +15,6 @@ export async function POST(request: NextRequest) {
             data: {
                 name: validatedData.name,
                 email: validatedData.email,
-                phone: validatedData.phone || null,
                 service: validatedData.service,
                 budget: validatedData.budget || null,
                 message: validatedData.message,

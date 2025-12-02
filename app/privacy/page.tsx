@@ -28,7 +28,7 @@ export default function PrivacyPolicy() {
 
         <Section title="What Data We Collect">
           <ul className="list-disc pl-5 space-y-1">
-            <li>Contact details you provide (name, email, phone) and project details when you submit a form.</li>
+            <li>Contact details you provide (name, email) and project details when you submit a form.</li>
             <li>Business information you choose to share about your project or organization.</li>
             <li>Usage data (e.g., pages visited, device/browser metadata) collected via analytics and cookies.</li>
           </ul>

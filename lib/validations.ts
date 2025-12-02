@@ -13,7 +13,6 @@ export function createContactFormSchema(messages: ContactFormMessages) {
     return z.object({
         name: z.string().min(2, messages.nameMin).max(100, messages.nameMax),
         email: z.string().email(messages.email),
-        phone: z.string().optional(),
         service: z.string().min(1, messages.service),
         budget: z.string().optional(),
         message: z.string().min(10, messages.messageMin).max(1000, messages.messageMax),

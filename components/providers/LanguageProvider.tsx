@@ -82,7 +82,6 @@ const translations: Record<Language, {
             labels: {
                 name: string;
                 email: string;
-                phone: string;
                 service: string;
                 budget: string;
                 message: string;
@@ -90,7 +89,6 @@ const translations: Record<Language, {
             placeholders: {
                 name: string;
                 email: string;
-                phone: string;
                 message: string;
             };
             serviceOptions: { value: string; label: string }[];
@@ -112,7 +110,7 @@ const translations: Record<Language, {
             invalid: string;
             server: string;
         };
-        direct: { intro: string; emailLabel: string; phoneLabel: string };
+        direct: { intro: string; emailLabel: string };
     };
     footer: {
         privacy: string;
@@ -318,7 +316,6 @@ const translations: Record<Language, {
                 labels: {
                     name: "Name *",
                     email: "Email *",
-                    phone: "Phone",
                     service: "Service Interest *",
                     budget: "Budget Range",
                     message: "Message *",
@@ -326,7 +323,6 @@ const translations: Record<Language, {
                 placeholders: {
                     name: "Your full name",
                     email: "your@company.com",
-                    phone: "+370 XXX XXXXX",
                     message: "Tell us about your project, timeline, and objectives...",
                 },
                 serviceOptions: [
@@ -365,7 +361,6 @@ const translations: Record<Language, {
             direct: {
                 intro: "Or reach us directly:",
                 emailLabel: "Email",
-                phoneLabel: "Phone",
             },
         },
         footer: {
@@ -572,7 +567,6 @@ const translations: Record<Language, {
                 labels: {
                     name: "Vardas, pavardė *",
                     email: "El. paštas *",
-                    phone: "Telefonas",
                     service: "Dominanti paslauga *",
                     budget: "Biudžeto rėžis",
                     message: "Žinutė *",
@@ -580,7 +574,6 @@ const translations: Record<Language, {
                 placeholders: {
                     name: "Jūsų vardas ir pavardė",
                     email: "jusu@imone.lt",
-                    phone: "+370 XXX XXXXX",
                     message: "Papasakokite apie projektą, terminus ir tikslus...",
                 },
                 serviceOptions: [
@@ -619,7 +612,6 @@ const translations: Record<Language, {
             direct: {
                 intro: "Susisiekite tiesiogiai:",
                 emailLabel: "El. paštas",
-                phoneLabel: "Telefonas",
             },
         },
         footer: {

@@ -101,19 +101,6 @@ export function Contact() {
                             </div>
                         </div>
 
-                        <div>
-                            <label htmlFor="phone" className="block mb-xs font-medium">
-                                {t.contact.form.labels.phone}
-                            </label>
-                            <Input
-                                id="phone"
-                                type="tel"
-                                placeholder={t.contact.form.placeholders.phone}
-                                {...register('phone')}
-                                disabled={isSubmitting}
-                            />
-                        </div>
-
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
                             <div>
                                 <label htmlFor="service" className="block mb-xs font-medium">
@@ -194,12 +181,6 @@ export function Contact() {
                             <strong>{t.contact.direct.emailLabel}:</strong>{' '}
                             <a href="mailto:hello@bary.lt" className="text-cerulean no-underline font-medium hover:underline">
                                 hello@bary.lt
-                            </a>
-                        </p>
-                        <p className="m-0">
-                            <strong>{t.contact.direct.phoneLabel}:</strong>{' '}
-                            <a href="tel:+37060000000" className="text-cerulean no-underline font-medium hover:underline">
-                                +370 600 00000
                             </a>
                         </p>
                     </div>
