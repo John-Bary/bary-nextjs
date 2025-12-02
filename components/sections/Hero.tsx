@@ -22,13 +22,14 @@ export function Hero() {
                     >
                         <div className="relative h-[320px] sm:h-[380px] md:h-[460px] w-full rounded-3xl overflow-hidden shadow-2xl border border-white/60 bg-white/40 backdrop-blur">
                             <Image
-                                src="/hero%20image.png"
+                                src="/pexels-leish-5255319.jpg"
                                 alt="Consulting team at work"
                                 fill
                                 priority
-                                className="object-cover"
+                                className="object-cover object-center"
                                 sizes="(min-width: 1024px) 45vw, (min-width: 640px) 70vw, 100vw"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-br from-emerald/10 via-black/10 to-cerulean/20 mix-blend-multiply" />
                         </div>
                     </motion.div>
 
