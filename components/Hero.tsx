@@ -27,6 +27,10 @@ export function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
+                    <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/80 text-dark-gray text-sm shadow-sm border border-white/70">
+                        <span className="h-2 w-2 rounded-full bg-emerald inline-block" />
+                        {t.hero.secondaryCta}
+                    </div>
 
                     <h1 className="display leading-tight text-dark-gray">
                         {t.hero.title}
