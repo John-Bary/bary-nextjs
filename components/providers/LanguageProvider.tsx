@@ -164,7 +164,7 @@ const translations: Record<Language, {
         about: {
             heading: "About BARY",
             paragraphs: [
-                "We're a strategic consulting and creative agency based in Vilnius, Lithuania. Since 2019, we've helped businesses across Europe transform their operations, strengthen their brands, and build digital products that scale.",
+                "We're a strategic consulting and creative agency based in Vilnius, Lithuania. Since 2024, we've helped businesses across Europe transform their operations, strengthen their brands, and build digital products that scale.",
                 "Our approach is straightforward: understand the problem, develop a clear strategy, and execute with precision. We don't believe in unnecessary complexity or drawn-out timelines. We believe in delivering measurable results.",
                 "Our team brings together expertise in business strategy, design, and technology. This combination allows us to tackle challenges holistically—from initial concept through final implementation.",
             ],
@@ -411,7 +411,7 @@ const translations: Record<Language, {
         about: {
             heading: "Apie BARY",
             paragraphs: [
-                "Esame strateginių konsultacijų ir kūrybinė agentūra iš Vilniaus. Nuo 2019 m. padedame Europos įmonėms transformuoti veiklą, stiprinti prekės ženklus ir kurti skaitmeninius produktus, kurie plečiasi kartu su verslu.",
+                "Esame strateginių konsultacijų ir kūrybinė agentūra iš Vilniaus. Nuo 2024 m. padedame Europos įmonėms transformuoti veiklą, stiprinti prekės ženklus ir kurti skaitmeninius produktus, kurie plečiasi kartu su verslu.",
                 "Mūsų požiūris paprastas: suprasti problemą, sukurti aiškią strategiją ir tiksliai ją įgyvendinti. Netikime pertekliniu sudėtingumu ar ištemptais terminais — tikime išmatuojamais rezultatais.",
                 "Komandą sudaro strategijos, dizaino ir technologijų ekspertai. Toks derinys leidžia spręsti iššūkius visapusiškai — nuo idėjos iki įgyvendinimo.",
             ],
