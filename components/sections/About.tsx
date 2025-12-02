@@ -11,9 +11,9 @@ import { useLanguage, type Translations } from '@/components/providers/LanguageP
 type AboutStatKey = keyof Translations["about"]["stats"];
 
 const stats: { value: number; suffix: string; key: AboutStatKey; color: "cerulean" | "orange" | "emerald" | "berry" }[] = [
-    { value: 50, suffix: "+", key: "projects", color: "cerulean" },
-    { value: 98, suffix: "%", key: "satisfaction", color: "orange" },
-    { value: 5, suffix: "+", key: "years", color: "emerald" },
+    { value: 10, suffix: "+", key: "projects", color: "cerulean" },
+    { value: 99, suffix: "%", key: "satisfaction", color: "orange" },
+    { value: 2, suffix: "+", key: "years", color: "emerald" },
     { value: 10, suffix: "+", key: "team", color: "berry" }
 ];
 

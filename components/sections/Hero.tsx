@@ -57,15 +57,15 @@ export function Hero() {
                         transition={{ delay: 0.3, duration: 0.6 }}
                     >
                         <div className="text-center">
-                            <AnimatedCounter value={50} suffix="+" className="text-h2 font-bold gradient-text mb-xs" />
+                            <AnimatedCounter value={10} suffix="+" className="text-h2 font-bold gradient-text mb-xs" />
                             <p className="text-small m-0 text-text-gray">{t.hero.stats.projects}</p>
                         </div>
                         <div className="text-center">
-                            <AnimatedCounter value={98} suffix="%" className="text-h2 font-bold gradient-text mb-xs" />
+                            <AnimatedCounter value={99} suffix="%" className="text-h2 font-bold gradient-text mb-xs" />
                             <p className="text-small m-0 text-text-gray">{t.hero.stats.satisfaction}</p>
                         </div>
                         <div className="text-center">
-                            <AnimatedCounter value={5} suffix="+" className="text-h2 font-bold gradient-text mb-xs" />
+                            <AnimatedCounter value={2} suffix="+" className="text-h2 font-bold gradient-text mb-xs" />
                             <p className="text-small m-0 text-text-gray">{t.hero.stats.years}</p>
                         </div>
                     </motion.div>
