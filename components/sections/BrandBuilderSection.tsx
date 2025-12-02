@@ -1,8 +1,8 @@
 "use client";
 
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 
-const BrandBuilderGame = dynamic(() => import("@/components/BrandBuilderGame"), {
+const BrandBuilderGame = dynamic(() => import('@/components/BrandBuilderGame'), {
   ssr: false,
   loading: () => (
     <div className="rounded-2xl border border-slate-200 bg-white p-6 text-sm text-gray-600 shadow-sm">
