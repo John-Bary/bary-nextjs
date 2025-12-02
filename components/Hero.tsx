@@ -58,20 +58,20 @@ export function Hero() {
 
                     {/* Trust Indicators */}
                     <motion.div
-                        className="w-full max-w-4xl mx-auto rounded-2xl px-6 py-5 sm:px-8 sm:py-6 bg-white/85 border border-white/70 backdrop-blur-lg shadow-[0_15px_45px_rgba(0,0,0,0.12)] grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4"
+                        className="rounded-2xl px-6 py-5 sm:px-8 sm:py-6 bg-white/80 border border-white/70 backdrop-blur-lg flex gap-6 sm:gap-xl justify-center flex-wrap text-dark-gray shadow-[0_15px_45px_rgba(0,0,0,0.12)]"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.25, duration: 0.5 }}
                     >
-                        <div className="text-center flex flex-col items-center justify-center">
+                        <div className="text-center">
                             <AnimatedCounter value={10} suffix="+" className="text-h2 font-bold mb-xs text-cerulean" />
                             <p className="text-small m-0 text-text-gray">{t.hero.stats.projects}</p>
                         </div>
-                        <div className="text-center flex flex-col items-center justify-center">
+                        <div className="text-center">
                             <AnimatedCounter value={99} suffix="%" className="text-h2 font-bold mb-xs text-orange" />
                             <p className="text-small m-0 text-text-gray">{t.hero.stats.satisfaction}</p>
                         </div>
-                        <div className="text-center flex flex-col items-center justify-center">
+                        <div className="text-center">
                             <AnimatedCounter value={2} suffix="+" className="text-h2 font-bold mb-xs text-emerald" />
                             <p className="text-small m-0 text-text-gray">{t.hero.stats.years}</p>
                         </div>
