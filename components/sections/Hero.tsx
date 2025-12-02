@@ -10,6 +10,26 @@ import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export function Hero() {
     const { t } = useLanguage();
+    const [typedTitle, setTypedTitle] = React.useState("");
+    const [isTyping, setIsTyping] = React.useState(true);
+
+    React.useEffect(() => {
+        const text = t.hero.title;
+        setTypedTitle("");
+        setIsTyping(true);
+
+        let index = 0;
+        const interval = window.setInterval(() => {
+            index += 1;
+            setTypedTitle(text.slice(0, index));
+            if (index >= text.length) {
+                window.clearInterval(interval);
+                setIsTyping(false);
+            }
+        }, 35);
+
+        return () => window.clearInterval(interval);
+    }, [t.hero.title]);
 
     return (
         <section
@@ -44,7 +64,12 @@ export function Hero() {
                         animate={{ opacity: 1, y: 0, backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
                         transition={{ duration: 1.1, backgroundPosition: { duration: 6, repeat: Infinity, ease: "easeInOut" } }}
                     >
-                        {t.hero.title}
+                        <span>{typedTitle}</span>
+                        <motion.span
+                            className="inline-block w-[10px] ml-[2px] bg-white/80"
+                            animate={{ opacity: isTyping ? [0, 1, 0] : 0 }}
+                            transition={{ repeat: isTyping ? Infinity : 0, duration: 0.8 }}
+                        />
                     </motion.h1>
 
                     <motion.p
@@ -58,13 +83,11 @@ export function Hero() {
 
                     <div className="flex flex-col sm:flex-row gap-sm sm:gap-md mb-12">
                         <Link href="#contact" className="w-full sm:w-auto">
-                            <Button size="lg" className="w-full sm:w-auto shadow-lg shadow-emerald/30">
+                            <Button
+                                size="lg"
+                                className="w-full sm:w-auto shadow-[0_15px_40px_rgba(16,185,129,0.35)] border border-emerald/50 bg-gradient-to-r from-emerald-500 via-emerald-400 to-emerald-300 text-white hover:translate-y-[-1px] transition-transform"
+                            >
                                 {t.hero.primaryCta}
-                            </Button>
-                        </Link>
-                        <Link href="#services" className="w-full sm:w-auto">
-                            <Button variant="glass" size="lg" className="w-full sm:w-auto border-white/40 text-white">
-                                {t.hero.secondaryCta}
                             </Button>
                         </Link>
                     </div>
