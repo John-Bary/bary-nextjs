@@ -1,6 +1,6 @@
 import { Navigation } from '@/components/sections/Navigation';
 import { Hero } from '@/components/Hero';
-import dynamic from 'next/dynamic';
+import BrandBuilderGame from '@/components/BrandBuilderGame';
 import { Services } from '@/components/sections/Services';
 import { Portfolio } from '@/components/sections/Portfolio';
 import { About } from '@/components/sections/About';
@@ -8,10 +8,6 @@ import { Process } from '@/components/sections/Process';
 import { Pricing } from '@/components/sections/Pricing';
 import { Contact } from '@/components/sections/Contact';
 import { Footer } from '@/components/sections/Footer';
-
-const BrandBuilderGame = dynamic(() => import('@/components/BrandBuilderGame'), {
-  ssr: false,
-});
 
 const showPortfolio = false; // Toggle to true when projects are ready to display
 
