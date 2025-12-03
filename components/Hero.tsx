@@ -62,7 +62,7 @@ export function Hero() {
 
                     {/* Trust Indicators */}
                     <motion.div
-                        className="rounded-2xl px-6 py-5 sm:px-8 sm:py-6 bg-white/80 border border-white/70 backdrop-blur-lg flex gap-6 sm:gap-xl justify-center flex-wrap text-dark-gray shadow-[0_15px_45px_rgba(0,0,0,0.12)]"
+                        className="w-fit max-w-full mx-auto rounded-2xl px-6 py-5 sm:px-8 sm:py-6 bg-white/80 border border-white/70 backdrop-blur-lg flex gap-6 sm:gap-xl justify-center flex-wrap text-dark-gray shadow-[0_15px_45px_rgba(0,0,0,0.12)]"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.25, duration: 0.5 }}
