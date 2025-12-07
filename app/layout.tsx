@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { LanguageProvider } from "@/components/providers/LanguageProvider";
-import { FloatingPrismsBackground } from "@/components/visuals/FloatingPrisms";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -35,16 +33,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="relative overflow-x-hidden font-sans">
-        <LanguageProvider>
-          <FloatingPrismsBackground />
-          <div className="relative z-10">
-            {children}
-          </div>
-          <Analytics />
-          <SpeedInsights />
-          <Toaster position="top-center" richColors />
-        </LanguageProvider>
+      <body className="relative overflow-x-hidden bg-background text-foreground">
+        <div className="relative z-10">
+          {children}
+        </div>
+        <Analytics />
+        <SpeedInsights />
+        <Toaster position="top-center" richColors />
       </body>
     </html>
   );

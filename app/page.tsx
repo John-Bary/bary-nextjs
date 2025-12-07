@@ -1,27 +1,23 @@
-import { Navigation } from '@/components/sections/Navigation';
-import { Hero } from '@/components/Hero';
-import { Services } from '@/components/sections/Services';
-import { Portfolio } from '@/components/sections/Portfolio';
-import { About } from '@/components/sections/About';
-import { Process } from '@/components/sections/Process';
-import { Pricing } from '@/components/sections/Pricing';
-import { Contact } from '@/components/sections/Contact';
-import { Footer } from '@/components/sections/Footer';
-
-const showPortfolio = false; // Toggle to true when projects are ready to display
+import { Navbar } from "@/components/landing/Navbar";
+import { Hero } from "@/components/landing/Hero";
+import { Services } from "@/components/landing/Services";
+import { About } from "@/components/landing/About";
+import { Process } from "@/components/landing/Process";
+import { Contact } from "@/components/landing/Contact";
+import { Footer } from "@/components/landing/Footer";
 
 export default function Home() {
   return (
-    <main>
-      <Navigation />
-      <Hero />
-      <Services />
-      {showPortfolio && <Portfolio />}
-      <About />
-      <Process />
-      <Pricing />
-      <Contact />
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <Navbar />
+      <main>
+        <Hero />
+        <Services />
+        <About />
+        <Process />
+        <Contact />
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 }

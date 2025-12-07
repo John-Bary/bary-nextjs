@@ -1,5 +1,7 @@
-import { motion, useInView } from "framer-motion";
+"use client";
+
 import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 const stats = [
   { value: "10+", label: "Projects Completed", sublabel: "Across multiple industries" },
@@ -8,19 +10,16 @@ const stats = [
   { value: "5+", label: "Expert Team", sublabel: "Specialists in their fields" },
 ];
 
-export const About = () => {
-  const ref = useRef(null);
+export function About() {
+  const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section id="about" className="py-32 relative overflow-hidden">
-      <div
-        className="floating-orb w-[500px] h-[500px] bg-primary/10 top-1/2 -translate-y-1/2 -right-60 animate-pulse-glow"
-      />
+      <div className="floating-orb w-[500px] h-[500px] bg-primary/10 top-1/2 -translate-y-1/2 -right-60 animate-pulse-glow" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Content */}
           <motion.div
             ref={ref}
             initial={{ opacity: 0, x: -50 }}
@@ -35,21 +34,21 @@ export const About = () => {
               <br />
               <span className="gradient-text">& creative agency</span>
             </h2>
-            
+
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p>
-                We're a strategic consulting and creative agency based in Vilnius, Lithuania. 
-                Since 2024, we've helped businesses across Europe transform their operations, 
+                We&apos;re a strategic consulting and creative agency based in Vilnius, Lithuania.
+                Since 2024, we&apos;ve helped businesses across Europe transform their operations,
                 strengthen their brands, and build digital products that scale.
               </p>
               <p>
-                Our approach is straightforward: understand the problem, develop a clear strategy, 
-                and execute with precision. We don't believe in unnecessary complexity or drawn-out 
+                Our approach is straightforward: understand the problem, develop a clear strategy,
+                and execute with precision. We don&apos;t believe in unnecessary complexity or drawn-out
                 timelines. We believe in delivering measurable results.
               </p>
               <p>
-                Our team brings together expertise in business strategy, design, and technology. 
-                This combination allows us to tackle challenges holistically—from initial concept 
+                Our team brings together expertise in business strategy, design, and technology.
+                This combination allows us to tackle challenges holistically—from initial concept
                 through final implementation.
               </p>
             </div>
@@ -62,7 +61,6 @@ export const About = () => {
             </a>
           </motion.div>
 
-          {/* Stats Grid */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
@@ -71,7 +69,7 @@ export const About = () => {
           >
             {stats.map((stat, index) => (
               <motion.div
-                key={index}
+                key={stat.label}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -89,4 +87,4 @@ export const About = () => {
       </div>
     </section>
   );
-};
+}
