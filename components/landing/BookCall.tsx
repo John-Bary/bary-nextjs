@@ -71,7 +71,9 @@ export function BookCall() {
               </ul>
 
               <a
-                href="https://calendly.com/"
+                href="https://calendly.com/u0060604156"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25"
               >
                 Book a call
