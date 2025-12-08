@@ -10,7 +10,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-start justify-center overflow-hidden"
     >
       <div className="hero-gradient absolute inset-0" />
       <div className="floating-orb hidden sm:block w-[600px] h-[600px] bg-primary/20 -top-40 -right-40 animate-pulse-glow" />
@@ -19,7 +19,7 @@ export function Hero() {
         style={{ animationDelay: "2s" }}
       />
 
-      <div className="container mx-auto px-4 sm:px-6 pt-28 pb-16 sm:pt-32 sm:pb-20 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 pt-24 pb-24 sm:pt-32 sm:pb-20 relative z-10">
         <div className="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -76,7 +76,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="glass-card w-full max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border/40 px-4 sm:px-8 py-5"
+            className="glass-card w-full max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border/40 px-5 sm:px-8 py-6 sm:py-5 mt-4 sm:mt-0"
           >
             {t.hero.stats.map((stat, idx) => (
               <div key={stat.label} className={`text-center py-3 sm:py-0 ${idx === 0 ? "" : ""}`}>
@@ -94,7 +94,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:block"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
