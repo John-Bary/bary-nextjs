@@ -13,7 +13,7 @@ export function CaseStudies() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="case-studies" className="py-32 relative overflow-hidden">
+    <section id="case-studies" className="py-32 relative overflow-hidden hidden">
       <div className="floating-orb w-[520px] h-[520px] bg-primary/10 -left-48 top-10 animate-pulse-glow" />
       <div className="floating-orb w-[420px] h-[420px] bg-accent/10 -right-32 bottom-0 animate-pulse-glow" />
 
