@@ -4,6 +4,7 @@ export const translations = {
       links: [
         { href: "#home", label: "Home" },
         { href: "#services", label: "Services" },
+        { href: "#ad-platforms", label: "Advertising" },
         { href: "#case-studies", label: "Case Studies" },
         { href: "#about", label: "About" },
         { href: "#process", label: "Process" },
@@ -64,6 +65,74 @@ export const translations = {
           title: "Marketing Strategies",
           description: "Performance-focused marketing that drives visibility and growth. Data-driven campaigns across all channels.",
           features: ["Marketing strategy", "Social media strategy", "Performance ads", "SEO & content"],
+        },
+      ],
+    },
+    adPlatforms: {
+      badge: "Paid Media",
+      title: "Advertising platforms we run",
+      description:
+        "We tailor channel mixes to how your buyers search, scroll, and decide. Each platform shines for specific objectives.",
+      platforms: [
+        {
+          key: "meta",
+          name: "Meta Ads (Facebook & Instagram)",
+          summary:
+            "Great for storytelling and retargeting with rich creative formats across Facebook, Instagram, and Messenger.",
+          bestFor: "Ecommerce, consumer services, community-building brands",
+          differentiators: [
+            "Strong lookalike targeting for scaling proven audiences",
+            "Catalog, carousel, and Reels ads that showcase products visually",
+            "Retargeting that keeps warm audiences engaged across devices",
+          ],
+        },
+        {
+          key: "google",
+          name: "Google Ads",
+          summary:
+            "Intent-driven ads that capture people actively searching for solutions. Ideal for measurable leads and sales.",
+          bestFor: "Local services, B2B lead gen, ecommerce with clear demand",
+          differentiators: [
+            "Search and Performance Max campaigns to cover high-intent keywords",
+            "Maps and Local campaigns that drive store visits and calls",
+            "Measurable conversions tied to form fills, calls, and checkouts",
+          ],
+        },
+        {
+          key: "tiktok",
+          name: "TikTok Ads",
+          summary:
+            "Short-form creative that reaches discovery-minded audiences. Perfect for viral hooks and fast feedback.",
+          bestFor: "Lifestyle brands, mobile apps, products with impulse appeal",
+          differentiators: [
+            "Creative-first testing to quickly validate offers",
+            "Spark Ads to amplify organic posts and creator collaborations",
+            "Optimization for add-to-cart and app events via the TikTok Pixel",
+          ],
+        },
+        {
+          key: "snapchat",
+          name: "Snapchat Ads",
+          summary:
+            "Camera-first placements that feel native to younger audiences. Great for regional pushes and product drops.",
+          bestFor: "Youth-focused products, events, QSR, and entertainment",
+          differentiators: [
+            "AR Lenses and Filters that drive playful engagement",
+            "Location-based targeting to own specific cities or campuses",
+            "Story Ads that tell a quick narrative in a familiar format",
+          ],
+        },
+        {
+          key: "reddit",
+          name: "Reddit Ads",
+          summary:
+            "Community-driven targeting that reaches niche interests and expert audiences without wasted impressions.",
+          bestFor: "B2B, technical products, niche hobbies, informed buyers",
+          differentiators: [
+            "Contextual targeting by subreddit interests and conversations",
+            "Sponsored posts that match the feed experience for credibility",
+            "Great for educating before a demo request or trial sign-up",
+          ],
         },
       ],
     },
@@ -278,6 +347,7 @@ export const translations = {
       links: [
         { href: "#home", label: "Pradžia" },
         { href: "#services", label: "Paslaugos" },
+        { href: "#ad-platforms", label: "Reklama" },
         { href: "#case-studies", label: "Atvejai" },
         { href: "#about", label: "Apie" },
         { href: "#process", label: "Procesas" },
@@ -338,6 +408,74 @@ export const translations = {
           title: "Marketingo strategijos",
           description: "Rezultatams orientuotas marketingas, didinantis matomumą ir augimą. Kampanijos paremtos duomenimis.",
           features: ["Marketingo strategija", "Socialinės medijos strategija", "Rezultatinė reklama", "SEO ir turinys"],
+        },
+      ],
+    },
+    adPlatforms: {
+      badge: "Mokama reklama",
+      title: "Platformos, kuriose dirbame",
+      description:
+        "Parenkame kanalus pagal tai, kaip jūsų pirkėjai ieško, scroll'ina ir renkasi. Kiekviena platforma geriausia skirtingiems tikslams.",
+      platforms: [
+        {
+          key: "meta",
+          name: "Meta Ads (Facebook ir Instagram)",
+          summary:
+            "Puikiai tinka istorijoms ir remarketingui su turtingais formatais per Facebook, Instagram ir Messenger.",
+          bestFor: "El. prekyba, vartotojų paslaugos, bendruomenes kuriančios prekės ženklai",
+          differentiators: [
+            "Stiprios panašių auditorijų kampanijos masteliui", 
+            "Katalogų, karuselių ir Reels reklamos produktams vizualiai parodyti",
+            "Remarketingas, palaikantis šiltą auditoriją visuose įrenginiuose",
+          ],
+        },
+        {
+          key: "google",
+          name: "Google Ads",
+          summary:
+            "Intencijos pagrindu rodoma reklama, pasiekianti žmones, kurie aktyviai ieško sprendimų. Idealu pamatuojamiems lead'ams ir pardavimams.",
+          bestFor: "Vietinės paslaugos, B2B lead'ų generavimas, aiškios paklausos el. prekyba",
+          differentiators: [
+            "Paieškos ir Performance Max kampanijos aukšto ketinimo raktiniams žodžiams",
+            "Maps ir Local kampanijos, kurios atveda į parduotuves ir skambučius",
+            "Pamatuojamos konversijos: formos, skambučiai, pirkimai",
+          ],
+        },
+        {
+          key: "tiktok",
+          name: "TikTok Ads",
+          summary:
+            "Trumpas, kūrybinis turinys pasiekia auditoriją atradimo etape. Tobula viraliniams hook'ams ir greitam feedback'ui.",
+          bestFor: "Gyvenimo būdo prekės ženklai, mobilios aplikacijos, impulsyviai perkamos prekės",
+          differentiators: [
+            "Kūrybos testavimas, kad greitai patvirtintume pasiūlymus",
+            "Spark Ads organinių postų ir kūrėjų bendradarbiavimo išplėtimui",
+            "Optimizavimas į krepšelio pridėjimus ar aplikacijos įvykius per TikTok Pixel",
+          ],
+        },
+        {
+          key: "snapchat",
+          name: "Snapchat Ads",
+          summary:
+            "Kamerai pritaikytos pozicijos, natūralios jaunai auditorijai. Tinka regioninėms kampanijoms ir produktų drop'ams.",
+          bestFor: "Jaunimui skirti produktai, renginiai, greitas maistas, pramogos",
+          differentiators: [
+            "AR lęšiai ir filtrai, skatinantys žaismingą įsitraukimą",
+            "Lokacijomis paremtas taikymas konkretiems miestams ar universitetams",
+            "Story Ads, kurios greitai papasakoja istoriją įprastu formatu",
+          ],
+        },
+        {
+          key: "reddit",
+          name: "Reddit Ads",
+          summary:
+            "Bendruomenių taikymas leidžia pasiekti nišinius interesus ir ekspertų auditorijas be bereikalingų parodymų.",
+          bestFor: "B2B, techniniai produktai, nišiniai hobiai, informuoti pirkėjai",
+          differentiators: [
+            "Kontekstinis taikymas pagal subreddit interesus ir diskusijas",
+            "Remiami įrašai, kurie dera prie feed'o ir kuria patikimumą",
+            "Puikiai tinka edukacijai prieš demo užklausą ar trial'ą",
+          ],
         },
       ],
     },

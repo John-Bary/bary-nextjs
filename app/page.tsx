@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
 import { Services } from "@/components/landing/Services";
+import { AdPlatforms } from "@/components/landing/AdPlatforms";
 import { CaseStudies } from "@/components/landing/CaseStudies";
 import { About } from "@/components/landing/About";
 import { Process } from "@/components/landing/Process";
@@ -18,6 +19,7 @@ export default function Home() {
         <main>
           <Hero />
           <Services />
+          <AdPlatforms />
           <CaseStudies />
           <About />
           <Process />
