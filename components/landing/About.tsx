@@ -2,15 +2,10 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-
-const stats = [
-  { value: "10+", label: "Projects Completed", sublabel: "Across multiple industries" },
-  { value: "99%", label: "Client Satisfaction", sublabel: "Based on post-project surveys" },
-  { value: "2+", label: "Years of Excellence", sublabel: "Consistent quality delivery" },
-  { value: "5+", label: "Expert Team", sublabel: "Specialists in their fields" },
-];
+import { useI18n } from "../i18n/I18nProvider";
 
 export function About() {
+  const { t } = useI18n();
   const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -27,37 +22,25 @@ export function About() {
             transition={{ duration: 0.7 }}
           >
             <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
-              About BARY
+              {t.about.badge}
             </span>
             <h2 className="font-heading text-4xl sm:text-5xl font-bold mb-8 leading-tight">
-              Strategic consulting
+              {t.about.title}
               <br />
-              <span className="gradient-text">& creative agency</span>
+              <span className="gradient-text">{t.about.highlight}</span>
             </h2>
 
             <div className="space-y-6 text-muted-foreground leading-relaxed">
-              <p>
-                We&apos;re a strategic consulting and creative agency based in Vilnius, Lithuania.
-                Since 2024, we&apos;ve helped businesses across Europe transform their operations,
-                strengthen their brands, and build digital products that scale.
-              </p>
-              <p>
-                Our approach is straightforward: understand the problem, develop a clear strategy,
-                and execute with precision. We don&apos;t believe in unnecessary complexity or drawn-out
-                timelines. We believe in delivering measurable results.
-              </p>
-              <p>
-                Our team brings together expertise in business strategy, design, and technology.
-                This combination allows us to tackle challenges holistically—from initial concept
-                through final implementation.
-              </p>
+              {t.about.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
 
             <a
               href="#contact"
               className="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-full bg-secondary hover:bg-secondary/80 text-foreground font-medium transition-all duration-300"
             >
-              Work With Us
+              {t.about.cta}
             </a>
           </motion.div>
 
@@ -67,7 +50,7 @@ export function About() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="grid grid-cols-2 gap-4"
           >
-            {stats.map((stat, index) => (
+            {t.about.stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 30 }}

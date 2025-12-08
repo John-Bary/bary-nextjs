@@ -3,38 +3,21 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowUpRight, Briefcase, Code2, Palette, TrendingUp } from "lucide-react";
+import { useI18n } from "../i18n/I18nProvider";
 
-const services = [
-  {
-    icon: Briefcase,
-    title: "Business Consulting",
-    description: "Strategic planning and market analysis that identifies opportunities and eliminates inefficiencies. We help you make data-driven decisions.",
-    features: ["Business strategy & planning", "Market and competitor analysis", "Operations optimization", "KPI and performance tracking"],
-  },
-  {
-    icon: Palette,
-    title: "Creative Services",
-    description: "Brand identity and visual design that captures attention and builds recognition. We create cohesive visual languages that resonate.",
-    features: ["Brand identity & logo design", "Full visual guidelines", "UI/UX design", "Marketing visuals"],
-  },
-  {
-    icon: Code2,
-    title: "Digital Solutions",
-    description: "Custom web applications and digital products built with modern technologies. Scalable platforms that drive business growth.",
-    features: ["Website development", "Custom software & dashboards", "API integrations", "Automation systems"],
-  },
-  {
-    icon: TrendingUp,
-    title: "Marketing Strategies",
-    description: "Performance-focused marketing that drives visibility and growth. Data-driven campaigns across all channels.",
-    features: ["Marketing strategy", "Social media strategy", "Performance ads", "SEO & content"],
-  },
-];
+const serviceIcons = [Briefcase, Palette, Code2, TrendingUp];
 
-function ServiceCard({ service, index }: { service: typeof services[number]; index: number }) {
+function ServiceCard({
+  service,
+  index,
+  Icon,
+}: {
+  service: { title: string; description: string; features: string[] };
+  index: number;
+  Icon: typeof Briefcase;
+}) {
   const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const Icon = service.icon;
 
   return (
     <motion.div
@@ -70,6 +53,7 @@ function ServiceCard({ service, index }: { service: typeof services[number]; ind
 }
 
 export function Services() {
+  const { t } = useI18n();
   const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -86,20 +70,21 @@ export function Services() {
           className="text-center mb-20"
         >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
-            What We Do
+            {t.services.badge}
           </span>
           <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            Our Services
+            {t.services.title}
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            We combine strategic thinking with creative execution to solve complex business challenges.
+            {t.services.description}
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          {services.map((service, index) => (
-            <ServiceCard key={service.title} service={service} index={index} />
-          ))}
+          {t.services.items.map((service, index) => {
+            const Icon = serviceIcons[index % serviceIcons.length];
+            return <ServiceCard key={service.title} service={service} index={index} Icon={Icon} />;
+          })}
         </div>
       </div>
     </section>

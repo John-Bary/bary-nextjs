@@ -3,41 +3,12 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Code, Lightbulb, PenTool, Rocket, Search } from "lucide-react";
+import { useI18n } from "../i18n/I18nProvider";
 
-const steps = [
-  {
-    icon: Search,
-    number: "01",
-    title: "Discovery",
-    description: "We start by understanding your business, market position, and objectives. Through workshops and research, we identify challenges and opportunities.",
-  },
-  {
-    icon: Lightbulb,
-    number: "02",
-    title: "Strategy",
-    description: "We develop a comprehensive plan aligned with your goals. This includes roadmaps, timelines, resource allocation, and success metrics.",
-  },
-  {
-    icon: PenTool,
-    number: "03",
-    title: "Design",
-    description: "We create solutions that balance aesthetics with functionality. Every design decision is backed by user research and business objectives.",
-  },
-  {
-    icon: Code,
-    number: "04",
-    title: "Development",
-    description: "We build using modern technologies and best practices. Our development process emphasizes quality, scalability, and maintainability.",
-  },
-  {
-    icon: Rocket,
-    number: "05",
-    title: "Launch & Support",
-    description: "We manage deployment and provide ongoing support. Post-launch, we monitor performance and make data-driven optimizations.",
-  },
-];
+const stepIcons = [Search, Lightbulb, PenTool, Code, Rocket];
 
 export function Process() {
+  const { t } = useI18n();
   const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -54,13 +25,13 @@ export function Process() {
           className="text-center mb-20"
         >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
-            How We Work
+            {t.process.badge}
           </span>
           <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            Our Process
+            {t.process.title}
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            A proven methodology that ensures successful project delivery from discovery to launch.
+            {t.process.description}
           </p>
         </motion.div>
 
@@ -68,8 +39,8 @@ export function Process() {
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent" />
 
           <div className="space-y-8 lg:space-y-0">
-            {steps.map((step, index) => {
-              const Icon = step.icon;
+            {t.process.steps.map((step, index) => {
+              const Icon = stepIcons[index % stepIcons.length];
               const isEven = index % 2 === 0;
 
               return (
@@ -115,7 +86,7 @@ export function Process() {
             href="#contact"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25"
           >
-            Ready to Start?
+            {t.process.cta}
           </a>
         </motion.div>
       </div>

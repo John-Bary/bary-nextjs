@@ -3,38 +3,12 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowUpRight, Building2, HeartPulse, Sparkles } from "lucide-react";
+import { useI18n } from "../i18n/I18nProvider";
 
-const caseStudies = [
-  {
-    icon: Sparkles,
-    title: "360 Arena launch",
-    industry: "B2C & Entertainment",
-    summary:
-      "Built the entire digital and operational foundation for 360 Arena — from IT infrastructure and full marketing strategy to website setup and long-term technical support. Delivered a complete go-live package for a new entertainment brand.",
-    results: ["10-week go-live", "99.95% uptime in first 90 days"],
-    tags: ["IT systems", "Marketing strategy", "Go-to-market", "Ongoing support"],
-  },
-  {
-    icon: Building2,
-    title: "Pašilaičiai P.C. website & strategy",
-    industry: "Commercial Real Estate",
-    summary:
-      "Provided consulting for the launch of pasilaiciaipc.lt, including website planning, marketing strategy, and the go-to-market roadmap. Ongoing support ensures the center maintains strong visibility and communication with visitors.",
-    results: ["6-week launch cycle", "+24% visitor engagement"],
-    tags: ["Website consulting", "Go-to-market", "Marketing strategy"],
-  },
-  {
-    icon: HeartPulse,
-    title: "Vitomi vitamins brand & digital ecosystem",
-    industry: "Health & Wellness",
-    summary:
-      "Developed the Vitomi brand (thevitomi.com) from strategic foundation to execution: brand identity, go-to-market plan, website development, B2B strategy, and visual marketing assets. Providing continuous growth support.",
-    results: ["3.1x brand search lift", "18 B2B leads/mo"],
-    tags: ["Brand strategy", "Go-to-market", "Website creation", "B2B strategy", "Marketing visuals"],
-  },
-];
+const caseStudyIcons = [Sparkles, Building2, HeartPulse];
 
 export function CaseStudies() {
+  const { t } = useI18n();
   const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -52,19 +26,19 @@ export function CaseStudies() {
           className="text-center mb-16"
         >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
-            Case Studies
+            {t.caseStudies.badge}
           </span>
           <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            Results we deliver
+            {t.caseStudies.title}
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            A sample of engagements where strategy, design, and engineering combined to move the right metrics.
+            {t.caseStudies.description}
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-6">
-          {caseStudies.map((item, index) => {
-            const Icon = item.icon;
+          {t.caseStudies.items.map((item, index) => {
+            const Icon = caseStudyIcons[index % caseStudyIcons.length];
             return (
               <motion.div
                 key={item.title}
@@ -102,7 +76,7 @@ export function CaseStudies() {
                 <div className="grid grid-cols-2 gap-4 mt-auto">
                   {item.results.map((result) => (
                     <div key={result} className="glass-card p-4">
-                      <p className="text-xs uppercase tracking-widest text-muted-foreground">Outcome</p>
+                      <p className="text-xs uppercase tracking-widest text-muted-foreground">{t.caseStudies.outcomeLabel}</p>
                       <p className="font-heading text-xl font-semibold gradient-text mt-2">{result}</p>
                     </div>
                   ))}

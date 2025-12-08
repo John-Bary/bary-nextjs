@@ -2,13 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Instagram, Linkedin, Twitter } from "lucide-react";
-
-const footerLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#about", label: "About" },
-  { href: "#process", label: "Process" },
-  { href: "#contact", label: "Contact" },
-];
+import { useI18n } from "../i18n/I18nProvider";
 
 const socialLinks = [
   { icon: Linkedin, href: "#", label: "LinkedIn" },
@@ -17,7 +11,9 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const { t } = useI18n();
   const currentYear = new Date().getFullYear();
+  const copyright = t.footer.copyright.replace("{year}", currentYear.toString());
 
   return (
     <footer className="py-16 border-t border-border/50">
@@ -33,7 +29,7 @@ export function Footer() {
           </motion.a>
 
           <nav className="flex flex-wrap items-center justify-center gap-8">
-            {footerLinks.map((link) => (
+            {t.footer.links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -64,8 +60,8 @@ export function Footer() {
         <div className="line-decoration my-10" />
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <p>© {currentYear} BARY. All rights reserved.</p>
-          <p>Vilnius, Lithuania</p>
+          <p>{copyright}</p>
+          <p>{t.footer.location}</p>
         </div>
       </div>
     </footer>

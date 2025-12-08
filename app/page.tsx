@@ -8,22 +8,25 @@ import { BookCall } from "@/components/landing/BookCall";
 import { FAQ } from "@/components/landing/FAQ";
 import { Contact } from "@/components/landing/Contact";
 import { Footer } from "@/components/landing/Footer";
+import { I18nProvider } from "@/components/i18n/I18nProvider";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <Navbar />
-      <main>
-        <Hero />
-        <Services />
-        <CaseStudies />
-        <About />
-        <Process />
-        <BookCall />
-        <FAQ />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <I18nProvider>
+      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+        <Navbar />
+        <main>
+          <Hero />
+          <Services />
+          <CaseStudies />
+          <About />
+          <Process />
+          <BookCall />
+          <FAQ />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </I18nProvider>
   );
 }
