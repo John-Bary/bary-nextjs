@@ -16,12 +16,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         const baseStyles = "relative overflow-hidden isolate inline-flex items-center justify-center gap-xs font-semibold rounded-md transition-all duration-base cursor-pointer border-none focus:outline-none focus:ring-4 focus:ring-cerulean/20";
 
         const variants = {
-            primary: "bg-cerulean text-white shadow-[0_4px_16px_rgba(34,116,165,0.24)] hover:bg-[#1a5a82] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(34,116,165,0.32)] active:translate-y-0 active:shadow-[0_2px_8px_rgba(34,116,165,0.16)]",
-            secondary: "bg-transparent text-cerulean border-2 border-cerulean hover:bg-cerulean hover:text-white hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(34,116,165,0.24)]",
+            primary: "bg-cerulean text-white shadow-[0_4px_16px_rgba(100,158,192,0.24)] hover:bg-[#5F8CA8] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(100,158,192,0.32)] active:translate-y-0 active:shadow-[0_2px_8px_rgba(100,158,192,0.16)]",
+            secondary: "bg-transparent text-cerulean border-2 border-cerulean hover:bg-cerulean hover:text-white hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(100,158,192,0.24)]",
             glass: "glass frosted-card text-dark-gray border border-white/30 hover:bg-white/85 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)]",
-            orange: "bg-orange text-white shadow-[0_4px_16px_rgba(247,92,3,0.24)] hover:bg-[#d94f02] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(247,92,3,0.32)]",
-            emerald: "bg-emerald text-white shadow-[0_4px_16px_rgba(0,204,102,0.24)] hover:bg-[#00b359] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,204,102,0.32)]",
-            berry: "bg-berry text-white shadow-[0_4px_16px_rgba(217,3,104,0.24)] hover:bg-[#b8025a] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(217,3,104,0.32)]",
+            orange: "bg-orange text-white shadow-[0_4px_16px_rgba(249,141,79,0.24)] hover:bg-[#E4844E] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(249,141,79,0.32)]",
+            emerald: "bg-emerald text-white shadow-[0_4px_16px_rgba(76,219,148,0.24)] hover:bg-[#4CCA8B] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(76,219,148,0.32)]",
+            berry: "bg-berry text-white shadow-[0_4px_16px_rgba(228,79,149,0.24)] hover:bg-[#CD4E8C] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(228,79,149,0.32)]",
         };
 
         const sizes = {
@@ -65,7 +65,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                             transition={{ duration: 0.8, ease: "easeOut" }}
                         />
                         <motion.span
-                            className="pointer-events-none absolute inset-[-10%] rounded-full bg-[radial-gradient(circle,rgba(34,116,165,0.32),rgba(34,116,165,0))]"
+                            className="pointer-events-none absolute inset-[-10%] rounded-full bg-[radial-gradient(circle,rgba(100,158,192,0.32),rgba(100,158,192,0))]"
                             variants={glowVariants}
                             animate={hovered ? "hover" : "initial"}
                             transition={{ duration: 0.9, ease: "easeOut" }}
