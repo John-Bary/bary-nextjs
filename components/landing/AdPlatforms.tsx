@@ -1,15 +1,27 @@
 "use client";
 
+import Image from "next/image";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { useI18n } from "../i18n/I18nProvider";
 
-const platformStyleMap: Record<string, { gradient: string; initials: string }> = {
-  meta: { gradient: "from-blue-500 to-purple-500", initials: "M" },
-  google: { gradient: "from-yellow-400 via-red-500 to-blue-500", initials: "G" },
-  tiktok: { gradient: "from-emerald-400 via-teal-500 to-cyan-500", initials: "T" },
-  snapchat: { gradient: "from-yellow-300 via-amber-400 to-orange-400", initials: "S" },
-  reddit: { gradient: "from-orange-500 to-red-500", initials: "R" },
+const platformStyleMap: Record<
+  string,
+  { gradient: string; icon?: string; initials: string }
+> = {
+  meta: { gradient: "from-blue-500 to-purple-500", icon: "/ad-platforms/meta.svg", initials: "M" },
+  google: {
+    gradient: "from-yellow-400 via-red-500 to-blue-500",
+    icon: "/ad-platforms/googleads.svg",
+    initials: "G",
+  },
+  tiktok: { gradient: "from-emerald-400 via-teal-500 to-cyan-500", icon: "/ad-platforms/tiktok.svg", initials: "T" },
+  snapchat: {
+    gradient: "from-yellow-300 via-amber-400 to-orange-400",
+    icon: "/ad-platforms/snapchat.svg",
+    initials: "S",
+  },
+  reddit: { gradient: "from-orange-500 to-red-500", icon: "/ad-platforms/reddit.svg", initials: "R" },
 };
 
 function PlatformIcon({ name, platformKey }: { name: string; platformKey: string }) {
@@ -17,10 +29,14 @@ function PlatformIcon({ name, platformKey }: { name: string; platformKey: string
 
   return (
     <div
-      className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${style.gradient} text-white font-semibold flex items-center justify-center shadow-lg shadow-primary/20`}
+      className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${style.gradient} text-white font-semibold flex items-center justify-center shadow-lg shadow-primary/20 overflow-hidden`}
       aria-hidden
     >
-      <span className="text-lg">{style.initials}</span>
+      {style.icon ? (
+        <Image src={style.icon} alt="" width={36} height={36} className="w-9 h-9 object-contain" priority />
+      ) : (
+        <span className="text-lg">{style.initials}</span>
+      )}
     </div>
   );
 }
