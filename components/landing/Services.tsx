@@ -12,7 +12,7 @@ function ServiceCard({
   index,
   Icon,
 }: {
-  service: { title: string; description: string; features: string[] };
+  service: { title: string; description: string; features: readonly string[] };
   index: number;
   Icon: typeof Briefcase;
 }) {
@@ -41,7 +41,7 @@ function ServiceCard({
       </p>
 
       <div className="mt-auto space-y-3">
-        {service.features.map((feature, i) => (
+        {service.features.map((feature) => (
           <div key={feature} className="flex items-center gap-3 text-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-primary" />
             <span className="text-foreground/80">{feature}</span>
