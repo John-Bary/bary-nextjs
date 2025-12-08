@@ -13,7 +13,7 @@ export function Hero() {
     return (
         <section
             id="home"
-            className="relative overflow-hidden min-h-[80vh] flex items-center py-16 sm:py-24 bg-gradient-to-br from-[#e9f5ff] via-white to-[#f3f7fb]"
+            className="relative overflow-hidden min-h-[80vh] flex items-center py-16 sm:py-24 bg-gradient-to-br from-[#F0F8FF] via-white to-[#F7F9FC]"
         >
             {/* 3D-like floating bubbles */}
             <div className="absolute -top-10 right-6 w-[320px] h-[320px] rounded-full bg-gradient-to-br from-emerald/50 via-cerulean/45 to-white/30 blur-3xl animate-[float_12s_ease-in-out_infinite]" />
