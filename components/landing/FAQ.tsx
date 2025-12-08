@@ -51,10 +51,10 @@ export function FAQ() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="faq" className="py-32 relative">
+    <section id="faq" className="py-24 md:py-32 relative">
       <div className="section-gradient absolute inset-0 rotate-180" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}

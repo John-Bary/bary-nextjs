@@ -25,7 +25,7 @@ function ServiceCard({
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group glass-card-hover p-8 flex flex-col h-full"
+      className="group glass-card-hover p-6 sm:p-8 flex flex-col h-full"
     >
       <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-500">
         <Icon className="w-7 h-7 text-primary" />
@@ -58,16 +58,16 @@ export function Services() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" className="py-32 relative">
+    <section id="services" className="py-24 md:py-32 relative">
       <div className="section-gradient absolute inset-0" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-14 sm:mb-20"
         >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
             {t.services.badge}
@@ -80,7 +80,7 @@ export function Services() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid md:grid-cols-2 gap-5 sm:gap-6 lg:gap-8">
           {t.services.items.map((service, index) => {
             const Icon = serviceIcons[index % serviceIcons.length];
             return <ServiceCard key={service.title} service={service} index={index} Icon={Icon} />;

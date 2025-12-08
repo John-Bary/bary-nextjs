@@ -13,16 +13,16 @@ export function Process() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="process" className="py-32 relative">
+    <section id="process" className="py-24 md:py-32 relative">
       <div className="section-gradient absolute inset-0 rotate-180" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-14 sm:mb-20"
         >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
             {t.process.badge}

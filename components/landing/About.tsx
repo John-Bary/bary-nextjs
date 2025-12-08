@@ -10,11 +10,11 @@ export function About() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-32 relative overflow-hidden">
-      <div className="floating-orb w-[500px] h-[500px] bg-primary/10 top-1/2 -translate-y-1/2 -right-60 animate-pulse-glow" />
+    <section id="about" className="py-24 md:py-32 relative overflow-hidden">
+      <div className="floating-orb hidden sm:block w-[500px] h-[500px] bg-primary/10 top-1/2 -translate-y-1/2 -right-60 animate-pulse-glow" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div
             ref={ref}
             initial={{ opacity: 0, x: -50 }}
@@ -48,7 +48,7 @@ export function About() {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="grid grid-cols-2 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
           >
             {t.about.stats.map((stat, index) => (
               <motion.div

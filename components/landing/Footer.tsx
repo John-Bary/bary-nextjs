@@ -16,9 +16,9 @@ export function Footer() {
   const copyright = t.footer.copyright.replace("{year}", currentYear.toString());
 
   return (
-    <footer className="py-16 border-t border-border/50">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+    <footer className="py-14 md:py-16 border-t border-border/50">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
           <motion.a
             href="#home"
             initial={{ opacity: 0 }}
