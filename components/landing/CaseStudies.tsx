@@ -13,17 +13,17 @@ export function CaseStudies() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="case-studies" className="py-32 relative overflow-hidden hidden">
-      <div className="floating-orb w-[520px] h-[520px] bg-primary/10 -left-48 top-10 animate-pulse-glow" />
-      <div className="floating-orb w-[420px] h-[420px] bg-accent/10 -right-32 bottom-0 animate-pulse-glow" />
+    <section id="case-studies" className="py-24 md:py-32 relative overflow-hidden">
+      <div className="floating-orb hidden sm:block w-[520px] h-[520px] bg-primary/10 -left-48 top-10 animate-pulse-glow" />
+      <div className="floating-orb hidden sm:block w-[420px] h-[420px] bg-accent/10 -right-32 bottom-0 animate-pulse-glow" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-14 sm:mb-16"
         >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
             {t.caseStudies.badge}
@@ -36,7 +36,7 @@ export function CaseStudies() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid lg:grid-cols-3 gap-5 sm:gap-6">
           {t.caseStudies.items.map((item, index) => {
             const Icon = caseStudyIcons[index % caseStudyIcons.length];
             return (
@@ -45,7 +45,7 @@ export function CaseStudies() {
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="glass-card-hover p-8 flex flex-col gap-5"
+                className="glass-card-hover p-6 sm:p-8 flex flex-col gap-4 sm:gap-5"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
