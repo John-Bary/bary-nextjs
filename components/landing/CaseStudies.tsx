@@ -2,35 +2,35 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ArrowUpRight, BarChart3, Globe2, Rocket } from "lucide-react";
+import { ArrowUpRight, Building2, HeartPulse, Sparkles } from "lucide-react";
 
 const caseStudies = [
   {
-    icon: BarChart3,
-    title: "SaaS conversion overhaul",
-    industry: "B2B Platform",
+    icon: Sparkles,
+    title: "360 Arena launch",
+    industry: "B2C & Entertainment",
     summary:
-      "Rebuilt the onboarding, pricing, and activation path for a subscription analytics platform to reduce friction and highlight ROI.",
-    results: ["+42% trial-to-paid", "-28% support tickets"],
-    tags: ["UX redesign", "Product analytics", "Experimentation"],
+      "Built the entire digital and operational foundation for 360 Arena — from IT infrastructure and full marketing strategy to website setup and long-term technical support. Delivered a complete go-live package for a new entertainment brand.",
+    results: ["10-week go-live", "99.95% uptime in first 90 days"],
+    tags: ["IT systems", "Marketing strategy", "Go-to-market", "Ongoing support"],
   },
   {
-    icon: Globe2,
-    title: "Market expansion launch",
-    industry: "Retail & eCommerce",
+    icon: Building2,
+    title: "Pašilaičiai P.C. website & strategy",
+    industry: "Commercial Real Estate",
     summary:
-      "Developed a localized brand system, landing funnels, and lifecycle campaigns to open two new markets in under 60 days.",
-    results: ["€1.2M pipeline", "3.4x ROAS"],
-    tags: ["Brand system", "Campaign ops", "Localization"],
+      "Provided consulting for the launch of pasilaiciaipc.lt, including website planning, marketing strategy, and the go-to-market roadmap. Ongoing support ensures the center maintains strong visibility and communication with visitors.",
+    results: ["6-week launch cycle", "+24% visitor engagement"],
+    tags: ["Website consulting", "Go-to-market", "Marketing strategy"],
   },
   {
-    icon: Rocket,
-    title: "Operational automation",
-    industry: "Professional Services",
+    icon: HeartPulse,
+    title: "Vitomi vitamins brand & digital ecosystem",
+    industry: "Health & Wellness",
     summary:
-      "Implemented internal tools, dashboards, and automations that cut manual work and surfaced real-time performance data.",
-    results: ["-18hrs/week ops", "+99% data accuracy"],
-    tags: ["Process design", "Custom dashboards", "Automation"],
+      "Developed the Vitomi brand (thevitomi.com) from strategic foundation to execution: brand identity, go-to-market plan, website development, B2B strategy, and visual marketing assets. Providing continuous growth support.",
+    results: ["3.1x brand search lift", "18 B2B leads/mo"],
+    tags: ["Brand strategy", "Go-to-market", "Website creation", "B2B strategy", "Marketing visuals"],
   },
 ];
 
