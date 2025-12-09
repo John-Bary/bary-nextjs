@@ -133,9 +133,24 @@
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.text-balance {
+  text-wrap: balance;
+}
+
+@keyframes scroll-dot {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
   }
+  50% {
+    transform: translateY(6px);
+    opacity: 0.6;
+  }
+}
+
+.mouse-dot {
+  animation: scroll-dot 1.6s ease-in-out infinite;
+}
 }
 
 :focus-visible {
