@@ -371,31 +371,15 @@ export const translations = {
       badge: "Global footprint",
       title: "Where we operate",
       description: "We collaborate with teams across Europe, anchored in Vilnius and connected to nearby hubs.",
-      locations: [
-        {
-          id: "vilnius",
-          country: "Lithuania",
-          city: "Vilnius",
-          description: "HQ for strategy, design, and engineering teams.",
-          x: 60,
-          y: 52,
-        },
-        {
-          id: "warsaw",
-          country: "Poland",
-          city: "Warsaw",
-          description: "Go-to-market and growth partners across CEE.",
-          x: 66,
-          y: 46,
-        },
-        {
-          id: "berlin",
-          country: "Germany",
-          city: "Berlin",
-          description: "Product and venture collaborations in DACH.",
-          x: 54,
-          y: 44,
-        },
+      spots: [
+        { note: "HQ for strategy, design, and engineering teams." },
+        { note: "Go-to-market and growth partners across Europe." },
+        { note: "Product and venture collaborations with DACH teams." },
+      ],
+      contactCards: [
+        { label: "Email", value: "hello@bary.lt", href: "mailto:hello@bary.lt", description: "Reach us anytime — we reply within one business day." },
+        { label: "Call", value: "+370 000 00000", href: "tel:+37000000000", description: "Quick alignment for scope, budget, and timelines." },
+        { label: "Calendly", value: "Book a call", href: "https://calendly.com/u0060604156", description: "Pick a slot that works — 15 minutes to validate fit." },
       ],
     },
     footer: {
@@ -781,31 +765,15 @@ export const translations = {
       badge: "Kur dirbame",
       title: "Mūsų žemėlapis",
       description: "Dirbame su komandomis visoje Europoje, o bazė – Vilniuje.",
-      locations: [
-        {
-          id: "vilnius",
-          country: "Lietuva",
-          city: "Vilnius",
-          description: "Strategijos, dizaino ir technologijų komanda.",
-          x: 60,
-          y: 52,
-        },
-        {
-          id: "warsaw",
-          country: "Lenkija",
-          city: "Varšuva",
-          description: "Rinkos plėtra ir augimo partneriai CEE regione.",
-          x: 66,
-          y: 46,
-        },
-        {
-          id: "berlin",
-          country: "Vokietija",
-          city: "Berlynas",
-          description: "Produktų ir venture projektai DACH rinkoje.",
-          x: 54,
-          y: 44,
-        },
+      spots: [
+        { note: "Strategijos, dizaino ir technologijų komanda." },
+        { note: "Rinkos plėtra ir augimo partneriai Europoje." },
+        { note: "Produktų ir venture projektai DACH rinkoje." },
+      ],
+      contactCards: [
+        { label: "El. paštas", value: "hello@bary.lt", href: "mailto:hello@bary.lt", description: "Atrašome per 1 darbo dieną." },
+        { label: "Skambutis", value: "+370 000 00000", href: "tel:+37000000000", description: "Greitas suderinimas dėl apimties ir biudžeto." },
+        { label: "Calendly", value: "Rezervuokite laiką", href: "https://calendly.com/u0060604156", description: "Pasirinkite tinkamą laiką 15 min. pokalbiui." },
       ],
     },
     footer: {
