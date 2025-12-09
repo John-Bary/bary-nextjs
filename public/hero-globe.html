@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hero Globe</title>
+    <style>
+      html, body, #globe-container {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: transparent;
+      }
+      canvas { display: block; }
+    </style>
+  </head>
+  <body>
+    <div id="globe-container"></div>
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/three-globe"></script>
+    <script>
+      const container = document.getElementById("globe-container");
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      container.appendChild(renderer.domElement);
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        45,
+        container.clientWidth / container.clientHeight,
+        0.1,
+        2000
+      );
+      camera.position.z = 350;
+
+      const globe = new ThreeGlobe()
+        .globeImageUrl("https://unpkg.com/three-globe/example/img/earth-dark.jpg")
+        .bumpImageUrl("https://unpkg.com/three-globe/example/img/earth-topology.png");
+
+      globe.rotation.y = Math.PI;
+      scene.add(globe);
+
+      const ambientLight = new THREE.AmbientLight(0xbad4ff, 1.25);
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+      directionalLight.position.set(200, 200, 400);
+      scene.add(ambientLight);
+      scene.add(directionalLight);
+
+      const starsGeometry = new THREE.BufferGeometry();
+      const starVertices = [];
+      for (let i = 0; i < 1200; i++) {
+        const x = (Math.random() - 0.5) * 2000;
+        const y = (Math.random() - 0.5) * 2000;
+        const z = -Math.random() * 1500;
+        starVertices.push(x, y, z);
+      }
+      starsGeometry.setAttribute(
+        "position",
+        new THREE.Float32BufferAttribute(starVertices, 3)
+      );
+      const starsMaterial = new THREE.PointsMaterial({ color: 0x5a7bff, size: 1 });
+      const starField = new THREE.Points(starsGeometry, starsMaterial);
+      scene.add(starField);
+
+      function animate() {
+        globe.rotation.y += 0.0008;
+        starField.rotation.y += 0.0002;
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+      }
+
+      function onResize() {
+        const { clientWidth, clientHeight } = container;
+        camera.aspect = clientWidth / clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(clientWidth, clientHeight);
+      }
+
+      animate();
+      window.addEventListener("resize", onResize);
+    </script>
+  </body>
+</html>
