@@ -74,21 +74,6 @@ export function Hero() {
             </a>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="glass-card w-full max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border/40 px-5 sm:px-8 py-6 sm:py-5 mt-4 sm:mt-0"
-          >
-            {t.hero.stats.map((stat, idx) => (
-              <div key={stat.label} className={`text-center py-3 sm:py-0 ${idx === 0 ? "" : ""}`}>
-                <div className="text-3xl sm:text-4xl font-heading font-bold gradient-text leading-tight">
-                  {stat.value}
-                </div>
-                <div className="text-xs sm:text-sm text-muted-foreground mt-1">{stat.label}</div>
-              </div>
-            ))}
-          </motion.div>
         </div>
       </div>
 

@@ -11,6 +11,7 @@ import { Locations } from "@/components/landing/Locations";
 import { Contact } from "@/components/landing/Contact";
 import { Footer } from "@/components/landing/Footer";
 import { I18nProvider } from "@/components/i18n/I18nProvider";
+import { Locations } from "@/components/landing/Locations";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
           <CaseStudies />
           <About />
           <Process />
+          <Locations />
           <BookCall />
           <FAQ />
           <Locations />

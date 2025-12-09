@@ -367,6 +367,37 @@ export const translations = {
         description: "We'll get back to you within 24 hours.",
       },
     },
+    locations: {
+      badge: "Global footprint",
+      title: "Where we operate",
+      description: "We collaborate with teams across Europe, anchored in Vilnius and connected to nearby hubs.",
+      locations: [
+        {
+          id: "vilnius",
+          country: "Lithuania",
+          city: "Vilnius",
+          description: "HQ for strategy, design, and engineering teams.",
+          x: 60,
+          y: 52,
+        },
+        {
+          id: "warsaw",
+          country: "Poland",
+          city: "Warsaw",
+          description: "Go-to-market and growth partners across CEE.",
+          x: 66,
+          y: 46,
+        },
+        {
+          id: "berlin",
+          country: "Germany",
+          city: "Berlin",
+          description: "Product and venture collaborations in DACH.",
+          x: 54,
+          y: 44,
+        },
+      ],
+    },
     footer: {
       links: [
         { href: "#services", label: "Services" },
@@ -745,6 +776,37 @@ export const translations = {
         title: "Žinutė išsiųsta!",
         description: "Atsakysime per 24 valandas.",
       },
+    },
+    locations: {
+      badge: "Kur dirbame",
+      title: "Mūsų žemėlapis",
+      description: "Dirbame su komandomis visoje Europoje, o bazė – Vilniuje.",
+      locations: [
+        {
+          id: "vilnius",
+          country: "Lietuva",
+          city: "Vilnius",
+          description: "Strategijos, dizaino ir technologijų komanda.",
+          x: 60,
+          y: 52,
+        },
+        {
+          id: "warsaw",
+          country: "Lenkija",
+          city: "Varšuva",
+          description: "Rinkos plėtra ir augimo partneriai CEE regione.",
+          x: 66,
+          y: 46,
+        },
+        {
+          id: "berlin",
+          country: "Vokietija",
+          city: "Berlynas",
+          description: "Produktų ir venture projektai DACH rinkoje.",
+          x: 54,
+          y: 44,
+        },
+      ],
     },
     footer: {
       links: [
