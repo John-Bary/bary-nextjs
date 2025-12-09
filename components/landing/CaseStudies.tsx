@@ -29,8 +29,12 @@ export function CaseStudies() {
           {t.caseStudies.items.map((item, index) => {
             const Icon = caseStudyIcons[index % caseStudyIcons.length];
             return (
-              <div
+              <motion.div
                 key={item.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.45, ease: "easeOut", delay: index * 0.05 }}
                 className="glass-card-hover p-6 sm:p-8 flex flex-col gap-4 sm:gap-5"
               >
                 <div className="flex items-center justify-between">
