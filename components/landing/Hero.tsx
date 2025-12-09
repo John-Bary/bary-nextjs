@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useI18n } from "../i18n/I18nProvider";
 import { GlobeBackground } from "./GlobeBackground";
+import { HeroGlobe } from "./HeroGlobe";
 
 export function Hero() {
   const { t } = useI18n();
@@ -73,7 +74,10 @@ export function Hero() {
               {t.hero.ctas.secondary}
             </a>
           </motion.div>
+        </div>
 
+        <div className="mt-10 sm:mt-14">
+          <HeroGlobe />
         </div>
       </div>
 
