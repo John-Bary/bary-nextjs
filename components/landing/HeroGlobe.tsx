@@ -91,9 +91,9 @@ export function HeroGlobe() {
       controls.dispose();
       geo.dispose();
       wire.geometry.dispose();
-      (wire.material as THREE.Material).dispose();
-      (sphere.material as THREE.Material).dispose();
-      (glow.material as THREE.Material).dispose();
+      (wire.material as { dispose?: () => void }).dispose?.();
+      (sphere.material as { dispose?: () => void }).dispose?.();
+      (glow.material as { dispose?: () => void }).dispose?.();
       renderer.dispose();
     };
   }, []);
