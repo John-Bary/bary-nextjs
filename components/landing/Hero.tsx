@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useI18n } from "../i18n/I18nProvider";
+import { GlobeBackground } from "./GlobeBackground";
 
 export function Hero() {
   const { t } = useI18n();
@@ -12,6 +13,7 @@ export function Hero() {
       id="home"
       className="relative min-h-screen flex items-start justify-center overflow-hidden"
     >
+      <GlobeBackground />
       <div className="hero-gradient absolute inset-0" />
       <div className="floating-orb hidden sm:block w-[600px] h-[600px] bg-primary/20 -top-40 -right-40 animate-pulse-glow" />
       <div
