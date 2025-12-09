@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { useI18n } from "../i18n/I18nProvider";
@@ -52,31 +52,19 @@ export function FAQ() {
       <div className="section-gradient absolute inset-0 rotate-180" />
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.45, ease: "easeOut" }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">{t.faq.badge}</span>
           <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold mb-6">{t.faq.title}</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             {t.faq.description}
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           {t.faq.items.map((faq, index) => (
-            <motion.div
-              key={faq.question}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, ease: "easeOut", delay: index * 0.04 }}
-            >
+            <div key={faq.question}>
               <FAQItem {...faq} index={index} prefix={t.faq.itemPrefix} />
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

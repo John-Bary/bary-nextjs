@@ -20,42 +20,22 @@ export function Hero() {
 
       <div className="container mx-auto px-4 sm:px-6 pt-24 pb-20 sm:pt-32 sm:pb-16 relative z-10">
         <div className="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-border/50"
-          >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-border/50">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             <span className="text-sm text-muted-foreground">{t.hero.badge}</span>
-          </motion.div>
+          </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-heading text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.08]"
-          >
+          <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.08]">
             {t.hero.title}
             <br />
             <span className="gradient-text glow-text">{t.hero.highlight}</span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
-          >
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             {t.hero.description}
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
-          >
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
             <a
               href="#contact"
               className="group px-8 py-4 rounded-full bg-primary text-primary-foreground font-medium flex items-center gap-2 hover:bg-primary/90 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25"
@@ -66,27 +46,18 @@ export function Hero() {
             <a
               href="#services"
               className="px-8 py-4 rounded-full border border-border hover:border-primary/50 text-foreground font-medium transition-all duration-300 hover:bg-secondary/50"
-          >
-            {t.hero.ctas.secondary}
-          </a>
-        </motion.div>
+            >
+              {t.hero.ctas.secondary}
+            </a>
+          </div>
         </div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-10 sm:bottom-12 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center pt-2"
-        >
+      <div className="absolute bottom-10 sm:bottom-12 left-1/2 -translate-x-1/2">
+        <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center pt-2">
           <div className="w-1 h-2 rounded-full bg-primary" />
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { type FormEvent, useState } from "react";
-import { motion } from "framer-motion";
 import { Mail, MapPin, Send } from "lucide-react";
 import { toast } from "sonner";
 import { useI18n } from "../i18n/I18nProvider";
@@ -29,13 +28,7 @@ export function Contact() {
       <div className="hero-gradient absolute inset-0 rotate-180" />
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.45, ease: "easeOut" }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
             {t.contact.badge}
           </span>
@@ -45,16 +38,10 @@ export function Contact() {
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             {t.contact.description}
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid lg:grid-cols-5 gap-12 max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: 0.05 }}
-            className="lg:col-span-2 space-y-8"
-          >
+          <div className="lg:col-span-2 space-y-8">
             <div className="glass-card p-6">
               <div className="flex items-center gap-4 mb-3">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -80,16 +67,9 @@ export function Contact() {
             <p className="text-sm text-muted-foreground">
               {t.contact.responseTime}
             </p>
-          </motion.div>
+          </div>
 
-          <motion.form
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-            onSubmit={handleSubmit}
-            className="lg:col-span-3 glass-card p-8 space-y-6"
-          >
+          <form onSubmit={handleSubmit} className="lg:col-span-3 glass-card p-8 space-y-6">
             <div className="grid sm:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium mb-2">{t.contact.form.nameLabel}</label>
@@ -160,7 +140,7 @@ export function Contact() {
               {isSubmitting ? t.contact.form.submitting : t.contact.form.submit}
               <Send className="w-4 h-4" />
             </button>
-          </motion.form>
+          </form>
         </div>
       </div>
     </section>
