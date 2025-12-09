@@ -289,42 +289,6 @@ export const translations = {
         },
       ],
     },
-    locations: {
-      badge: "Locations",
-      title: "Our locations",
-      description: "Say hello to our friendly team at one of these hubs.",
-      spots: [
-        {
-          note: "Meeting clients across the Canary Islands and Iberia.",
-        },
-        {
-          note: "Available across central London’s creative and business hubs.",
-        },
-        {
-          note: "HQ for strategy, design, and engineering teams.",
-        },
-      ],
-      contactCards: [
-        {
-          label: "Support",
-          value: "hello@bary.lt",
-          href: "mailto:hello@bary.lt",
-          description: "For quick questions, timelines, and in-progress work.",
-        },
-        {
-          label: "Partnerships",
-          value: "partners@bary.lt",
-          href: "mailto:partners@bary.lt",
-          description: "Collaborations, media, and strategic engagements.",
-        },
-        {
-          label: "Phone",
-          value: "+370 600 00000",
-          href: "tel:+37060000000",
-          description: "Mon–Fri from 9:00 to 18:00 (EET).",
-        },
-      ],
-    },
     contact: {
       badge: "Get in Touch",
       title: "Let's Talk",
@@ -680,42 +644,6 @@ export const translations = {
           question: "Kaip atrodys bendradarbiavimas?",
           answer:
             "Dirbsite tiesiogiai su įkūrėjais ir vyresniais specialistais. Laukia asinchroniniai atnaujinimai, įrašai ir skaidrūs valdymo skydai, kad visada matytumėte eigą.",
-        },
-      ],
-    },
-    locations: {
-      badge: "Lokacijos",
-      title: "Mūsų lokacijos",
-      description: "Užsukite į jums artimiausią mūsų komandą.",
-      spots: [
-        {
-          note: "Dirbame su klientais Kanarų salose ir Iberijos regione.",
-        },
-        {
-          note: "Pasiekiami Londono centre – kūrybos ir verslo rajonuose.",
-        },
-        {
-          note: "Pagrindinis biuras: strategija, dizainas ir inžinerija.",
-        },
-      ],
-      contactCards: [
-        {
-          label: "Pagalba",
-          value: "hello@bary.lt",
-          href: "mailto:hello@bary.lt",
-          description: "Greiti klausimai, terminai ir vykdomi projektai.",
-        },
-        {
-          label: "Partnerystės",
-          value: "partners@bary.lt",
-          href: "mailto:partners@bary.lt",
-          description: "Bendradarbiavimas, žiniasklaida ir strateginiai pasiūlymai.",
-        },
-        {
-          label: "Telefonas",
-          value: "+370 600 00000",
-          href: "tel:+37060000000",
-          description: "Dirbame I–V, 9:00–18:00 (EET).",
         },
       ],
     },
