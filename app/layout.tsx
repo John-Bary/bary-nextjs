@@ -33,10 +33,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/examples/js/controls/OrbitControls.js" />
-      </head>
       <body className="relative overflow-x-hidden bg-background text-foreground">
         <div className="relative z-10">
           {children}
