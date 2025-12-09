@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useI18n } from "../i18n/I18nProvider";
 import { GlobeBackground } from "./GlobeBackground";
-import { HeroGlobe } from "./HeroGlobe";
 
 export function Hero() {
   const { t } = useI18n();
@@ -70,14 +69,10 @@ export function Hero() {
             <a
               href="#services"
               className="px-8 py-4 rounded-full border border-border hover:border-primary/50 text-foreground font-medium transition-all duration-300 hover:bg-secondary/50"
-            >
-              {t.hero.ctas.secondary}
-            </a>
-          </motion.div>
-        </div>
-
-        <div className="mt-8 sm:mt-12">
-          <HeroGlobe />
+          >
+            {t.hero.ctas.secondary}
+          </a>
+        </motion.div>
         </div>
       </div>
 
