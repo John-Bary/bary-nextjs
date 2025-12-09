@@ -7,10 +7,10 @@ import { About } from "@/components/landing/About";
 import { Process } from "@/components/landing/Process";
 import { BookCall } from "@/components/landing/BookCall";
 import { FAQ } from "@/components/landing/FAQ";
+import { Locations } from "@/components/landing/Locations";
 import { Contact } from "@/components/landing/Contact";
 import { Footer } from "@/components/landing/Footer";
 import { I18nProvider } from "@/components/i18n/I18nProvider";
-import { Locations } from "@/components/landing/Locations";
 
 export default function Home() {
   return (
@@ -24,7 +24,6 @@ export default function Home() {
           <CaseStudies />
           <About />
           <Process />
-          <Locations />
           <BookCall />
           <FAQ />
           <Contact />

@@ -331,21 +331,7 @@ export const translations = {
         description: "We'll get back to you within 24 hours.",
       },
     },
-    locations: {
-      badge: "Global footprint",
-      title: "Where we operate",
-      description: "We collaborate with teams across Europe, anchored in Vilnius and connected to nearby hubs.",
-      spots: [
-        { note: "HQ for strategy, design, and engineering teams." },
-        { note: "Go-to-market and growth partners across Europe." },
-        { note: "Product and venture collaborations with DACH teams." },
-      ],
-      contactCards: [
-        { label: "Email", value: "hello@bary.lt", href: "mailto:hello@bary.lt", description: "Reach us anytime — we reply within one business day." },
-        { label: "Call", value: "+370 000 00000", href: "tel:+37000000000", description: "Quick alignment for scope, budget, and timelines." },
-        { label: "Calendly", value: "Book a call", href: "https://calendly.com/u0060604156", description: "Pick a slot that works — 15 minutes to validate fit." },
-      ],
-    },
+    locations: undefined,
     footer: {
       links: [
         { href: "#services", label: "Services" },
@@ -689,21 +675,7 @@ export const translations = {
         description: "Atsakysime per 24 valandas.",
       },
     },
-    locations: {
-      badge: "Kur dirbame",
-      title: "Mūsų žemėlapis",
-      description: "Dirbame su komandomis visoje Europoje, o bazė – Vilniuje.",
-      spots: [
-        { note: "Strategijos, dizaino ir technologijų komanda." },
-        { note: "Rinkos plėtra ir augimo partneriai Europoje." },
-        { note: "Produktų ir venture projektai DACH rinkoje." },
-      ],
-      contactCards: [
-        { label: "El. paštas", value: "hello@bary.lt", href: "mailto:hello@bary.lt", description: "Atrašome per 1 darbo dieną." },
-        { label: "Skambutis", value: "+370 000 00000", href: "tel:+37000000000", description: "Greitas suderinimas dėl apimties ir biudžeto." },
-        { label: "Calendly", value: "Rezervuokite laiką", href: "https://calendly.com/u0060604156", description: "Pasirinkite tinkamą laiką 15 min. pokalbiui." },
-      ],
-    },
+    locations: undefined,
     footer: {
       links: [
         { href: "#services", label: "Paslaugos" },

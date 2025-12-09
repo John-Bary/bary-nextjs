@@ -99,8 +99,8 @@ export function HeroGlobe() {
   }, []);
 
   return (
-    <div className="glass-card overflow-hidden px-4 py-4 sm:px-6 sm:py-6">
-      <div className="relative w-full h-[260px] sm:h-[320px]">
+    <div className="glass-card overflow-hidden px-4 py-4 sm:px-6 sm:py-6 max-w-3xl mx-auto">
+      <div className="relative w-full h-[220px] sm:h-[280px]">
         <canvas ref={canvasRef} className="w-full h-full" aria-label="Interactive globe" />
         <div className="pointer-events-none absolute inset-0 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.25)]" />
       </div>

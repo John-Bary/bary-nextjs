@@ -22,7 +22,7 @@ export function Hero() {
         style={{ animationDelay: "2s" }}
       />
 
-      <div className="container mx-auto px-4 sm:px-6 pt-24 pb-24 sm:pt-32 sm:pb-20 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 pt-24 pb-20 sm:pt-32 sm:pb-16 relative z-10">
         <div className="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -76,7 +76,7 @@ export function Hero() {
           </motion.div>
         </div>
 
-        <div className="mt-10 sm:mt-14">
+        <div className="mt-8 sm:mt-12">
           <HeroGlobe />
         </div>
       </div>
@@ -84,8 +84,8 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:block"
+        transition={{ delay: 1.2 }}
+        className="absolute bottom-10 sm:bottom-12 left-1/2 -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
