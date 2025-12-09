@@ -3,13 +3,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const stats = [
-  { value: "10+", label: "Projects Completed", sublabel: "Across multiple industries" },
-  { value: "99%", label: "Client Satisfaction", sublabel: "Based on post-project surveys" },
-  { value: "2+", label: "Years of Excellence", sublabel: "Consistent quality delivery" },
-  { value: "5+", label: "Expert Team", sublabel: "Specialists in their fields" },
-];
-
 export const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -21,8 +14,7 @@ export const About = () => {
       />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Content */}
+        <div className="max-w-4xl">
           <motion.div
             ref={ref}
             initial={{ opacity: 0, x: -50 }}
@@ -62,33 +54,6 @@ export const About = () => {
             >
               Work With Us
             </a>
-          </motion.div>
-
-          {/* Stats Grid */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6"
-          >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                className="glass-card relative overflow-hidden rounded-2xl p-5 sm:p-6 text-center border border-white/10 shadow-lg"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background/60 to-secondary/5" />
-                <div className="relative flex flex-col gap-2">
-                <div className="text-4xl sm:text-5xl font-heading font-bold gradient-text mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-foreground font-medium mb-1">{stat.label}</div>
-                <div className="text-sm text-muted-foreground">{stat.sublabel}</div>
-                </div>
-              </motion.div>
-            ))}
           </motion.div>
         </div>
       </div>
