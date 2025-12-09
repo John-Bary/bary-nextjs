@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
 import { useI18n } from "../i18n/I18nProvider";
 
 const platformStyleMap: Record<
@@ -43,7 +41,6 @@ function PlatformIcon({ name, platformKey }: { name: string; platformKey: string
 
 function PlatformCard({
   platform,
-  index,
 }: {
   platform: {
     key: string;
@@ -52,19 +49,9 @@ function PlatformCard({
     bestFor: string;
     differentiators: readonly string[];
   };
-  index: number;
 }) {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="glass-card-hover p-6 sm:p-7 flex flex-col gap-4"
-    >
+    <div className="glass-card-hover p-6 sm:p-7 flex flex-col gap-4">
       <div className="flex items-start gap-4">
         <PlatformIcon name={platform.name} platformKey={platform.key} />
         <div className="space-y-1">
@@ -83,37 +70,29 @@ function PlatformCard({
           </div>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 }
 
 export function AdPlatforms() {
   const { t } = useI18n();
-  const ref = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section id="ad-platforms" className="py-24 md:py-32 relative">
       <div className="section-gradient absolute inset-0" />
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-14 sm:mb-16 md:mb-20"
-        >
+        <div className="text-center mb-14 sm:mb-16 md:mb-20">
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
             {t.adPlatforms.badge}
           </span>
           <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold mb-6">{t.adPlatforms.title}</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">{t.adPlatforms.description}</p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
           {t.adPlatforms.platforms.map((platform, index) => (
-            <PlatformCard key={platform.key} platform={platform} index={index} />
+            <PlatformCard key={platform.key} platform={platform} />
           ))}
         </div>
       </div>
