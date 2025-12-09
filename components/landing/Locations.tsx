@@ -87,7 +87,7 @@ export function Locations() {
               className="relative"
             >
               <Image
-                src="/world-map.svg"
+                src="/worldwide-connection-gray-background-illustration-vector.png"
                 alt="World map"
                 width={1600}
                 height={900}
