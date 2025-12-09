@@ -19,7 +19,13 @@ export function Hero() {
       />
 
       <div className="container mx-auto px-4 sm:px-6 pt-24 pb-20 sm:pt-32 sm:pb-16 relative z-10">
-        <div className="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8"
+        >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-border/50">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             <span className="text-sm text-muted-foreground">{t.hero.badge}</span>
@@ -50,14 +56,23 @@ export function Hero() {
               {t.hero.ctas.secondary}
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      <div className="absolute bottom-10 sm:bottom-12 left-1/2 -translate-x-1/2">
-        <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center pt-2">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
+        className="absolute bottom-10 sm:bottom-12 left-1/2 -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center pt-2"
+        >
           <div className="w-1 h-2 rounded-full bg-primary" />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

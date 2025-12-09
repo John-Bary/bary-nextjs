@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { CalendarClock, Clock4, PhoneCall, Sparkles } from "lucide-react";
 import { useI18n } from "../i18n/I18nProvider";
 
@@ -11,7 +12,13 @@ export function BookCall() {
       <div className="section-gradient absolute inset-0" />
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="text-center mb-12 sm:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="text-center mb-12 sm:mb-16"
+        >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
             {t.bookCall.badge}
           </span>
@@ -21,10 +28,16 @@ export function BookCall() {
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             {t.bookCall.description}
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-10 items-center">
-          <div className="space-y-6">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="space-y-6"
+          >
             <div className="glass-card p-8 space-y-4">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -73,9 +86,15 @@ export function BookCall() {
                 {t.bookCall.slotNote}
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="glass-card p-8">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.05 }}
+            className="glass-card p-8"
+          >
             <div className="flex items-center justify-between mb-6">
               <div>
                 <p className="text-sm uppercase tracking-wider text-muted-foreground">{t.bookCall.outline.label}</p>
@@ -103,7 +122,7 @@ export function BookCall() {
                 {t.bookCall.outline.footer}
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

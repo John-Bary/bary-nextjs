@@ -1,5 +1,4 @@
-"use client";
-
+import { motion } from "framer-motion";
 import { ArrowUpRight, Building2, HeartPulse, Sparkles } from "lucide-react";
 import { useI18n } from "../i18n/I18nProvider";
 
@@ -14,7 +13,13 @@ export function CaseStudies() {
       <div className="floating-orb hidden sm:block w-[420px] h-[420px] bg-accent/10 -right-32 bottom-0 animate-pulse-glow" />
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="text-center mb-14 sm:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+          className="text-center mb-14 sm:mb-16"
+        >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
             {t.caseStudies.badge}
           </span>
@@ -24,14 +29,18 @@ export function CaseStudies() {
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             {t.caseStudies.description}
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-5 sm:gap-6">
           {t.caseStudies.items.map((item, index) => {
             const Icon = caseStudyIcons[index % caseStudyIcons.length];
             return (
-              <div
+              <motion.div
                 key={item.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.45, ease: "easeOut", delay: index * 0.05 }}
                 className="glass-card-hover p-6 sm:p-8 flex flex-col gap-4 sm:gap-5"
               >
                 <div className="flex items-center justify-between">
@@ -68,7 +77,7 @@ export function CaseStudies() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
