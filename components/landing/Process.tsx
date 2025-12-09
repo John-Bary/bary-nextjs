@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { Code, Lightbulb, PenTool, Rocket, Search } from "lucide-react";
 import { useI18n } from "../i18n/I18nProvider";
 
@@ -9,8 +8,6 @@ const stepIcons = [Search, Lightbulb, PenTool, Code, Rocket];
 
 export function Process() {
   const { t } = useI18n();
-  const ref = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section id="process" className="py-24 md:py-32 relative">
@@ -18,10 +15,10 @@ export function Process() {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
-          ref={ref}
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ type: "spring", stiffness: 140, damping: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
           className="text-center mb-14 sm:mb-20"
         >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
@@ -47,8 +44,9 @@ export function Process() {
                 <motion.div
                   key={step.title}
                   initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: isEven ? -50 : 50 }}
-                  transition={{ type: "spring", stiffness: 140, damping: 18, delay: index * 0.08 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.05 }}
                   className={`lg:grid lg:grid-cols-2 lg:gap-16 items-center ${isEven ? "" : "lg:flex-row-reverse"}`}
                 >
                   <div className={isEven ? "lg:text-right" : "lg:col-start-2"}>

@@ -1,14 +1,11 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { CalendarClock, Clock4, PhoneCall, Sparkles } from "lucide-react";
 import { useI18n } from "../i18n/I18nProvider";
 
 export function BookCall() {
   const { t } = useI18n();
-  const ref = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section id="book-a-call" className="py-24 md:py-32 relative">
@@ -16,10 +13,10 @@ export function BookCall() {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
-          ref={ref}
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ type: "spring", stiffness: 140, damping: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
           className="text-center mb-12 sm:mb-16"
         >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
@@ -37,7 +34,9 @@ export function BookCall() {
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
-            transition={{ type: "spring", stiffness: 140, damping: 18, delay: 0.1 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.05 }}
             className="space-y-6"
           >
             <div className="glass-card p-8 space-y-4">
@@ -93,7 +92,9 @@ export function BookCall() {
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }}
-            transition={{ type: "spring", stiffness: 140, damping: 18, delay: 0.15 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
             className="glass-card p-8"
           >
             <div className="flex items-center justify-between mb-6">

@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { useI18n } from "../i18n/I18nProvider";
@@ -47,8 +46,6 @@ function FAQItem({ question, answer, index, prefix }: { question: string; answer
 
 export function FAQ() {
   const { t } = useI18n();
-  const ref = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section id="faq" className="py-24 md:py-32 relative">
@@ -56,10 +53,10 @@ export function FAQ() {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
-          ref={ref}
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ type: "spring", stiffness: 140, damping: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">{t.faq.badge}</span>
@@ -74,8 +71,9 @@ export function FAQ() {
             <motion.div
               key={faq.question}
               initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ type: "spring", stiffness: 140, damping: 18, delay: index * 0.04 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, ease: "easeOut", delay: index * 0.04 }}
             >
               <FAQItem {...faq} index={index} prefix={t.faq.itemPrefix} />
             </motion.div>

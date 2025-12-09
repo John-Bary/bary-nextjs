@@ -1,15 +1,13 @@
 "use client";
 
-import { type FormEvent, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { type FormEvent, useState } from "react";
+import { motion } from "framer-motion";
 import { Mail, MapPin, Send } from "lucide-react";
 import { toast } from "sonner";
 import { useI18n } from "../i18n/I18nProvider";
 
 export function Contact() {
   const { t } = useI18n();
-  const ref = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -32,10 +30,10 @@ export function Contact() {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
-          ref={ref}
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
@@ -52,8 +50,9 @@ export function Contact() {
         <div className="grid lg:grid-cols-5 gap-12 max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.05 }}
             className="lg:col-span-2 space-y-8"
           >
             <div className="glass-card p-6">
@@ -85,8 +84,9 @@ export function Contact() {
 
           <motion.form
             initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-            transition={{ type: "spring", stiffness: 140, damping: 18, delay: 0.2 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
             onSubmit={handleSubmit}
             className="lg:col-span-3 glass-card p-8 space-y-6"
           >
