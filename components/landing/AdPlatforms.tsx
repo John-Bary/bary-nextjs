@@ -1,25 +1,31 @@
 "use client";
 
-import Image from "next/image";
+import {
+  Megaphone,
+  BadgeDollarSign,
+  Music4,
+  Ghost,
+  MessageSquare,
+} from "lucide-react";
 import { useI18n } from "../i18n/I18nProvider";
 
 const platformStyleMap: Record<
   string,
-  { gradient: string; icon?: string; initials: string }
+  { gradient: string; initials: string; icon?: never; lucide: React.ReactNode }
 > = {
-  meta: { gradient: "from-blue-500 to-purple-500", icon: "/ad-platforms/meta.svg", initials: "M" },
+  meta: { gradient: "from-blue-500 to-purple-500", initials: "M", lucide: <Megaphone className="w-6 h-6" /> },
   google: {
     gradient: "from-yellow-400 via-red-500 to-blue-500",
-    icon: "/ad-platforms/googleads.svg",
     initials: "G",
+    lucide: <BadgeDollarSign className="w-6 h-6" />,
   },
-  tiktok: { gradient: "from-emerald-400 via-teal-500 to-cyan-500", icon: "/ad-platforms/tiktok.svg", initials: "T" },
+  tiktok: { gradient: "from-emerald-400 via-teal-500 to-cyan-500", initials: "T", lucide: <Music4 className="w-6 h-6" /> },
   snapchat: {
     gradient: "from-yellow-300 via-amber-400 to-orange-400",
-    icon: "/ad-platforms/snapchat.svg",
     initials: "S",
+    lucide: <Ghost className="w-6 h-6" />,
   },
-  reddit: { gradient: "from-orange-500 to-red-500", icon: "/ad-platforms/reddit.svg", initials: "R" },
+  reddit: { gradient: "from-orange-500 to-red-500", initials: "R", lucide: <MessageSquare className="w-6 h-6" /> },
 };
 
 function PlatformIcon({ name, platformKey }: { name: string; platformKey: string }) {
@@ -30,11 +36,7 @@ function PlatformIcon({ name, platformKey }: { name: string; platformKey: string
       className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${style.gradient} text-white font-semibold flex items-center justify-center shadow-lg shadow-primary/20 overflow-hidden`}
       aria-hidden
     >
-      {style.icon ? (
-        <Image src={style.icon} alt="" width={36} height={36} className="w-9 h-9 object-contain" priority />
-      ) : (
-        <span className="text-lg">{style.initials}</span>
-      )}
+      {style.lucide ?? <span className="text-lg">{style.initials}</span>}
     </div>
   );
 }
