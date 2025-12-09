@@ -21,7 +21,7 @@ export function Process() {
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
+          transition={{ type: "spring", stiffness: 140, damping: 18 }}
           className="text-center mb-14 sm:mb-20"
         >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
@@ -48,7 +48,7 @@ export function Process() {
                   key={step.title}
                   initial={{ opacity: 0, x: isEven ? -50 : 50 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: isEven ? -50 : 50 }}
-                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                  transition={{ type: "spring", stiffness: 140, damping: 18, delay: index * 0.08 }}
                   className={`lg:grid lg:grid-cols-2 lg:gap-16 items-center ${isEven ? "" : "lg:flex-row-reverse"}`}
                 >
                   <div className={isEven ? "lg:text-right" : "lg:col-start-2"}>

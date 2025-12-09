@@ -86,7 +86,7 @@ export function Contact() {
           <motion.form
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ type: "spring", stiffness: 140, damping: 18, delay: 0.2 }}
             onSubmit={handleSubmit}
             className="lg:col-span-3 glass-card p-8 space-y-6"
           >

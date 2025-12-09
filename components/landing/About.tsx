@@ -19,7 +19,7 @@ export function About() {
             ref={ref}
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.7 }}
+            transition={{ type: "spring", stiffness: 140, damping: 18 }}
           >
             <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
               {t.about.badge}
@@ -47,7 +47,7 @@ export function About() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            transition={{ type: "spring", stiffness: 140, damping: 18, delay: 0.1 }}
             className="grid grid-cols-1 sm:grid-cols-2 gap-4"
           >
             {t.about.stats.map((stat, index) => (
@@ -55,7 +55,7 @@ export function About() {
                 key={stat.label}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                transition={{ type: "spring", stiffness: 140, damping: 18, delay: 0.2 + index * 0.07 }}
                 className="glass-card p-6 text-center"
               >
                 <div className="text-4xl sm:text-5xl font-heading font-bold gradient-text mb-2">

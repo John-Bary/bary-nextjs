@@ -24,7 +24,7 @@ function ServiceCard({
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      transition={{ type: "spring", stiffness: 140, damping: 18, delay: index * 0.06 }}
       className="group glass-card-hover p-6 sm:p-8 flex flex-col h-full"
     >
       <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-500">
@@ -66,7 +66,7 @@ export function Services() {
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
+          transition={{ type: "spring", stiffness: 140, damping: 18 }}
           className="text-center mb-14 sm:mb-20"
         >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">

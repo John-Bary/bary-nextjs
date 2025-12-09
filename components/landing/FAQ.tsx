@@ -59,7 +59,7 @@ export function FAQ() {
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
+          transition={{ type: "spring", stiffness: 140, damping: 18 }}
           className="text-center mb-16"
         >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">{t.faq.badge}</span>
@@ -75,7 +75,7 @@ export function FAQ() {
               key={faq.question}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
+              transition={{ type: "spring", stiffness: 140, damping: 18, delay: index * 0.04 }}
             >
               <FAQItem {...faq} index={index} prefix={t.faq.itemPrefix} />
             </motion.div>

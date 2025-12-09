@@ -22,7 +22,7 @@ export function CaseStudies() {
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
+          transition={{ type: "spring", stiffness: 140, damping: 18 }}
           className="text-center mb-14 sm:mb-16"
         >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
@@ -44,7 +44,7 @@ export function CaseStudies() {
                 key={item.title}
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ type: "spring", stiffness: 140, damping: 18, delay: index * 0.06 }}
                 className="glass-card-hover p-6 sm:p-8 flex flex-col gap-4 sm:gap-5"
               >
                 <div className="flex items-center justify-between">

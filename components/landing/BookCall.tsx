@@ -19,7 +19,7 @@ export function BookCall() {
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
+          transition={{ type: "spring", stiffness: 140, damping: 18 }}
           className="text-center mb-12 sm:mb-16"
         >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
@@ -37,7 +37,7 @@ export function BookCall() {
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ type: "spring", stiffness: 140, damping: 18, delay: 0.1 }}
             className="space-y-6"
           >
             <div className="glass-card p-8 space-y-4">
@@ -93,7 +93,7 @@ export function BookCall() {
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ type: "spring", stiffness: 140, damping: 18, delay: 0.15 }}
             className="glass-card p-8"
           >
             <div className="flex items-center justify-between mb-6">
