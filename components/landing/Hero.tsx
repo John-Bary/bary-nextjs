@@ -9,10 +9,7 @@ export function Hero() {
   const { t } = useI18n();
 
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-start justify-center overflow-hidden"
-    >
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <GlobeBackground />
       <div className="hero-gradient absolute inset-0" />
       <div className="floating-orb hidden sm:block w-[600px] h-[600px] bg-primary/20 -top-40 -right-40 animate-pulse-glow" />
