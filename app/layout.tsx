@@ -11,11 +11,10 @@ export const metadata: Metadata = {
   authors: [{ name: "BARY" }],
   icons: {
     icon: [
-      { url: "/favicon.ico" },
-      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
-      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { url: "/web-app-manifest-192x192.png", type: "image/png", sizes: "192x192" },
+      { url: "/web-app-manifest-512x512.png", type: "image/png", sizes: "512x512" },
     ],
-    apple: "/apple-touch-icon.png",
+    apple: "/web-app-manifest-192x192.png",
   },
   manifest: "/site.webmanifest",
   openGraph: {
