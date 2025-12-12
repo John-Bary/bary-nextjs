@@ -1,6 +1,7 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 
-const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
+const Section = ({ title, children }: { title: string; children: ReactNode }) => (
   <section className="space-y-3">
     <h2 className="font-heading text-2xl font-semibold">{title}</h2>
     <div className="space-y-2 text-muted-foreground">{children}</div>
