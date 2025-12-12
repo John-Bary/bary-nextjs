@@ -53,10 +53,10 @@ export function Services() {
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
             {t.services.badge}
           </span>
-          <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+          <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-balance">
             {t.services.title}
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto text-balance">
             {t.services.description}
           </p>
         </div>

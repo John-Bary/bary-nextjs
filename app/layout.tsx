@@ -33,6 +33,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="relative overflow-x-hidden bg-background text-foreground">
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <div className="relative z-10">
           {children}
         </div>

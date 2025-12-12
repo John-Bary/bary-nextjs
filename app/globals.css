@@ -130,6 +130,14 @@
   .line-decoration {
     @apply h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent;
   }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    transform: translateY(-140%);
+    @apply px-4 py-2 rounded-full bg-primary text-primary-foreground font-medium shadow-lg transition-transform duration-200 focus-visible:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary focus-visible:ring-offset-background z-50;
+  }
 }
 
 @layer utilities {
