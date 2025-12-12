@@ -6,22 +6,22 @@
 @layer base {
   :root {
     /* semantic colors (light) */
-    --bg: 210 20% 98%;
-    --surface: 210 20% 97%;
-    --surface-2: 210 16% 94%;
-    --overlay: 215 35% 6%;
-    --border: 215 16% 86%;
-    --text: 222 20% 12%;
-    --text-muted: 220 10% 46%;
-    --primary: 226 72% 55%;
-    --primary-hover: 226 72% 50%;
-    --primary-contrast: 0 0% 100%;
-    --accent: 272 51% 52%;
-    --accent-contrast: 0 0% 100%;
-    --success: 148 58% 45%;
-    --warning: 38 92% 55%;
-    --danger: 4 82% 55%;
-    --focus: 222 90% 66%;
+    --bg: 47 47% 93%; /* Old Lace */
+    --surface: 0 0% 100%; /* White */
+    --surface-2: 53 21% 83%; /* Bone */
+    --overlay: 0 0% 2%; /* Black base for overlays */
+    --border: 53 21% 83%; /* Bone */
+    --text: 0 0% 2%; /* Black */
+    --text-muted: 0 0% 2% / 0.64; /* Black, reduced opacity */
+    --primary: 187 73% 39%; /* Pacific Cyan */
+    --primary-hover: 187 73% 32%; /* Darker Pacific Cyan */
+    --primary-contrast: 0 0% 100%; /* White */
+    --accent: var(--primary);
+    --accent-contrast: var(--primary-contrast);
+    --success: var(--primary);
+    --warning: var(--primary-hover);
+    --danger: var(--text);
+    --focus: var(--primary);
 
     /* radii */
     --radius-sm: 0.5rem;
@@ -29,9 +29,9 @@
     --radius-lg: 1rem;
 
     /* shadows */
-    --shadow-sm: 0 2px 6px hsl(215 20% 30% / 0.08);
-    --shadow-md: 0 8px 24px hsl(215 24% 18% / 0.12);
-    --shadow-lg: 0 16px 48px hsl(215 24% 18% / 0.16);
+    --shadow-sm: 0 2px 6px hsl(0 0% 2% / 0.08);
+    --shadow-md: 0 8px 24px hsl(0 0% 2% / 0.14);
+    --shadow-lg: 0 16px 48px hsl(0 0% 2% / 0.18);
 
     /* compatibility tokens */
     --background: var(--bg);
@@ -55,22 +55,22 @@
 
   [data-theme="dark"],
   .dark {
-    --bg: 215 22% 9%;
-    --surface: 215 18% 12%;
-    --surface-2: 215 14% 18%;
-    --overlay: 215 32% 4%;
-    --border: 215 12% 28%;
-    --text: 220 22% 94%;
-    --text-muted: 215 12% 70%;
-    --primary: 226 72% 60%;
-    --primary-hover: 226 72% 55%;
+    --bg: 0 0% 2%;
+    --surface: 0 0% 8%;
+    --surface-2: 0 0% 14%;
+    --overlay: 0 0% 2%;
+    --border: 0 0% 26%;
+    --text: 0 0% 100%;
+    --text-muted: 0 0% 100% / 0.7;
+    --primary: 187 73% 44%;
+    --primary-hover: 187 73% 38%;
     --primary-contrast: 0 0% 100%;
-    --accent: 272 51% 62%;
-    --accent-contrast: 0 0% 100%;
-    --success: 148 60% 52%;
-    --warning: 38 96% 62%;
-    --danger: 4 84% 62%;
-    --focus: 226 90% 70%;
+    --accent: var(--primary);
+    --accent-contrast: var(--primary-contrast);
+    --success: var(--primary);
+    --warning: var(--primary-hover);
+    --danger: var(--text);
+    --focus: var(--primary);
 
     --background: var(--bg);
     --foreground: var(--text);
@@ -140,7 +140,7 @@
 
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-hover)) 100%);
   }
 
   .glass-card {
@@ -166,7 +166,7 @@
 
   .hero-backdrop {
     background: radial-gradient(circle at 20% 20%, hsl(var(--primary) / 0.16), transparent 45%),
-      radial-gradient(circle at 80% 10%, hsl(var(--accent) / 0.18), transparent 40%),
+      radial-gradient(circle at 80% 10%, hsl(var(--primary-hover) / 0.18), transparent 40%),
       linear-gradient(180deg, hsl(var(--surface)) 0%, hsl(var(--bg)) 35%);
   }
 
