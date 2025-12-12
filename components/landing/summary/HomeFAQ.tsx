@@ -7,6 +7,7 @@ import { useI18n } from "@/components/i18n/I18nProvider";
 export function HomeFAQ() {
   const { t } = useI18n();
   const faqs = t.faq.items.slice(0, 3);
+  const faqLinkLabel = t.navbar.links.find((link) => link.href === "/faq")?.label || t.faq.badge;
 
   return (
     <section className="py-16 md:py-20" id="faq">
@@ -23,7 +24,7 @@ export function HomeFAQ() {
             href="/faq"
             className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80"
           >
-            {t.faq.title}
+            {faqLinkLabel}
             <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>
