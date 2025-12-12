@@ -18,7 +18,7 @@ export default function Home() {
     <I18nProvider>
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
         <Navbar />
-        <main>
+        <main id="main-content">
           <Hero />
           <Services />
           <AdPlatforms />

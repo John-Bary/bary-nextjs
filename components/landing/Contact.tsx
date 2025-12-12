@@ -32,10 +32,10 @@ export function Contact() {
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
             {t.contact.badge}
           </span>
-          <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+          <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-balance">
             {t.contact.title}
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto text-balance">
             {t.contact.description}
           </p>
         </div>
@@ -97,8 +97,11 @@ export function Contact() {
                 <select
                   className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
                   defaultValue=""
+                  required
                 >
-                  <option value="">{t.contact.form.servicePlaceholder}</option>
+                  <option value="" disabled hidden>
+                    {t.contact.form.servicePlaceholder}
+                  </option>
                   {t.contact.form.services.map((service) => (
                     <option key={service.value} value={service.value}>
                       {service.label}
@@ -111,8 +114,11 @@ export function Contact() {
                 <select
                   className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
                   defaultValue=""
+                  required
                 >
-                  <option value="">{t.contact.form.budgetPlaceholder}</option>
+                  <option value="" disabled hidden>
+                    {t.contact.form.budgetPlaceholder}
+                  </option>
                   {t.contact.form.budgets.map((budget) => (
                     <option key={budget.value} value={budget.value}>
                       {budget.label}

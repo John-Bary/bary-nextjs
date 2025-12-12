@@ -24,13 +24,13 @@ export function Hero() {
             <span className="text-sm text-muted-foreground">{t.hero.badge}</span>
           </div>
 
-          <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.08]">
+          <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.08] text-balance">
             {t.hero.title}
             <br />
             <span className="gradient-text glow-text">{t.hero.highlight}</span>
           </h1>
 
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed text-balance">
             {t.hero.description}
           </p>
 
