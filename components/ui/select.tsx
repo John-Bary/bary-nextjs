@@ -34,16 +34,18 @@ export const SelectContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
-  <SelectPrimitive.Content
-    ref={ref}
-    className={cn(
-      "z-50 min-w-[12rem] overflow-hidden rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--surface))] shadow-[var(--shadow-lg)]",
-      className
-    )}
-    {...props}
-  >
-    <SelectPrimitive.Viewport className="p-1">{children}</SelectPrimitive.Viewport>
-  </SelectPrimitive.Content>
+  <SelectPrimitive.Portal>
+    <SelectPrimitive.Content
+      ref={ref}
+      className={cn(
+        "z-50 min-w-[12rem] overflow-hidden rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--surface))] shadow-[var(--shadow-lg)]",
+        className
+      )}
+      {...props}
+    >
+      <SelectPrimitive.Viewport className="p-1">{children}</SelectPrimitive.Viewport>
+    </SelectPrimitive.Content>
+  </SelectPrimitive.Portal>
 ));
 SelectContent.displayName = SelectPrimitive.Content.displayName;
 
