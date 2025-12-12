@@ -29,9 +29,14 @@ export function HomeFAQ() {
           </Link>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3">
+        <div
+          className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-3 md:gap-4 md:overflow-visible md:snap-none"
+        >
           {faqs.map((item, index) => (
-            <div key={item.question} className="glass-card-hover p-5 rounded-2xl h-full">
+            <div
+              key={item.question}
+              className="glass-card-hover p-5 rounded-2xl h-full min-w-[260px] max-w-[320px] shrink-0 snap-start md:min-w-0 md:max-w-none"
+            >
               <div className="text-primary text-sm font-semibold mb-2">{`${t.faq.itemPrefix} ${index + 1}`}</div>
               <h3 className="font-heading text-lg font-semibold mb-2">{item.question}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{item.answer}</p>
