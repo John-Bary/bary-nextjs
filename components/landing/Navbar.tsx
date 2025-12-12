@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useI18n } from "../i18n/I18nProvider";
@@ -43,19 +44,19 @@ export function Navbar() {
       }`}
     >
       <nav className="container mx-auto px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between">
-        <a href="#home" className="font-heading text-xl sm:text-2xl font-bold tracking-tight">
+        <Link href="/" className="font-heading text-xl sm:text-2xl font-bold tracking-tight">
           <span className="gradient-text">bary</span>
-        </a>
+        </Link>
 
         <div className="hidden md:flex items-center gap-6 lg:gap-8">
           {t.navbar.links.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm tracking-wide px-3 py-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <button
             type="button"
@@ -65,12 +66,12 @@ export function Navbar() {
           >
             {language === "en" ? "LT" : "EN"}
           </button>
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             className="px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             {t.navbar.cta}
-          </a>
+          </Link>
         </div>
 
         <button
@@ -96,14 +97,14 @@ export function Navbar() {
           >
             <div className="container mx-auto px-4 sm:px-6 py-6 flex flex-col gap-4">
               {t.navbar.links.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-foreground text-lg py-2 rounded-xl px-3 hover:bg-secondary/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <button
                 type="button"
@@ -113,13 +114,13 @@ export function Navbar() {
               >
                 {language === "en" ? "LT" : "EN"}
               </button>
-              <a
-                href="#contact"
+              <Link
+                href="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="px-5 py-3 rounded-full bg-primary text-primary-foreground text-center font-medium mt-2 hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 {t.navbar.cta}
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

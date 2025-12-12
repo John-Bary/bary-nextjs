@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "sonner";
 import "./globals.css";
+import { I18nProvider } from "@/components/i18n/I18nProvider";
 
 export const metadata: Metadata = {
   title: "bary.lt | Business Consulting & Creative Services",
@@ -33,15 +34,17 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="relative overflow-x-hidden bg-background text-foreground">
-        <a href="#main-content" className="skip-link">
-          Skip to main content
-        </a>
-        <div className="relative z-10">
-          {children}
-        </div>
-        <Analytics />
-        <SpeedInsights />
-        <Toaster position="top-center" richColors />
+        <I18nProvider>
+          <a href="#main-content" className="skip-link">
+            Skip to main content
+          </a>
+          <div className="relative z-10">
+            {children}
+          </div>
+          <Analytics />
+          <SpeedInsights />
+          <Toaster position="top-center" richColors />
+        </I18nProvider>
       </body>
     </html>
   );

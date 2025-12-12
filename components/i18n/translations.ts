@@ -2,15 +2,13 @@ export const translations = {
   en: {
     navbar: {
       links: [
-        { href: "#home", label: "Home" },
-        { href: "#services", label: "Services" },
-        { href: "#ad-platforms", label: "Advertising" },
-        { href: "#case-studies", label: "Case Studies" },
-        { href: "#about", label: "About" },
-        { href: "#process", label: "Process" },
-        { href: "#book-a-call", label: "Book a Call" },
-        { href: "#faq", label: "FAQ" },
-        { href: "#contact", label: "Contact" },
+        { href: "/", label: "Home" },
+        { href: "/services", label: "Services" },
+        { href: "/testimonials", label: "Case Studies" },
+        { href: "/about", label: "About" },
+        { href: "/process", label: "Process" },
+        { href: "/faq", label: "FAQ" },
+        { href: "/contact", label: "Contact" },
       ],
       cta: "Let's Talk",
       language: {
@@ -334,10 +332,10 @@ export const translations = {
     locations: undefined,
     footer: {
       links: [
-        { href: "#services", label: "Services" },
-        { href: "#about", label: "About" },
-        { href: "#process", label: "Process" },
-        { href: "#contact", label: "Contact" },
+        { href: "/services", label: "Services" },
+        { href: "/about", label: "About" },
+        { href: "/process", label: "Process" },
+        { href: "/contact", label: "Contact" },
         { href: "/privacy", label: "Privacy Policy" },
       ],
       copyright: "© {year} BARY. All rights reserved.",
@@ -347,15 +345,13 @@ export const translations = {
   lt: {
     navbar: {
       links: [
-        { href: "#home", label: "Pradžia" },
-        { href: "#services", label: "Paslaugos" },
-        { href: "#ad-platforms", label: "Reklama" },
-        { href: "#case-studies", label: "Atvejai" },
-        { href: "#about", label: "Apie" },
-        { href: "#process", label: "Procesas" },
-        { href: "#book-a-call", label: "Skambutis" },
-        { href: "#faq", label: "DUK" },
-        { href: "#contact", label: "Kontaktai" },
+        { href: "/", label: "Pradžia" },
+        { href: "/services", label: "Paslaugos" },
+        { href: "/testimonials", label: "Atvejai" },
+        { href: "/about", label: "Apie" },
+        { href: "/process", label: "Procesas" },
+        { href: "/faq", label: "DUK" },
+        { href: "/contact", label: "Kontaktai" },
       ],
       cta: "Susisiekime",
       language: {
@@ -679,10 +675,10 @@ export const translations = {
     locations: undefined,
     footer: {
       links: [
-        { href: "#services", label: "Paslaugos" },
-        { href: "#about", label: "Apie" },
-        { href: "#process", label: "Procesas" },
-        { href: "#contact", label: "Kontaktai" },
+        { href: "/services", label: "Paslaugos" },
+        { href: "/about", label: "Apie" },
+        { href: "/process", label: "Procesas" },
+        { href: "/contact", label: "Kontaktai" },
         { href: "/privacy", label: "Privatumo politika" },
       ],
       copyright: "© {year} BARY. Visos teisės saugomos.",
