@@ -14,7 +14,7 @@ export default function TestimonialsPage() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
-      <main id="main-content" className="pt-24">
+      <main id="main-content" className="pt-16 md:pt-20">
         <CaseStudies />
         <BookCall />
         <ContactCta />
