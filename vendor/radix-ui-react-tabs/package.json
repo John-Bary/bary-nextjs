@@ -1,0 +1,12 @@
+{
+  "name": "@radix-ui/react-tabs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "module": "index.js",
+  "types": "index.d.ts",
+  "sideEffects": false,
+  "peerDependencies": {
+    "react": "*",
+    "@radix-ui/react-slot": "*"
+  }
+}

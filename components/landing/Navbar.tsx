@@ -1,130 +1,147 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Menu, X, Globe2 } from "lucide-react";
 import { useI18n } from "../i18n/I18nProvider";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function Navbar() {
   const { t, language, setLanguage } = useI18n();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const handler = () => setIsScrolled(window.scrollY > 24);
+    handler();
+    window.addEventListener("scroll", handler, { passive: true });
+    return () => window.removeEventListener("scroll", handler);
   }, []);
 
   useEffect(() => {
-    if (!isMobileMenuOpen) {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
       document.body.style.removeProperty("overflow");
-      return;
     }
-
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = originalOverflow;
-    };
-  }, [isMobileMenuOpen]);
+  }, [open]);
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border/50"
+          ? "backdrop-blur-md bg-[hsl(var(--surface))/0.9] border-b border-[hsl(var(--border))] shadow-[var(--shadow-sm)]"
           : "bg-transparent"
       }`}
     >
-      <nav className="container mx-auto px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between">
-        <Link href="/" className="font-heading text-xl sm:text-2xl font-bold tracking-tight">
-          <span className="gradient-text">bary</span>
+      <div className="container mx-auto flex items-center justify-between px-4 py-4">
+        <Link
+          href="/"
+          className="flex items-center gap-2 rounded-md px-2 py-1 text-lg font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--focus))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--bg))]"
+        >
+          <span className="h-9 w-9 rounded-lg bg-[hsl(var(--primary))/0.12] text-[hsl(var(--primary))] flex items-center justify-center font-bold">
+            B
+          </span>
+          <span className="tracking-tight">bary</span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-6 lg:gap-8">
+        <nav className="hidden items-center gap-1 lg:flex">
           {t.navbar.links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm tracking-wide px-3 py-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="rounded-md px-3 py-2 text-sm font-medium text-[hsl(var(--text-muted))] transition-colors hover:text-[hsl(var(--text))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--focus))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--bg))]"
             >
               {link.label}
             </Link>
           ))}
-          <button
-            type="button"
-            onClick={() => setLanguage(language === "en" ? "lt" : "en")}
-            aria-label={t.navbar.language.toggleAria}
-            className="px-3 py-2 rounded-full border border-border text-xs font-medium text-foreground/80 hover:border-primary/60 hover:text-foreground transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          >
-            {language === "en" ? "LT" : "EN"}
-          </button>
-          <Link
-            href="/contact"
-            className="px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          >
-            {t.navbar.cta}
-          </Link>
+        </nav>
+
+        <div className="hidden items-center gap-3 lg:flex">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="sm" className="px-3 text-sm">
+                <Globe2 className="mr-2 h-4 w-4" />
+                {language === "en" ? "EN" : "LT"}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem onClick={() => setLanguage("en")}>English</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setLanguage("lt")}>Lietuvių</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Button asChild size="sm">
+            <Link href="/contact">{t.navbar.cta}</Link>
+          </Button>
         </div>
 
         <button
           type="button"
-          onClick={() => setIsMobileMenuOpen((open) => !open)}
-          aria-expanded={isMobileMenuOpen}
-          aria-controls="mobile-menu"
-          aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-          className="md:hidden text-foreground p-2 rounded-full border border-border/80 bg-background/80 backdrop-blur focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          onClick={() => setOpen((prev) => !prev)}
+          className="inline-flex items-center rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--surface))] p-2 text-[hsl(var(--text))] lg:hidden"
+          aria-expanded={open}
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
-      </nav>
+      </div>
 
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            id="mobile-menu"
-            className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border shadow-xl"
-          >
-            <div className="container mx-auto px-4 sm:px-6 py-6 flex flex-col gap-4">
-              {t.navbar.links.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-foreground text-lg py-2 rounded-xl px-3 hover:bg-secondary/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <button
-                type="button"
-                onClick={() => setLanguage(language === "en" ? "lt" : "en")}
-                aria-label={t.navbar.language.toggleAria}
-                className="w-full px-5 py-3 rounded-full border border-border text-center font-medium text-foreground hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-              >
-                {language === "en" ? "LT" : "EN"}
-              </button>
+      {open && (
+        <div className="lg:hidden border-t border-[hsl(var(--border))] bg-[hsl(var(--surface))] shadow-[var(--shadow-md)]">
+          <div className="container px-4 py-4 space-y-3">
+            {t.navbar.links.map((link) => (
               <Link
-                href="/contact"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="px-5 py-3 rounded-full bg-primary text-primary-foreground text-center font-medium mt-2 hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="block rounded-lg px-3 py-2 text-[hsl(var(--text))] hover:bg-[hsl(var(--surface-2))]"
               >
-                {t.navbar.cta}
+                {link.label}
               </Link>
+            ))}
+            <div className="flex items-center justify-between gap-3 pt-2">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="secondary" className="w-full justify-between">
+                    <span className="flex items-center gap-2">
+                      <Globe2 className="h-4 w-4" />
+                      {language === "en" ? "English" : "Lietuvių"}
+                    </span>
+                    <ChevronIcon />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start">
+                  <DropdownMenuItem onClick={() => setLanguage("en")}>English</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setLanguage("lt")}>Lietuvių</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <Button className="w-full" asChild>
+                <Link href="/contact" onClick={() => setOpen(false)}>
+                  {t.navbar.cta}
+                </Link>
+              </Button>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.header>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}
+
+function ChevronIcon() {
+  return (
+    <svg
+      className="h-4 w-4 text-[hsl(var(--text-muted))]"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M6 8l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }
