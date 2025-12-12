@@ -29,9 +29,9 @@ export function HomeCaseStudies() {
           </Link>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid gap-6 md:auto-rows-fr md:grid-cols-2 lg:grid-cols-3">
           {t.caseStudies.items.slice(0, 3).map((study) => (
-            <div key={study.title} className="glass-card-hover p-6 flex flex-col gap-3">
+            <div key={study.title} className="glass-card-hover flex h-full flex-col gap-3 p-6">
               <div className="text-xs uppercase tracking-wide text-primary font-semibold">{study.industry}</div>
               <h3 className="font-heading text-xl font-semibold text-foreground">{study.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{study.summary}</p>

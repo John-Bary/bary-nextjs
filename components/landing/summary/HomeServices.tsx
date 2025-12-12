@@ -62,14 +62,14 @@ export function HomeServices() {
 function ServiceGrid({ services }: { services: Service[] }) {
   return (
     <div
-      className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4 md:overflow-visible md:snap-none"
+      className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:auto-rows-fr md:grid-cols-2 lg:grid-cols-3 md:gap-4 md:overflow-visible md:snap-none"
     >
       {services.map((service, index) => {
         const Icon = serviceIcons[index % serviceIcons.length];
         return (
           <Card
             key={service.title}
-            className="flex h-full min-w-[280px] max-w-[340px] shrink-0 snap-start flex-col justify-between p-5 transition hover:-translate-y-1 hover:shadow-[var(--shadow-md)] md:min-w-0 md:max-w-none"
+            className="flex h-full w-full min-w-[280px] shrink-0 snap-start flex-col justify-between p-5 transition hover:-translate-y-1 hover:shadow-[var(--shadow-md)] md:w-auto md:min-w-0 md:snap-none"
           >
             <div className="space-y-3">
               <div className="flex items-center gap-3">
