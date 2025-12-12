@@ -24,14 +24,13 @@ const buttonSizes = {
 export type ButtonVariant = keyof typeof buttonVariants;
 export type ButtonSize = keyof typeof buttonSizes;
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   asChild?: boolean;
 }
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = React.forwardRef<React.ElementRef<"button">, ButtonProps>(
   (
     {
       className,
@@ -48,7 +47,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <Comp
-        ref={ref as any}
+        ref={ref}
         className={cn(
           "inline-flex items-center justify-center gap-2 rounded-md font-semibold transition-colors duration-200",
           "focus-visible:outline-none disabled:opacity-60 disabled:cursor-not-allowed",
