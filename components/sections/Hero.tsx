@@ -32,7 +32,7 @@ export function Hero() {
                     transition={{ duration: 0.7 }}
                 >
                     <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/15 text-white/90 text-sm border border-white/30">
-                        <span className="h-2 w-2 rounded-full bg-emerald inline-block" />
+                        <span className="h-2 w-2 rounded-full bg-orange inline-block" />
                         {t.hero.secondaryCta}
                     </div>
 
@@ -51,7 +51,7 @@ export function Hero() {
                         <Link href="#contact" className="w-full sm:w-auto">
                             <Button
                                 size="lg"
-                                className="w-full sm:w-auto bg-gradient-to-r from-cerulean to-emerald text-white shadow-[0_18px_45px_rgba(6,182,212,0.35)] border border-white/10 hover:brightness-105 transition"
+                                className="w-full sm:w-auto bg-gradient-to-r from-cerulean to-berry text-white shadow-[0_18px_45px_rgba(38,67,230,0.32)] border border-white/10 hover:brightness-105 transition"
                                 aria-label={t.hero.primaryCta}
                             >
                                 {t.hero.primaryCta}
