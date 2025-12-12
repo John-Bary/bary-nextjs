@@ -13,12 +13,12 @@ export function Hero() {
     return (
         <section
             id="home"
-            className="relative overflow-hidden min-h-[80vh] flex items-center py-16 sm:py-24 bg-gradient-to-br from-[#F0F8FF] via-white to-[#F7F9FC]"
+            className="relative overflow-hidden min-h-[80vh] flex items-center py-16 sm:py-24 bg-gradient-to-br from-[#E6E9FF] via-white to-[#F4F6FB]"
         >
             {/* 3D-like floating bubbles */}
-            <div className="absolute -top-10 right-6 w-[320px] h-[320px] rounded-full bg-gradient-to-br from-emerald/50 via-cerulean/45 to-white/30 blur-3xl animate-[float_12s_ease-in-out_infinite]" />
-            <div className="absolute bottom-[-80px] left-[-40px] w-[360px] h-[360px] rounded-full bg-gradient-to-br from-cerulean/40 via-emerald/35 to-white/20 blur-3xl animate-[float_14s_ease-in-out_infinite]" />
-            <div className="absolute top-1/3 left-1/3 w-[220px] h-[220px] rounded-full bg-gradient-to-br from-white/60 via-cerulean/30 to-emerald/30 blur-3xl opacity-70 animate-[float_16s_ease-in-out_infinite]" />
+            <div className="absolute -top-10 right-6 w-[320px] h-[320px] rounded-full bg-gradient-to-br from-berry/45 via-cerulean/45 to-white/25 blur-3xl animate-[float_12s_ease-in-out_infinite]" />
+            <div className="absolute bottom-[-80px] left-[-40px] w-[360px] h-[360px] rounded-full bg-gradient-to-br from-cerulean/40 via-orange/35 to-white/22 blur-3xl animate-[float_14s_ease-in-out_infinite]" />
+            <div className="absolute top-1/3 left-1/3 w-[220px] h-[220px] rounded-full bg-gradient-to-br from-white/65 via-cerulean/30 to-emerald/30 blur-3xl opacity-70 animate-[float_16s_ease-in-out_infinite]" />
 
             <div className="container relative z-10">
                 <motion.div
@@ -44,7 +44,7 @@ export function Hero() {
                         <Link href="#contact" className="w-full sm:w-auto">
                             <Button
                                 size="lg"
-                                className="w-full sm:w-auto bg-gradient-to-r from-cerulean to-emerald text-white shadow-[0_18px_45px_rgba(6,182,212,0.35)]"
+                                className="w-full sm:w-auto bg-gradient-to-r from-cerulean to-berry text-white shadow-[0_18px_45px_rgba(38,67,230,0.32)]"
                             >
                                 {t.hero.primaryCta}
                             </Button>
@@ -53,7 +53,7 @@ export function Hero() {
                             <Button
                                 variant="glass"
                                 size="lg"
-                                className="w-full sm:w-auto border-cerulean/30 text-dark-gray hover:bg-white/80"
+                                className="w-full sm:w-auto border-cerulean/30 text-dark-gray hover:bg-white/85"
                             >
                                 {t.hero.secondaryCta}
                             </Button>
