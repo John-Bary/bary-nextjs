@@ -32,14 +32,14 @@ export const About = () => {
 
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p>
-                We're a strategic consulting and creative agency based in Vilnius, Lithuania.
-                Since 2024, we've helped businesses across Europe transform their operations,
+                We are a strategic consulting and creative agency based in Vilnius, Lithuania.
+                Since 2024, we have helped businesses across Europe transform their operations,
                 strengthen their brands, and build digital products that scale.
               </p>
               <p>
                 Our approach is straightforward: understand the problem, develop a clear strategy,
-                and execute with precision. We don't believe in unnecessary complexity or drawn-out
-                timelines. We believe in delivering measurable results.
+                and execute with precision. We do not believe in unnecessary complexity or drawn-out
+                timelines. We focus on delivering measurable results.
               </p>
               <p>
                 Our team brings together expertise in business strategy, design, and technology.

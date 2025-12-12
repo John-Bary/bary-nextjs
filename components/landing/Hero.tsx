@@ -75,7 +75,7 @@ export function Hero() {
             <Card className="p-4 bg-[hsl(var(--surface-2))]">
               <p className="text-sm font-medium text-[hsl(var(--text))]">Customer spotlight</p>
               <p className="mt-2 text-sm text-[hsl(var(--text-muted))]">
-                "Bary rebuilt our launch playbook and gave us predictable growth. The new design system keeps every page cohesive."
+                &ldquo;Bary rebuilt our launch playbook and gave us predictable growth. The new design system keeps every page cohesive.&rdquo;
               </p>
               <div className="mt-3 flex items-center gap-2 text-xs text-[hsl(var(--text-muted))]">
                 <span className="h-8 w-8 rounded-full bg-[hsl(var(--primary))/0.12]" />

@@ -1,6 +1,8 @@
 "use client";
 
-import { type FormEvent, useState } from "react";
+import { useMemo } from "react";
+import { Controller, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Mail, MapPin, Send, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { useI18n } from "../i18n/I18nProvider";
@@ -9,24 +11,75 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  ContactFormData,
+  ContactFormMessages,
+  createContactFormSchema,
+  defaultContactFormMessages,
+} from "@/lib/validations";
 
 export function Contact() {
   const { t } = useI18n();
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setIsSubmitting(true);
+  const validationMessages = useMemo<ContactFormMessages>(() => {
+    const fallback = defaultContactFormMessages;
+    const localized = t.contact.form.validation;
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    if (!localized) return fallback;
 
-    toast.success(t.contact.toast.title, {
-      description: t.contact.toast.description,
-    });
+    return {
+      nameMin: localized.nameMin || fallback.nameMin,
+      nameMax: localized.nameMax || fallback.nameMax,
+      email: localized.email || fallback.email,
+      service: localized.service || fallback.service,
+      messageMin: localized.messageMin || fallback.messageMin,
+      messageMax: localized.messageMax || fallback.messageMax,
+    } satisfies ContactFormMessages;
+  }, [t.contact.form.validation]);
 
-    setIsSubmitting(false);
-    (event.target as HTMLFormElement).reset();
-  };
+  const {
+    control,
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(createContactFormSchema(validationMessages)),
+    defaultValues: {
+      name: "",
+      email: "",
+      service: "",
+      budget: "",
+      message: "",
+    },
+  });
+
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result?.success) {
+        throw new Error(result?.error || "Unknown error");
+      }
+
+      toast.success(t.contact.toast.title, {
+        description: t.contact.toast.description,
+      });
+
+      reset();
+    } catch (error) {
+      console.error("Contact form submission error:", error);
+      toast.error(t.contact.toast.errorTitle, {
+        description: t.contact.toast.errorDescription,
+      });
+    }
+  });
 
   return (
     <section id="contact" className="relative overflow-hidden bg-[hsl(var(--bg))] py-24">
@@ -68,58 +121,122 @@ export function Contact() {
           </div>
 
           <Card className="p-6 shadow-[var(--shadow-md)]">
-            <form className="space-y-5" onSubmit={handleSubmit}>
+            <form className="space-y-5" onSubmit={onSubmit} noValidate>
               <div className="grid gap-4 sm:grid-cols-2">
-                <Field label={t.contact.form.nameLabel}>
-                  <Input required placeholder={t.contact.form.namePlaceholder} aria-label={t.contact.form.nameLabel} />
-                </Field>
-                <Field label={t.contact.form.emailLabel}>
+                <Field
+                  label={t.contact.form.nameLabel}
+                  htmlFor="contact-name"
+                  error={errors.name?.message}
+                >
                   <Input
+                    id="contact-name"
+                    placeholder={t.contact.form.namePlaceholder}
+                    aria-invalid={Boolean(errors.name)}
+                    aria-describedby={errors.name ? "contact-name-error" : undefined}
+                    disabled={isSubmitting}
+                    autoComplete="name"
+                    {...register("name")}
+                  />
+                </Field>
+                <Field
+                  label={t.contact.form.emailLabel}
+                  htmlFor="contact-email"
+                  error={errors.email?.message}
+                >
+                  <Input
+                    id="contact-email"
                     type="email"
-                    required
                     placeholder={t.contact.form.emailPlaceholder}
-                    aria-label={t.contact.form.emailLabel}
+                    aria-invalid={Boolean(errors.email)}
+                    aria-describedby={errors.email ? "contact-email-error" : undefined}
+                    disabled={isSubmitting}
+                    autoComplete="email"
+                    {...register("email")}
                   />
                 </Field>
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
-                <Field label={t.contact.form.serviceLabel}>
-                  <Select defaultValue="">
-                    <SelectTrigger>
-                      <SelectValue placeholder={t.contact.form.servicePlaceholder} />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {t.contact.form.services.map((service) => (
-                        <SelectItem key={service.value} value={service.value}>
-                          {service.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                <Field
+                  label={t.contact.form.serviceLabel}
+                  htmlFor="contact-service"
+                  error={errors.service?.message}
+                >
+                  <Controller
+                    control={control}
+                    name="service"
+                    render={({ field }) => (
+                      <Select value={field.value || ""} onValueChange={field.onChange}>
+                        <SelectTrigger
+                          id="contact-service"
+                          aria-invalid={Boolean(errors.service)}
+                          aria-required="true"
+                          aria-describedby={errors.service ? "contact-service-error" : undefined}
+                          disabled={isSubmitting}
+                        >
+                          <SelectValue placeholder={t.contact.form.servicePlaceholder} />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {t.contact.form.services.map((service) => (
+                            <SelectItem key={service.value} value={service.value}>
+                              {service.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    )}
+                  />
                 </Field>
-                <Field label={t.contact.form.budgetLabel}>
-                  <Select defaultValue="">
-                    <SelectTrigger>
-                      <SelectValue placeholder={t.contact.form.budgetPlaceholder} />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {t.contact.form.budgets.map((budget) => (
-                        <SelectItem key={budget.value} value={budget.value}>
-                          {budget.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                <Field
+                  label={t.contact.form.budgetLabel}
+                  htmlFor="contact-budget"
+                  hint={t.contact.form.budgetHelper}
+                >
+                  <Controller
+                    control={control}
+                    name="budget"
+                    render={({ field }) => (
+                      <Select value={field.value || ""} onValueChange={field.onChange}>
+                        <SelectTrigger
+                          id="contact-budget"
+                          aria-describedby={t.contact.form.budgetHelper ? "contact-budget-hint" : undefined}
+                          disabled={isSubmitting}
+                        >
+                          <SelectValue placeholder={t.contact.form.budgetPlaceholder} />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {t.contact.form.budgets.map((budget) => (
+                            <SelectItem key={budget.value} value={budget.value}>
+                              {budget.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    )}
+                  />
                 </Field>
               </div>
 
-              <Field label={t.contact.form.messageLabel}>
-                <Textarea rows={4} required placeholder={t.contact.form.messagePlaceholder} />
-                <p className="mt-2 text-xs text-[hsl(var(--text-muted))]">We respond within one business day.</p>
+              <Field
+                label={t.contact.form.messageLabel}
+                htmlFor="contact-message"
+                error={errors.message?.message}
+                hint={t.contact.form.responseNote}
+              >
+                <Textarea
+                  id="contact-message"
+                  rows={4}
+                  placeholder={t.contact.form.messagePlaceholder}
+                  aria-invalid={Boolean(errors.message)}
+                  aria-describedby={
+                    errors.message ? "contact-message-error" : t.contact.form.responseNote ? "contact-message-hint" : undefined
+                  }
+                  disabled={isSubmitting}
+                  {...register("message")}
+                />
               </Field>
 
-              <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
+              <Button type="submit" className="w-full" size="lg" disabled={isSubmitting} aria-busy={isSubmitting}>
                 {isSubmitting ? (
                   <>
                     <Loader2 className="h-4 w-4 animate-spin" />
@@ -140,11 +257,40 @@ export function Contact() {
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({
+  label,
+  children,
+  htmlFor,
+  error,
+  hint,
+}: {
+  label: string;
+  children: React.ReactNode;
+  htmlFor: string;
+  error?: string;
+  hint?: string;
+}) {
   return (
-    <label className="flex flex-col gap-2 text-sm font-medium text-[hsl(var(--text))]">
-      <span>{label}</span>
+    <div className="flex flex-col gap-2 text-sm font-medium text-[hsl(var(--text))]">
+      <label htmlFor={htmlFor} className="flex items-center justify-between gap-2">
+        <span>{label}</span>
+        {hint && !error && (
+          <span className="text-[hsl(var(--text-muted))] text-xs" id={`${htmlFor}-hint`}>
+            {hint}
+          </span>
+        )}
+      </label>
       {children}
-    </label>
+      {error ? (
+        <p
+          id={`${htmlFor}-error`}
+          className="text-xs text-[hsl(var(--destructive))]"
+          role="alert"
+          aria-live="polite"
+        >
+          {error}
+        </p>
+      ) : null}
+    </div>
   );
 }

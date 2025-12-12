@@ -7,11 +7,9 @@ const serviceIcons = [Briefcase, Palette, Code2, TrendingUp];
 
 function ServiceCard({
   service,
-  index,
   Icon,
 }: {
   service: { title: string; description: string; features: readonly string[] };
-  index: number;
   Icon: typeof Briefcase;
 }) {
   return (
@@ -64,7 +62,7 @@ export function Services() {
         <div className="grid md:grid-cols-2 gap-5 sm:gap-6 lg:gap-8">
           {t.services.items.map((service, index) => {
             const Icon = serviceIcons[index % serviceIcons.length];
-            return <ServiceCard key={service.title} service={service} index={index} Icon={Icon} />;
+            return <ServiceCard key={service.title} service={service} Icon={Icon} />;
           })}
         </div>
       </div>

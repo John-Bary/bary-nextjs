@@ -12,14 +12,11 @@ type I18nContextValue = {
 const I18nContext = createContext<I18nContextValue | undefined>(undefined);
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("en");
-
-  useEffect(() => {
-    const savedLanguage = typeof window !== "undefined" ? (localStorage.getItem("bary-language") as Language | null) : null;
-    if (savedLanguage && savedLanguage in translations) {
-      setLanguage(savedLanguage);
-    }
-  }, []);
+  const [language, setLanguage] = useState<Language>(() => {
+    if (typeof window === "undefined") return "en";
+    const savedLanguage = localStorage.getItem("bary-language") as Language | null;
+    return savedLanguage && savedLanguage in translations ? savedLanguage : "en";
+  });
 
   useEffect(() => {
     if (typeof window !== "undefined") {

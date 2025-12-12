@@ -6,8 +6,10 @@ import { useI18n } from "@/components/i18n/I18nProvider";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import type { TranslationContent } from "@/components/i18n/translations";
 
 const serviceIcons = [Briefcase, Palette, Code2, TrendingUp];
+type Service = TranslationContent["services"]["items"][number];
 
 export function HomeServices() {
   const { t } = useI18n();
@@ -57,7 +59,7 @@ export function HomeServices() {
   );
 }
 
-function ServiceGrid({ services }: { services: any[] }) {
+function ServiceGrid({ services }: { services: Service[] }) {
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {services.map((service, index) => {
