@@ -29,12 +29,12 @@ export function HomeProcess() {
         </div>
 
         <div
-          className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-3 md:gap-4 md:overflow-visible md:snap-none"
+          className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:auto-rows-fr md:grid-cols-3 md:gap-4 md:overflow-visible md:snap-none"
         >
           {steps.map((step) => (
             <div
               key={step.number}
-              className="glass-card-hover p-5 flex min-w-[260px] max-w-[320px] shrink-0 snap-start flex-col gap-3 md:min-w-0 md:max-w-none"
+              className="glass-card-hover h-full p-5 flex min-w-[260px] w-full shrink-0 snap-start flex-col gap-3 md:min-w-0 md:w-auto md:snap-none"
             >
               <div className="text-primary font-semibold text-sm">{step.number}</div>
               <h3 className="font-heading text-xl font-semibold">{step.title}</h3>

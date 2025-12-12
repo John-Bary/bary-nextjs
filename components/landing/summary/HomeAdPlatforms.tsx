@@ -27,9 +27,9 @@ export function HomeAdPlatforms() {
           </Link>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid gap-4 md:auto-rows-fr md:grid-cols-2 lg:grid-cols-3">
           {t.adPlatforms.platforms.slice(0, 6).map((platform) => (
-            <div key={platform.key} className="glass-card-hover p-5 flex flex-col gap-3">
+            <div key={platform.key} className="glass-card-hover flex h-full flex-col gap-3 p-5">
               <div className="flex items-center gap-2">
                 <Sparkle className="w-4 h-4 text-primary" />
                 <h3 className="font-heading text-lg font-semibold">{platform.name}</h3>
