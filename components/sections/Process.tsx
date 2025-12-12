@@ -9,10 +9,16 @@ import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export function Process() {
     const { t } = useLanguage();
-    const stepColors = ["bg-cerulean", "bg-orange", "bg-amber text-dark-gray", "bg-emerald", "bg-berry"];
+    const stepColors = [
+        "bg-primary text-primary-foreground",
+        "bg-[hsl(var(--primary-hover))] text-primary-contrast",
+        "bg-[hsl(var(--surface-2))] text-[hsl(var(--text))]",
+        "bg-primary text-primary-foreground",
+        "bg-[hsl(var(--primary-hover))] text-primary-contrast",
+    ];
 
     return (
-        <section id="process" className="section bg-light-gray/60">
+        <section id="process" className="section bg-[hsl(var(--surface))/0.6]">
             <div className="container">
                 <div className="text-center mb-2xl">
                     <h2>{t.process.heading}</h2>

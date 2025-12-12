@@ -11,7 +11,7 @@ export function Portfolio() {
     const { t } = useLanguage();
 
     return (
-        <section id="portfolio" className="section bg-light-gray">
+        <section id="portfolio" className="section bg-[hsl(var(--surface))]">
             <div className="container">
                 <div className="text-center mb-2xl">
                     <h2>{t.portfolio.heading}</h2>
@@ -30,7 +30,7 @@ export function Portfolio() {
                             transition={{ delay: index * 0.1 }}
                         >
                             <Card className="overflow-hidden p-0">
-                                <div className={`w-full h-[250px] bg-gradient-to-br ${project.gradient} flex items-center justify-center text-white text-h3 font-bold rounded-t-xl`}>
+                                <div className={`w-full h-[250px] bg-gradient-to-br ${project.gradient} flex items-center justify-center text-primary-contrast text-h3 font-bold rounded-t-xl`}>
                                     Project {index + 1}
                                 </div>
                                 <div className="p-lg">
@@ -39,16 +39,12 @@ export function Portfolio() {
                                     </Badge>
                                     <h4 className="mb-sm">{project.title}</h4>
                                     <p className="mb-md">{project.description}</p>
-                                    <p className="text-small text-emerald font-semibold mb-md">
+                                    <p className="text-small text-[hsl(var(--primary))] font-semibold mb-md">
                                         {project.result}
                                     </p>
                                     <Link
                                         href="#contact"
-                                        className={`no-underline font-semibold ${project.badgeVariant === 'cerulean' ? 'text-cerulean' :
-                                                project.badgeVariant === 'orange' ? 'text-orange' :
-                                                    project.badgeVariant === 'emerald' ? 'text-emerald' :
-                                                        'text-berry'
-                                            }`}
+                                        className="no-underline font-semibold text-[hsl(var(--primary))] hover:text-[hsl(var(--primary-hover))]"
                                     >
                                         {t.portfolio.viewCaseStudy}
                                     </Link>

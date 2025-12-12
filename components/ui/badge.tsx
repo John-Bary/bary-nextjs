@@ -2,17 +2,14 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
-    variant?: "cerulean" | "orange" | "amber" | "berry" | "emerald";
+    variant?: "primary" | "muted";
 }
 
 const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
-    ({ className, variant = "cerulean", ...props }, ref) => {
+    ({ className, variant = "primary", ...props }, ref) => {
         const variants = {
-            cerulean: "bg-cerulean text-white",
-            orange: "bg-orange text-white",
-            amber: "bg-amber text-dark-gray",
-            berry: "bg-berry text-white",
-            emerald: "bg-emerald text-white",
+            primary: "bg-primary text-primary-foreground",
+            muted: "bg-[hsl(var(--surface-2))] text-[hsl(var(--text))]",
         };
 
         return (

@@ -13,12 +13,12 @@ export function Hero() {
     return (
         <section
             id="home"
-            className="relative overflow-hidden min-h-[80vh] flex items-center py-16 sm:py-24 bg-gradient-to-br from-[#E6E9FF] via-white to-[#F4F6FB]"
+            className="relative overflow-hidden min-h-[80vh] flex items-center py-16 sm:py-24 bg-gradient-to-br from-[hsl(var(--surface-2))] via-[hsl(var(--surface))] to-[hsl(var(--bg))]"
         >
             {/* 3D-like floating bubbles */}
-            <div className="absolute -top-10 right-6 w-[320px] h-[320px] rounded-full bg-gradient-to-br from-berry/45 via-cerulean/45 to-white/25 blur-3xl animate-[float_12s_ease-in-out_infinite]" />
-            <div className="absolute bottom-[-80px] left-[-40px] w-[360px] h-[360px] rounded-full bg-gradient-to-br from-cerulean/40 via-orange/35 to-white/22 blur-3xl animate-[float_14s_ease-in-out_infinite]" />
-            <div className="absolute top-1/3 left-1/3 w-[220px] h-[220px] rounded-full bg-gradient-to-br from-white/65 via-cerulean/30 to-emerald/30 blur-3xl opacity-70 animate-[float_16s_ease-in-out_infinite]" />
+            <div className="absolute -top-10 right-6 w-[320px] h-[320px] rounded-full bg-gradient-to-br from-primary/45 via-primary/60 to-[hsl(var(--surface))]/25 blur-3xl animate-[float_12s_ease-in-out_infinite]" />
+            <div className="absolute bottom-[-80px] left-[-40px] w-[360px] h-[360px] rounded-full bg-gradient-to-br from-primary/35 via-[hsl(var(--surface-2))]/60 to-[hsl(var(--surface))]/22 blur-3xl animate-[float_14s_ease-in-out_infinite]" />
+            <div className="absolute top-1/3 left-1/3 w-[220px] h-[220px] rounded-full bg-gradient-to-br from-white/65 via-primary/30 to-[hsl(var(--primary-hover))] blur-3xl opacity-70 animate-[float_16s_ease-in-out_infinite]" />
 
             <div className="container relative z-10">
                 <motion.div
@@ -27,16 +27,16 @@ export function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/80 text-dark-gray text-sm shadow-sm border border-white/70">
-                        <span className="h-2 w-2 rounded-full bg-emerald inline-block" />
+                    <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/80 text-[hsl(var(--text))] text-sm shadow-sm border border-white/70">
+                        <span className="h-2 w-2 rounded-full bg-primary inline-block" />
                         {t.hero.secondaryCta}
                     </div>
 
-                    <h1 className="display leading-tight text-dark-gray">
+                    <h1 className="display leading-tight text-[hsl(var(--text))]">
                         {t.hero.title}
                     </h1>
 
-                    <p className="text-large sm:text-xl max-w-3xl mx-auto text-text-gray">
+                    <p className="text-large sm:text-xl max-w-3xl mx-auto text-[hsl(var(--text-muted))]">
                         {t.hero.subtitle}
                     </p>
 
@@ -44,7 +44,7 @@ export function Hero() {
                         <Link href="#contact" className="w-full sm:w-auto">
                             <Button
                                 size="lg"
-                                className="w-full sm:w-auto bg-gradient-to-r from-cerulean to-berry text-white shadow-[0_18px_45px_rgba(38,67,230,0.32)]"
+                                className="w-full sm:w-auto bg-gradient-to-r from-primary to-[hsl(var(--primary-hover))] text-primary-foreground shadow-[0_18px_45px_hsl(var(--primary)/0.32)]"
                             >
                                 {t.hero.primaryCta}
                             </Button>
@@ -53,7 +53,7 @@ export function Hero() {
                             <Button
                                 variant="secondary"
                                 size="lg"
-                                className="w-full sm:w-auto border-cerulean/30 text-dark-gray hover:bg-white/85"
+                                className="w-full sm:w-auto border-primary/30 text-[hsl(var(--text))] hover:bg-[hsl(var(--surface))]/85"
                             >
                                 {t.hero.secondaryCta}
                             </Button>
@@ -62,22 +62,22 @@ export function Hero() {
 
                     {/* Trust Indicators */}
                     <motion.div
-                        className="w-fit max-w-full mx-auto rounded-2xl px-6 py-5 sm:px-8 sm:py-6 bg-white/80 border border-white/70 backdrop-blur-lg flex gap-6 sm:gap-xl justify-center flex-wrap text-dark-gray shadow-[0_15px_45px_rgba(0,0,0,0.12)]"
+                        className="w-fit max-w-full mx-auto rounded-2xl px-6 py-5 sm:px-8 sm:py-6 bg-white/80 border border-white/70 backdrop-blur-lg flex gap-6 sm:gap-xl justify-center flex-wrap text-[hsl(var(--text))] shadow-[0_15px_45px_rgba(0,0,0,0.12)]"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.25, duration: 0.5 }}
                     >
                         <div className="text-center">
-                            <AnimatedCounter value={10} suffix="+" className="text-h2 font-bold mb-xs text-cerulean" />
-                            <p className="text-small m-0 text-text-gray">{t.hero.stats.projects}</p>
+                            <AnimatedCounter value={10} suffix="+" className="text-h2 font-bold mb-xs text-primary" />
+                            <p className="text-small m-0 text-[hsl(var(--text-muted))]">{t.hero.stats.projects}</p>
                         </div>
                         <div className="text-center">
-                            <AnimatedCounter value={99} suffix="%" className="text-h2 font-bold mb-xs text-orange" />
-                            <p className="text-small m-0 text-text-gray">{t.hero.stats.satisfaction}</p>
+                            <AnimatedCounter value={99} suffix="%" className="text-h2 font-bold mb-xs text-primary" />
+                            <p className="text-small m-0 text-[hsl(var(--text-muted))]">{t.hero.stats.satisfaction}</p>
                         </div>
                         <div className="text-center">
-                            <AnimatedCounter value={2} suffix="+" className="text-h2 font-bold mb-xs text-emerald" />
-                            <p className="text-small m-0 text-text-gray">{t.hero.stats.years}</p>
+                            <AnimatedCounter value={2} suffix="+" className="text-h2 font-bold mb-xs text-primary" />
+                            <p className="text-small m-0 text-[hsl(var(--text-muted))]">{t.hero.stats.years}</p>
                         </div>
                     </motion.div>
                 </motion.div>
