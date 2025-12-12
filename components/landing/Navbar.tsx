@@ -84,8 +84,9 @@ export function Navbar() {
         <button
           type="button"
           onClick={() => setOpen((prev) => !prev)}
-          className="inline-flex items-center rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--surface))] p-2 text-[hsl(var(--text))] lg:hidden"
+          className="inline-flex items-center rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--surface))] p-2 text-[hsl(var(--text))] lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--focus))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--bg))]"
           aria-expanded={open}
+          aria-label={open ? "Close menu" : "Open menu"}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>

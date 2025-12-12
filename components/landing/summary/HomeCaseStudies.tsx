@@ -6,6 +6,8 @@ import { useI18n } from "@/components/i18n/I18nProvider";
 
 export function HomeCaseStudies() {
   const { t } = useI18n();
+  const caseStudiesLabel =
+    t.navbar.links.find((link) => link.href === "/testimonials")?.label || t.caseStudies.badge;
 
   return (
     <section className="py-20 md:py-24" id="case-studies">
@@ -22,7 +24,7 @@ export function HomeCaseStudies() {
             href="/testimonials"
             className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80"
           >
-            {t.caseStudies.title}
+            {caseStudiesLabel}
             <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>
