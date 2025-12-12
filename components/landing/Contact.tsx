@@ -1,9 +1,14 @@
 "use client";
 
 import { type FormEvent, useState } from "react";
-import { Mail, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { useI18n } from "../i18n/I18nProvider";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export function Contact() {
   const { t } = useI18n();
@@ -20,135 +25,126 @@ export function Contact() {
     });
 
     setIsSubmitting(false);
-    event.currentTarget.reset();
+    (event.target as HTMLFormElement).reset();
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 relative">
-      <div className="hero-gradient absolute inset-0 rotate-180" />
-
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="text-center mb-16">
-          <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
-            {t.contact.badge}
-          </span>
-          <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-balance">
-            {t.contact.title}
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto text-balance">
-            {t.contact.description}
-          </p>
+    <section id="contact" className="relative overflow-hidden bg-[hsl(var(--bg))] py-24">
+      <div className="absolute inset-0 hero-backdrop opacity-70" aria-hidden />
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="text-center mb-14">
+          <span className="text-xs font-semibold uppercase tracking-wide text-[hsl(var(--text-muted))]">{t.contact.badge}</span>
+          <h2 className="mt-3 text-4xl font-semibold text-[hsl(var(--text))]">{t.contact.title}</h2>
+          <p className="mt-3 text-lg text-[hsl(var(--text-muted))] max-w-2xl mx-auto">{t.contact.description}</p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-12 max-w-6xl mx-auto">
-          <div className="lg:col-span-2 space-y-8">
-            <div className="glass-card p-6">
-              <div className="flex items-center gap-4 mb-3">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Mail className="w-5 h-5 text-primary" />
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+          <div className="space-y-4">
+            <Card className="p-5">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-[hsl(var(--primary))/0.12] text-[hsl(var(--primary))]">
+                  <Mail className="h-5 w-5" />
                 </div>
-                <h3 className="font-heading font-semibold">{t.contact.emailLabel}</h3>
-              </div>
-              <p className="text-muted-foreground">{t.contact.emailValue}</p>
-            </div>
-
-            <div className="glass-card p-6">
-              <div className="flex items-center gap-4 mb-3">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-primary" />
+                <div>
+                  <p className="text-sm text-[hsl(var(--text-muted))]">{t.contact.emailLabel}</p>
+                  <p className="font-semibold text-[hsl(var(--text))]">{t.contact.emailValue}</p>
                 </div>
-                <h3 className="font-heading font-semibold">{t.contact.locationLabel}</h3>
               </div>
-              <p className="text-muted-foreground">{t.contact.locationValue}</p>
-            </div>
-
-            <div className="line-decoration" />
-
-            <p className="text-sm text-muted-foreground">
+            </Card>
+            <Card className="p-5">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-[hsl(var(--accent))/0.12] text-[hsl(var(--accent))]">
+                  <MapPin className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-sm text-[hsl(var(--text-muted))]">{t.contact.locationLabel}</p>
+                  <p className="font-semibold text-[hsl(var(--text))]">{t.contact.locationValue}</p>
+                </div>
+              </div>
+            </Card>
+            <Card className="p-5 bg-[hsl(var(--surface-2))] text-sm text-[hsl(var(--text-muted))]">
               {t.contact.responseTime}
-            </p>
+            </Card>
           </div>
 
-          <form onSubmit={handleSubmit} className="lg:col-span-3 glass-card p-8 space-y-6">
-            <div className="grid sm:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-medium mb-2">{t.contact.form.nameLabel}</label>
-                <input
-                  type="text"
-                  required
-                  className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
-                  placeholder={t.contact.form.namePlaceholder}
-                />
+          <Card className="p-6 shadow-[var(--shadow-md)]">
+            <form className="space-y-5" onSubmit={handleSubmit}>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Field label={t.contact.form.nameLabel}>
+                  <Input required placeholder={t.contact.form.namePlaceholder} aria-label={t.contact.form.nameLabel} />
+                </Field>
+                <Field label={t.contact.form.emailLabel}>
+                  <Input
+                    type="email"
+                    required
+                    placeholder={t.contact.form.emailPlaceholder}
+                    aria-label={t.contact.form.emailLabel}
+                  />
+                </Field>
               </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">{t.contact.form.emailLabel}</label>
-                <input
-                  type="email"
-                  required
-                  className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
-                  placeholder={t.contact.form.emailPlaceholder}
-                />
-              </div>
-            </div>
 
-            <div className="grid sm:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-medium mb-2">{t.contact.form.serviceLabel}</label>
-                <select
-                  className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
-                  defaultValue=""
-                  required
-                >
-                  <option value="" disabled hidden>
-                    {t.contact.form.servicePlaceholder}
-                  </option>
-                  {t.contact.form.services.map((service) => (
-                    <option key={service.value} value={service.value}>
-                      {service.label}
-                    </option>
-                  ))}
-                </select>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Field label={t.contact.form.serviceLabel}>
+                  <Select defaultValue="">
+                    <SelectTrigger>
+                      <SelectValue placeholder={t.contact.form.servicePlaceholder} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {t.contact.form.services.map((service) => (
+                        <SelectItem key={service.value} value={service.value}>
+                          {service.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </Field>
+                <Field label={t.contact.form.budgetLabel}>
+                  <Select defaultValue="">
+                    <SelectTrigger>
+                      <SelectValue placeholder={t.contact.form.budgetPlaceholder} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {t.contact.form.budgets.map((budget) => (
+                        <SelectItem key={budget.value} value={budget.value}>
+                          {budget.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </Field>
               </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">{t.contact.form.budgetLabel}</label>
-                <select
-                  className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
-                  defaultValue=""
-                  required
-                >
-                  <option value="" disabled hidden>
-                    {t.contact.form.budgetPlaceholder}
-                  </option>
-                  {t.contact.form.budgets.map((budget) => (
-                    <option key={budget.value} value={budget.value}>
-                      {budget.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
 
-            <div>
-              <label className="block text-sm font-medium mb-2">{t.contact.form.messageLabel}</label>
-              <textarea
-                required
-                rows={5}
-                className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none"
-                placeholder={t.contact.form.messagePlaceholder}
-              />
-            </div>
+              <Field label={t.contact.form.messageLabel}>
+                <Textarea rows={4} required placeholder={t.contact.form.messagePlaceholder} />
+                <p className="mt-2 text-xs text-[hsl(var(--text-muted))]">We respond within one business day.</p>
+              </Field>
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full sm:w-auto px-8 py-4 rounded-full bg-primary text-primary-foreground font-medium flex items-center justify-center gap-2 hover:bg-primary/90 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 disabled:opacity-50"
-            >
-              {isSubmitting ? t.contact.form.submitting : t.contact.form.submit}
-              <Send className="w-4 h-4" />
-            </button>
-          </form>
+              <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    {t.contact.form.submitting}
+                  </>
+                ) : (
+                  <>
+                    {t.contact.form.submit}
+                    <Send className="h-4 w-4" />
+                  </>
+                )}
+              </Button>
+            </form>
+          </Card>
         </div>
       </div>
     </section>
+  );
+}
+
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <label className="flex flex-col gap-2 text-sm font-medium text-[hsl(var(--text))]">
+      <span>{label}</span>
+      {children}
+    </label>
   );
 }

@@ -111,7 +111,7 @@ export function Navigation() {
                         <li>
                             <Button
                                 size="sm"
-                                variant="glass"
+                                variant="secondary"
                                 onClick={toggleLanguage}
                                 aria-label={t.navigation.languageAria}
                                 className="min-w-[96px] flex items-center gap-2"
@@ -170,12 +170,12 @@ export function Navigation() {
                                     {t.navigation.links[link.id]}
                                 </Link>
                             ))}
-                            <Button
-                                size="sm"
-                                variant="glass"
-                                onClick={() => {
-                                    toggleLanguage();
-                                    setIsOpen(false);
+                        <Button
+                            size="sm"
+                            variant="secondary"
+                            onClick={() => {
+                                toggleLanguage();
+                                setIsOpen(false);
                                 }}
                                 aria-label={t.navigation.languageAria}
                                 className="w-full flex items-center justify-center gap-3"

@@ -51,7 +51,7 @@ export function Hero() {
                         </Link>
                         <Link href="#services" className="w-full sm:w-auto">
                             <Button
-                                variant="glass"
+                                variant="secondary"
                                 size="lg"
                                 className="w-full sm:w-auto border-cerulean/30 text-dark-gray hover:bg-white/85"
                             >

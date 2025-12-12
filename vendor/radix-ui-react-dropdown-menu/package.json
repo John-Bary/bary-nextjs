@@ -1,0 +1,13 @@
+{
+  "name": "@radix-ui/react-dropdown-menu",
+  "version": "1.0.0",
+  "main": "index.js",
+  "module": "index.js",
+  "types": "index.d.ts",
+  "sideEffects": false,
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "@radix-ui/react-slot": "*"
+  }
+}

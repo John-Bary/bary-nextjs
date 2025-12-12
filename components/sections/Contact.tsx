@@ -6,7 +6,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Input, Textarea, Select } from '@/components/ui/input';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { createContactFormSchema, type ContactFormData } from '@/lib/validations';
 import { Loader2 } from 'lucide-react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
@@ -23,7 +25,8 @@ export function Contact() {
         register,
         handleSubmit,
         reset,
-        formState: { errors }
+        formState: { errors },
+        setValue
     } = useForm<ContactFormData>({
         resolver: zodResolver(contactFormSchema)
     });
@@ -66,8 +69,10 @@ export function Contact() {
                     </p>
                 </div>
 
-                <Card variant="featured" className="max-w-[700px] mx-auto">
+                <Card className="max-w-[700px] mx-auto">
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-md">
+                        <input type="hidden" {...register('service')} />
+                        <input type="hidden" {...register('budget')} />
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
                             <div>
                                 <label htmlFor="name" className="block mb-xs font-medium">
@@ -107,15 +112,19 @@ export function Contact() {
                                     {t.contact.form.labels.service}
                                 </label>
                                 <Select
-                                    id="service"
-                                    {...register('service')}
-                                    disabled={isSubmitting}
+                                    defaultValue=""
+                                    onValueChange={(val) => setValue('service', val, { shouldValidate: true })}
                                 >
-                                    {t.contact.form.serviceOptions.map((option) => (
-                                        <option key={option.value || 'empty'} value={option.value}>
-                                            {option.label}
-                                        </option>
-                                    ))}
+                                    <SelectTrigger disabled={isSubmitting}>
+                                        <SelectValue placeholder={t.contact.form.labels.service} />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {t.contact.form.serviceOptions.map((option) => (
+                                            <SelectItem key={option.value || 'empty'} value={option.value || ''}>
+                                                {option.label}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
                                 </Select>
                                 {errors.service && (
                                     <p className="text-small text-berry mt-xs">{errors.service.message}</p>
@@ -127,15 +136,19 @@ export function Contact() {
                                     {t.contact.form.labels.budget}
                                 </label>
                                 <Select
-                                    id="budget"
-                                    {...register('budget')}
-                                    disabled={isSubmitting}
+                                    defaultValue=""
+                                    onValueChange={(val) => setValue('budget', val, { shouldValidate: true })}
                                 >
-                                    {t.contact.form.budgetOptions.map((option) => (
-                                        <option key={option.value || 'empty'} value={option.value}>
-                                            {option.label}
-                                        </option>
-                                    ))}
+                                    <SelectTrigger disabled={isSubmitting}>
+                                        <SelectValue placeholder={t.contact.form.labels.budget} />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {t.contact.form.budgetOptions.map((option) => (
+                                            <SelectItem key={option.value || 'empty'} value={option.value || ''}>
+                                                {option.label}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
                                 </Select>
                             </div>
                         </div>
