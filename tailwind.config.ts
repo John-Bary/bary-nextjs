@@ -1,6 +1,4 @@
 import type { Config } from "tailwindcss";
-import { amber, blue, orange, plum, slate, teal } from "@radix-ui/colors";
-
 const config: Config = {
   darkMode: ["class"],
   content: [
@@ -18,16 +16,16 @@ const config: Config = {
     },
     extend: {
       colors: {
-        cerulean: blue.blue9,
-        orange: orange.orange9,
-        amber: amber.amber9,
-        berry: plum.plum9,
-        emerald: teal.teal9,
-        "light-gray": slate.slate2,
-        "medium-gray": slate.slate3,
-        "text-gray": slate.slate11,
-        "dark-gray": slate.slate12,
-        "border-gray": slate.slate6,
+        cerulean: "hsl(var(--primary))",
+        orange: "hsl(var(--primary-hover))",
+        amber: "hsl(var(--surface-2))",
+        berry: "hsl(var(--primary))",
+        emerald: "hsl(var(--primary))",
+        "light-gray": "hsl(var(--surface))",
+        "medium-gray": "hsl(var(--surface-2))",
+        "text-gray": "hsl(var(--text-muted))",
+        "dark-gray": "hsl(var(--text))",
+        "border-gray": "hsl(var(--border))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
