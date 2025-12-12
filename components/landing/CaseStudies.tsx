@@ -9,7 +9,7 @@ export function CaseStudies() {
   const { t } = useI18n();
 
   return (
-    <section id="case-studies" className="py-24 md:py-32 relative overflow-hidden">
+    <section id="case-studies" className="py-16 md:py-20 lg:py-24 relative overflow-hidden">
       <div className="floating-orb hidden sm:block w-[520px] h-[520px] bg-primary/10 -left-48 top-10 animate-pulse-glow" />
       <div className="floating-orb hidden sm:block w-[420px] h-[420px] bg-accent/10 -right-32 bottom-0 animate-pulse-glow" />
 
