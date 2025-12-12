@@ -1,36 +1,33 @@
- "use client";
+"use client";
 
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
-import { Services } from "@/components/landing/Services";
-import { AdPlatforms } from "@/components/landing/AdPlatforms";
-import { CaseStudies } from "@/components/landing/CaseStudies";
-import { About } from "@/components/landing/About";
-import { Process } from "@/components/landing/Process";
 import { BookCall } from "@/components/landing/BookCall";
-import { FAQ } from "@/components/landing/FAQ";
-import { Contact } from "@/components/landing/Contact";
 import { Footer } from "@/components/landing/Footer";
-import { I18nProvider } from "@/components/i18n/I18nProvider";
+import { ContactCta } from "@/components/landing/summary/ContactCta";
+import { HomeAbout } from "@/components/landing/summary/HomeAbout";
+import { HomeAdPlatforms } from "@/components/landing/summary/HomeAdPlatforms";
+import { HomeCaseStudies } from "@/components/landing/summary/HomeCaseStudies";
+import { HomeFAQ } from "@/components/landing/summary/HomeFAQ";
+import { HomeProcess } from "@/components/landing/summary/HomeProcess";
+import { HomeServices } from "@/components/landing/summary/HomeServices";
 
 export default function Home() {
   return (
-    <I18nProvider>
-      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-        <Navbar />
-        <main id="main-content">
-          <Hero />
-          <Services />
-          <AdPlatforms />
-          <CaseStudies />
-          <About />
-          <Process />
-          <BookCall />
-          <FAQ />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
-    </I18nProvider>
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <Navbar />
+      <main id="main-content">
+        <Hero />
+        <HomeServices />
+        <HomeAdPlatforms />
+        <HomeCaseStudies />
+        <HomeAbout />
+        <HomeProcess />
+        <BookCall />
+        <HomeFAQ />
+        <ContactCta />
+      </main>
+      <Footer />
+    </div>
   );
 }

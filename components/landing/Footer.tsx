@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Instagram, Linkedin, Twitter } from "lucide-react";
 import { useI18n } from "../i18n/I18nProvider";
@@ -19,24 +20,21 @@ export function Footer() {
     <footer className="py-14 md:py-16 border-t border-border/50">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
-          <motion.a
-            href="#home"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="font-heading text-3xl font-bold"
-          >
-            <span className="gradient-text">bary</span>
-          </motion.a>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            <Link href="/" className="font-heading text-3xl font-bold">
+              <span className="gradient-text">bary</span>
+            </Link>
+          </motion.div>
 
           <nav className="flex flex-wrap items-center justify-center gap-8">
             {t.footer.links.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-muted-foreground hover:text-foreground transition-colors text-sm"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
