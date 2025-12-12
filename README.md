@@ -261,7 +261,7 @@ npm install resend
 
 ```env
 RESEND_API_KEY="re_..."
-CONTACT_EMAIL="hello@bary.lt"
+CONTACT_EMAIL="bary@gmx.com"
 ```
 
 3. **Update API Route**
@@ -331,7 +331,7 @@ npm run build
 ## 🤝 Support
 
 For questions or issues:
-- Email: jonas.barysasirko@gmail.com
+- Email: bary@gmx.com
 
 
 ---

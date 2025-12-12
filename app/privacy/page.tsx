@@ -25,8 +25,8 @@ export default function PrivacyPolicy() {
             <Section title="Data Controller">
               <p>
                 Bary (bary.lt). Contact:{" "}
-                <Link href="mailto:hello@bary.lt" className="text-primary underline underline-offset-4">
-                  hello@bary.lt
+                <Link href="mailto:bary@gmx.com" className="text-primary underline underline-offset-4">
+                  bary@gmx.com
                 </Link>
               </p>
             </Section>
@@ -104,8 +104,8 @@ export default function PrivacyPolicy() {
             <Section title="Contact & Requests">
               <p>
                 To exercise your rights or ask questions about this policy, contact us at{" "}
-                <Link href="mailto:hello@bary.lt" className="text-primary underline underline-offset-4">
-                  hello@bary.lt
+                <Link href="mailto:bary@gmx.com" className="text-primary underline underline-offset-4">
+                  bary@gmx.com
                 </Link>. You can also submit complaints to your local Data Protection Authority.
               </p>
             </Section>
