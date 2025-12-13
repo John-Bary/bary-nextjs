@@ -11,18 +11,22 @@ import { HomeCaseStudies } from "@/components/landing/summary/HomeCaseStudies";
 import { HomeFAQ } from "@/components/landing/summary/HomeFAQ";
 import { HomeProcess } from "@/components/landing/summary/HomeProcess";
 import { HomeServices } from "@/components/landing/summary/HomeServices";
+import { Pricing } from "@/components/landing/summary/Pricing";
+import { TestimonialsRow } from "@/components/landing/summary/TestimonialsRow";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
-      <main id="main-content">
+      <main id="main-content" role="main">
         <Hero />
         <HomeServices />
+        <Pricing />
         <HomeAdPlatforms />
         <HomeCaseStudies />
         <HomeAbout />
         <HomeProcess />
+        <TestimonialsRow />
         <BookCall />
         <HomeFAQ />
         <ContactCta />
