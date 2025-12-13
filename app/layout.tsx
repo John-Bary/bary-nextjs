@@ -6,18 +6,9 @@ import "./globals.css";
 import { I18nProvider } from "@/components/i18n/I18nProvider";
 
 export const metadata: Metadata = {
-  title: "BARY | Conversion sites for Baltic B2B services",
-  description:
-    "Boutique team in Vilnius building conversion-focused sites, CRM journeys, and paid media for Baltic B2B service firms.",
-  keywords: [
-    "B2B services",
-    "Baltics",
-    "conversion rate",
-    "Webflow",
-    "HubSpot",
-    "lead generation",
-    "Vilnius",
-  ],
+  title: "BARY | Floating monogram",
+  description: "A stripped-back experience with only the floating 3D BARY monogram.",
+  keywords: ["BARY", "floating logo", "3D text", "minimal site"],
   authors: [{ name: "BARY" }],
   icons: {
     icon: [
@@ -28,9 +19,8 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "BARY | Conversion sites for Baltic B2B services",
-    description:
-      "Boutique team in Vilnius building conversion-focused sites, CRM journeys, and paid media for Baltic B2B service firms.",
+    title: "BARY | Floating monogram",
+    description: "A stripped-back experience with only the floating 3D BARY monogram.",
     type: "website",
     locale: "en_US",
   },
