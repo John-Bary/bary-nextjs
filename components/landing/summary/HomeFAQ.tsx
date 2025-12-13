@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { Container, Section, SectionHeader } from "../Section";
 
 const faqs = [
   {
@@ -33,35 +34,32 @@ const faqs = [
 
 export function HomeFAQ() {
   return (
-    <section className="py-16 md:py-20" id="faq">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-start">
-          <div className="space-y-4 rounded-3xl border border-[hsl(var(--border))] bg-[hsl(var(--surface))]/80 p-7 shadow-[var(--shadow-md)]">
-            <span className="text-primary text-sm font-medium tracking-wider uppercase mb-3 block">
-              FAQ
-            </span>
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-3">Answers, upfront</h2>
-            <p className="text-muted-foreground max-w-2xl leading-relaxed">If you need more detail, mention it in the form — we’ll cover it live.</p>
-            <Link href="/faq" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80">
-              Full FAQ
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
-          </div>
+    <Section id="faq">
+      <Container>
+        <div className="space-y-8">
+          <SectionHeader
+            label="FAQ"
+            title="Answers, upfront"
+            description="If you need more detail, mention it in the form — we’ll cover it live."
+          />
 
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="space-y-4 divide-y divide-[hsl(var(--border))] rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--surface))] p-4">
             {faqs.map((item, index) => (
-              <div
-                key={item.question}
-                className="glass-card-hover p-5 rounded-2xl h-full"
-              >
-                <div className="text-primary text-sm font-semibold mb-2">{`FAQ ${index + 1}`}</div>
-                <h3 className="font-heading text-lg font-semibold mb-2">{item.question}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{item.answer}</p>
-              </div>
+              <details key={item.question} className="group">
+                <summary className="flex cursor-pointer items-center justify-between gap-3 py-3 text-left text-base font-semibold text-[hsl(var(--text))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--focus))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--bg))]">
+                  <span className="text-sm text-[hsl(var(--text))]">{item.question}</span>
+                  <span className="text-xs text-[hsl(var(--text-muted))]">{`FAQ ${index + 1}`}</span>
+                </summary>
+                <p className="pb-3 text-sm text-[hsl(var(--text-muted))] leading-relaxed">{item.answer}</p>
+              </details>
             ))}
           </div>
+          <Link href="/faq" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80">
+            Full FAQ
+            <ArrowUpRight className="w-4 h-4" />
+          </Link>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

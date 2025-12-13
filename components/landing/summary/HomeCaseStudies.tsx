@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { Container, Section, SectionHeader } from "../Section";
 
 type CaseStudy = {
   industry: string;
@@ -50,52 +52,46 @@ const caseStudies: CaseStudy[] = [
 
 export function HomeCaseStudies() {
   return (
-    <section className="py-20 md:py-24" id="case-studies">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-          <div className="rounded-3xl border border-[hsl(var(--border))] bg-[hsl(var(--surface))]/80 p-7 shadow-[var(--shadow-md)]">
-            <span className="text-primary text-sm font-medium tracking-wider uppercase mb-3 block">
-              Proof of work
-            </span>
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-3">Sample case studies</h2>
-            <p className="text-muted-foreground max-w-2xl leading-relaxed">
-              Real client names are redacted until approvals are secured. Each story follows the same template: problem → approach → deliverables → timeline → result.
-            </p>
-            <Link
-              href="/testimonials"
-              className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80"
-            >
-              View full library
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
-          </div>
+    <Section id="case-studies">
+      <Container>
+        <div className="space-y-10">
+          <SectionHeader
+            label="Proof of work"
+            title="Case studies with approvals pending"
+            description="Names are anonymized until clients approve publication. Each story follows the same structure: problem → approach → deliverables → timeline → result."
+          />
 
-          <div className="grid gap-4 md:auto-rows-fr md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-3">
             {caseStudies.map((study) => (
-              <div
+              <Card
                 key={study.title}
-                className="relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--surface))] p-6 shadow-[var(--shadow-sm)] transition hover:-translate-y-1 hover:border-[hsl(var(--primary))] hover:shadow-[var(--shadow-md)]"
+                className="relative flex h-full flex-col gap-4 p-6 transition hover:-translate-y-1 hover:border-[hsl(var(--primary))] hover:shadow-[var(--shadow-md)]"
               >
                 <div className="flex items-center justify-between gap-2">
                   <div className="text-xs uppercase tracking-wide text-primary font-semibold">{study.industry}</div>
                   {study.isSample && <span className="text-[10px] rounded-full bg-[hsl(var(--surface-2))] px-2 py-1 text-[hsl(var(--text-muted))]">Sample</span>}
                 </div>
                 <h3 className="font-heading text-xl font-semibold text-foreground">{study.title}</h3>
-                <div className="space-y-2 text-sm text-[hsl(var(--text-muted))] leading-relaxed">
-                  <p><strong className="text-[hsl(var(--text))]">Problem: </strong>{study.problem}</p>
-                  <p><strong className="text-[hsl(var(--text))]">Approach: </strong>{study.approach}</p>
-                  <p><strong className="text-[hsl(var(--text))]">Deliverables: </strong>{study.deliverables.join(", ")}</p>
-                  <p><strong className="text-[hsl(var(--text))]">Timeline: </strong>{study.timeline}</p>
-                  {study.result && <p><strong className="text-[hsl(var(--text))]">Result: </strong>{study.result}</p>}
-                  {study.testimonial && (
-                    <p className="italic text-[hsl(var(--text))]">“{study.testimonial}”</p>
-                  )}
-                </div>
-              </div>
+                <ul className="space-y-2 text-sm text-[hsl(var(--text-muted))] leading-relaxed">
+                  <li><strong className="text-[hsl(var(--text))]">Problem:</strong> {study.problem}</li>
+                  <li><strong className="text-[hsl(var(--text))]">Approach:</strong> {study.approach}</li>
+                  <li><strong className="text-[hsl(var(--text))]">Deliverables:</strong> {study.deliverables.join(", ")}</li>
+                  <li><strong className="text-[hsl(var(--text))]">Timeline:</strong> {study.timeline}</li>
+                  {study.result && <li><strong className="text-[hsl(var(--text))]">Result:</strong> {study.result}</li>}
+                  {study.testimonial && <li className="italic text-[hsl(var(--text))]">“{study.testimonial}”</li>}
+                </ul>
+              </Card>
             ))}
           </div>
+          <Link
+            href="/testimonials"
+            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80"
+          >
+            View full library
+            <ArrowUpRight className="w-4 h-4" />
+          </Link>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }
