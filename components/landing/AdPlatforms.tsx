@@ -13,23 +13,23 @@ const platformStyleMap: Record<
   string,
   { gradient: string; initials: string; icon?: never; lucide: React.ReactNode }
 > = {
-  meta: { gradient: "from-blue-500 to-purple-500", initials: "M", lucide: <Megaphone className="w-6 h-6" /> },
+  meta: { gradient: "from-[hsl(var(--primary))] to-[hsl(var(--primary-hover))]", initials: "M", lucide: <Megaphone className="w-6 h-6" /> },
   google: {
-    gradient: "from-yellow-400 via-red-500 to-blue-500",
+    gradient: "from-[hsl(var(--surface-2))] via-[hsl(var(--surface))] to-[hsl(var(--primary))]",
     initials: "G",
     lucide: <BadgeDollarSign className="w-6 h-6" />,
   },
-  tiktok: { gradient: "from-emerald-400 via-teal-500 to-cyan-500", initials: "T", lucide: <Music4 className="w-6 h-6" /> },
+  tiktok: { gradient: "from-[hsl(var(--primary-hover))] via-[hsl(var(--primary))] to-[hsl(var(--primary-hover))]", initials: "T", lucide: <Music4 className="w-6 h-6" /> },
   snapchat: {
-    gradient: "from-yellow-300 via-amber-400 to-orange-400",
+    gradient: "from-[hsl(var(--surface))] via-[hsl(var(--surface-2))] to-[hsl(var(--primary))]",
     initials: "S",
     lucide: <Ghost className="w-6 h-6" />,
   },
-  reddit: { gradient: "from-orange-500 to-red-500", initials: "R", lucide: <MessageSquare className="w-6 h-6" /> },
+  reddit: { gradient: "from-[hsl(var(--primary))] to-[hsl(var(--surface-2))]", initials: "R", lucide: <MessageSquare className="w-6 h-6" /> },
 };
 
 function PlatformIcon({ name, platformKey }: { name: string; platformKey: string }) {
-  const style = platformStyleMap[platformKey] ?? { gradient: "from-slate-500 to-slate-700", initials: name[0] ?? "?" };
+  const style = platformStyleMap[platformKey] ?? { gradient: "from-[hsl(var(--primary))] to-[hsl(var(--primary-hover))]", initials: name[0] ?? "?" };
 
   return (
     <div

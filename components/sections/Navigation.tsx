@@ -76,7 +76,7 @@ export function Navigation() {
     return (
         <nav
             className={`sticky top-0 z-50 backdrop-blur-xl transition-all duration-300 ${
-                isScrolled ? 'py-sm shadow-[0_12px_34px_rgba(0,0,0,0.12)] bg-white/75 border-b border-white/50' : 'py-md bg-white/60 border-b border-white/40'
+                isScrolled ? 'py-sm shadow-[0_12px_34px_hsl(var(--overlay)/0.24)] bg-[hsl(var(--surface))]/75 border-b border-[hsl(var(--border))]/60' : 'py-md bg-[hsl(var(--surface))]/60 border-b border-[hsl(var(--border))]/50'
             }`}
         >
             <div className="container">
@@ -97,12 +97,12 @@ export function Navigation() {
                             <li key={link.href} className="relative">
                                 <Link
                                     href={link.href}
-                                    className="text-text-gray no-underline font-medium transition-colors duration-fast hover:text-cerulean px-1 py-2 inline-block"
+                                    className="text-[hsl(var(--text-muted))] no-underline font-medium transition-colors duration-fast hover:text-primary px-1 py-2 inline-block"
                                 >
                                     {t.navigation.links[link.id]}
                                 </Link>
                                 <span
-                                    className={`absolute left-0 right-0 -bottom-1 h-[3px] rounded-full bg-gradient-to-r from-cerulean to-orange transition-transform transition-opacity duration-200 origin-center ${
+                                    className={`absolute left-0 right-0 -bottom-1 h-[3px] rounded-full bg-gradient-to-r from-primary to-[hsl(var(--primary-hover))] transition-transform transition-opacity duration-200 origin-center ${
                                         activeSection === link.id ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
                                     }`}
                                 />
@@ -134,7 +134,7 @@ export function Navigation() {
                     </ul>
 
                     <button
-                        className="md:hidden inline-flex items-center justify-center w-12 h-12 rounded-lg glass-subtle border border-white/40 hover:border-white/60 transition-all duration-200"
+                        className="md:hidden inline-flex items-center justify-center w-12 h-12 rounded-lg glass-subtle border border-[hsl(var(--border))]/60 hover:border-[hsl(var(--border))]/80 transition-all duration-200"
                         onClick={() => setIsOpen((prev) => !prev)}
                         aria-label={t.navigation.menuToggle}
                         aria-expanded={isOpen}
@@ -142,15 +142,15 @@ export function Navigation() {
                         <span className="sr-only">{t.navigation.menuToggle}</span>
                         <div className="flex flex-col items-center gap-[6px]">
                             <span
-                                className={`block h-0.5 w-6 rounded-sm bg-dark-gray transition-transform duration-300 ${isOpen ? 'translate-y-1.5 rotate-45' : ''
+                                className={`block h-0.5 w-6 rounded-sm bg-[hsl(var(--text))] transition-transform duration-300 ${isOpen ? 'translate-y-1.5 rotate-45' : ''
                                     }`}
                             />
                             <span
-                                className={`block h-0.5 w-6 rounded-sm bg-dark-gray transition-opacity duration-300 ${isOpen ? 'opacity-0' : ''
+                                className={`block h-0.5 w-6 rounded-sm bg-[hsl(var(--text))] transition-opacity duration-300 ${isOpen ? 'opacity-0' : ''
                                     }`}
                             />
                             <span
-                                className={`block h-0.5 w-6 rounded-sm bg-dark-gray transition-transform duration-300 ${isOpen ? '-translate-y-1.5 -rotate-45' : ''
+                                className={`block h-0.5 w-6 rounded-sm bg-[hsl(var(--text))] transition-transform duration-300 ${isOpen ? '-translate-y-1.5 -rotate-45' : ''
                                     }`}
                             />
                         </div>
@@ -159,13 +159,13 @@ export function Navigation() {
 
                 {isOpen && (
                     <div className="md:hidden mt-sm">
-                        <div className="glass-subtle rounded-xl shadow-xl border border-white/40 p-lg space-y-sm">
+                        <div className="glass-subtle rounded-xl shadow-xl border border-[hsl(var(--border))]/60 p-lg space-y-sm">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.href}
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
-                                    className="block w-full no-underline text-dark-gray font-semibold py-2 px-2 rounded-lg hover:bg-white/70 transition-colors duration-200"
+                                    className="block w-full no-underline text-[hsl(var(--text))] font-semibold py-2 px-2 rounded-lg hover:bg-[hsl(var(--surface))]/80 transition-colors duration-200"
                                 >
                                     {t.navigation.links[link.id]}
                                 </Link>

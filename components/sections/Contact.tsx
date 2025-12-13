@@ -60,7 +60,7 @@ export function Contact() {
     };
 
     return (
-        <section id="contact" className="section bg-light-gray">
+        <section id="contact" className="section bg-[hsl(var(--surface))]">
             <div className="container">
                 <div className="text-center mb-2xl">
                     <h2>{t.contact.heading}</h2>
@@ -85,7 +85,7 @@ export function Contact() {
                                     disabled={isSubmitting}
                                 />
                                 {errors.name && (
-                                    <p className="text-small text-berry mt-xs">{errors.name.message}</p>
+                                    <p className="text-small text-[hsl(var(--primary))] mt-xs">{errors.name.message}</p>
                                 )}
                             </div>
 
@@ -101,7 +101,7 @@ export function Contact() {
                                     disabled={isSubmitting}
                                 />
                                 {errors.email && (
-                                    <p className="text-small text-berry mt-xs">{errors.email.message}</p>
+                                    <p className="text-small text-[hsl(var(--primary))] mt-xs">{errors.email.message}</p>
                                 )}
                             </div>
                         </div>
@@ -127,7 +127,7 @@ export function Contact() {
                                     </SelectContent>
                                 </Select>
                                 {errors.service && (
-                                    <p className="text-small text-berry mt-xs">{errors.service.message}</p>
+                                    <p className="text-small text-[hsl(var(--primary))] mt-xs">{errors.service.message}</p>
                                 )}
                             </div>
 
@@ -165,7 +165,7 @@ export function Contact() {
                                 disabled={isSubmitting}
                             />
                             {errors.message && (
-                                <p className="text-small text-berry mt-xs">{errors.message.message}</p>
+                                <p className="text-small text-[hsl(var(--primary))] mt-xs">{errors.message.message}</p>
                             )}
                         </div>
 

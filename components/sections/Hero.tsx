@@ -21,7 +21,7 @@ export function Hero() {
                     className="object-cover object-center"
                     sizes="100vw"
                 />
-                <div className="absolute inset-0 bg-black/70" />
+                <div className="absolute inset-0 bg-[hsl(var(--overlay))]/70" />
             </div>
 
             <div className="container relative z-10 flex items-center justify-center min-h-screen py-16 sm:py-20">
@@ -32,7 +32,7 @@ export function Hero() {
                     transition={{ duration: 0.7 }}
                 >
                     <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/15 text-white/90 text-sm border border-white/30">
-                        <span className="h-2 w-2 rounded-full bg-orange inline-block" />
+                        <span className="h-2 w-2 rounded-full bg-[hsl(var(--primary))] inline-block" />
                         {t.hero.secondaryCta}
                     </div>
 
@@ -51,7 +51,7 @@ export function Hero() {
                         <Link href="#contact" className="w-full sm:w-auto">
                             <Button
                                 size="lg"
-                                className="w-full sm:w-auto bg-gradient-to-r from-cerulean to-berry text-white shadow-[0_18px_45px_rgba(38,67,230,0.32)] border border-white/10 hover:brightness-105 transition"
+                                className="w-full sm:w-auto bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-hover))] text-primary-contrast shadow-[0_18px_45px_hsl(var(--primary)/0.32)] border border-white/10 hover:brightness-105 transition"
                                 aria-label={t.hero.primaryCta}
                             >
                                 {t.hero.primaryCta}

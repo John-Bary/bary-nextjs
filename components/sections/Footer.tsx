@@ -20,7 +20,7 @@ export function Footer() {
     const { t } = useLanguage();
 
     return (
-        <footer className="section-compact bg-dark-gray text-white">
+        <footer className="section-compact bg-[hsl(var(--text))] text-white">
             <div className="container">
                 <div className="text-center space-y-3">
                     <h3 className="text-white mb-2">bary.lt</h3>
@@ -37,7 +37,7 @@ export function Footer() {
                             </li>
                         ))}
                         <li>
-                            <Link href="/privacy" className="text-white hover:text-cerulean no-underline">
+                            <Link href="/privacy" className="text-white hover:text-primary no-underline">
                                 {t.footer.privacy}
                             </Link>
                         </li>
