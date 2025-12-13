@@ -5,7 +5,13 @@ import * as DropdownPrimitive from "@radix-ui/react-dropdown-menu";
 import { cn } from "@/lib/utils";
 
 export const DropdownMenu = DropdownPrimitive.Root;
-export const DropdownMenuTrigger = DropdownPrimitive.Trigger;
+export const DropdownMenuTrigger = React.forwardRef<
+  HTMLButtonElement,
+  React.ComponentPropsWithoutRef<typeof DropdownPrimitive.Trigger> & { asChild?: boolean }
+>(({ className, ...props }, ref) => (
+  <DropdownPrimitive.Trigger ref={ref} className={className} {...props} />
+));
+DropdownMenuTrigger.displayName = DropdownPrimitive.Trigger.displayName;
 export const DropdownMenuGroup = DropdownPrimitive.Group;
 export const DropdownMenuPortal = DropdownPrimitive.Portal;
 

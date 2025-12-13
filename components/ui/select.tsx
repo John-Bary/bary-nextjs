@@ -10,7 +10,7 @@ export const SelectValue = SelectPrimitive.Value;
 
 export const SelectTrigger = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & { disabled?: boolean }
 >(({ className, children, ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
@@ -22,10 +22,12 @@ export const SelectTrigger = React.forwardRef<
     )}
     {...props}
   >
-    {children}
-    <SelectPrimitive.Icon asChild>
-      <ChevronDown className="h-4 w-4 text-[hsl(var(--text-muted))]" />
-    </SelectPrimitive.Icon>
+    <span className="flex w-full items-center justify-between">
+      {children}
+      <SelectPrimitive.Icon>
+        <ChevronDown className="h-4 w-4 text-[hsl(var(--text-muted))]" />
+      </SelectPrimitive.Icon>
+    </span>
   </SelectPrimitive.Trigger>
 ));
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;

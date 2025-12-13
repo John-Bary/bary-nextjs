@@ -10,7 +10,7 @@ export function ContactCta() {
   return (
     <section className="py-16 md:py-20" id="contact">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="glass-card-hover p-8 sm:p-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <div className="glass-card-hover p-8 sm:p-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between rounded-3xl">
           <div className="space-y-3 max-w-2xl">
             <span className="text-primary text-sm font-medium tracking-wider uppercase block">
               {t.contact.badge}

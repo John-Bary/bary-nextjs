@@ -65,11 +65,13 @@ export function Navbar() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="px-3 text-sm">
-                <Globe2 className="mr-2 h-4 w-4" />
+            <DropdownMenuTrigger
+              className="inline-flex h-10 items-center gap-2 rounded-md px-3 text-sm font-semibold text-[hsl(var(--text))] shadow-sm transition-colors hover:bg-[hsl(var(--surface-2))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--focus))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--bg))]"
+            >
+              <span className="flex items-center gap-2">
+                <Globe2 className="h-4 w-4" />
                 {language === "en" ? "EN" : "LT"}
-              </Button>
+              </span>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem onClick={() => setLanguage("en")}>English</DropdownMenuItem>
@@ -107,14 +109,16 @@ export function Navbar() {
             ))}
             <div className="flex items-center justify-between gap-3 pt-2">
               <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="secondary" className="w-full justify-between">
+                <DropdownMenuTrigger
+                  className="flex h-11 w-full items-center justify-between rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--surface-2))] px-5 text-sm font-semibold text-[hsl(var(--text))] shadow-sm transition-colors hover:border-[hsl(var(--primary))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--focus))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--bg))]"
+                >
+                  <div className="flex w-full items-center justify-between">
                     <span className="flex items-center gap-2">
                       <Globe2 className="h-4 w-4" />
                       {language === "en" ? "English" : "Lietuvių"}
                     </span>
                     <ChevronIcon />
-                  </Button>
+                  </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start">
                   <DropdownMenuItem onClick={() => setLanguage("en")}>English</DropdownMenuItem>
