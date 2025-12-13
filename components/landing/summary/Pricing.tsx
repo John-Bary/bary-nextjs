@@ -3,6 +3,8 @@
 import { Check, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
+import { Card } from "@/components/ui/card";
+import { Container, Section, SectionHeader } from "../Section";
 
 const tiers = [
   {
@@ -30,48 +32,46 @@ const tiers = [
 
 export function Pricing() {
   return (
-    <section className="py-16 md:py-20" id="pricing" aria-labelledby="pricing-title">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="mb-8 space-y-3 max-w-3xl">
-          <span className="text-primary text-sm font-medium tracking-wider uppercase">Pricing</span>
-          <h2 id="pricing-title" className="font-heading text-3xl sm:text-4xl font-bold">
-            Straightforward, outcome-based pricing
-          </h2>
-          <p className="text-muted-foreground">
-            We price by scope and complexity, not surprise hours. Each tier includes accessibility, QA, and weekly founder access.
-          </p>
-        </div>
+    <Section id="pricing" aria-labelledby="pricing-title" background="muted">
+      <Container>
+        <div className="space-y-8">
+          <SectionHeader
+            label="Pricing"
+            title="Straightforward, outcome-based pricing"
+            description="Fixed scopes based on complexity — every tier includes accessibility, QA, and weekly founder access."
+          />
 
-        <div className="grid gap-4 md:grid-cols-3">
-          {tiers.map((tier) => (
-            <div
-              key={tier.name}
-              className="flex h-full flex-col rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--surface))] p-6 shadow-[var(--shadow-sm)]"
-            >
-              <div className="mb-3 text-xs uppercase tracking-wide text-[hsl(var(--text-muted))]">{tier.bestFor}</div>
-              <h3 className="text-xl font-semibold text-[hsl(var(--text))]">{tier.name}</h3>
-              <p className="text-lg font-semibold text-[hsl(var(--text))]">{tier.price}</p>
-              <p className="mt-2 text-sm text-[hsl(var(--text-muted))]">{tier.description}</p>
-              <ul className="mt-4 space-y-2 text-sm text-[hsl(var(--text))]">
-                {tier.includes.map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-[hsl(var(--primary))]" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="#book-a-call"
-                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--text))] underline-offset-4 hover:underline"
-                onClick={() => trackEvent("cta_click", { location: `pricing_${tier.name}` })}
+          <div className="grid gap-4 md:grid-cols-3">
+            {tiers.map((tier, index) => (
+              <Card
+                key={tier.name}
+                className={`flex h-full flex-col p-6 ${index === 1 ? "border-[hsl(var(--primary))] shadow-[var(--shadow-md)]" : ""}`}
               >
-                Discuss this tier
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          ))}
+                <div className="mb-3 text-xs uppercase tracking-wide text-[hsl(var(--text-muted))]">{tier.bestFor}</div>
+                <h3 className="text-xl font-semibold text-[hsl(var(--text))]">{tier.name}</h3>
+                <p className="text-lg font-semibold text-[hsl(var(--text))]">{tier.price}</p>
+                <p className="mt-2 text-sm text-[hsl(var(--text-muted))]">{tier.description}</p>
+                <ul className="mt-4 space-y-2 text-sm text-[hsl(var(--text))]">
+                  {tier.includes.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <Check className="h-4 w-4 text-[hsl(var(--primary))]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="#contact"
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--text))] underline-offset-4 hover:underline"
+                  onClick={() => trackEvent("cta_click", { location: `pricing_${tier.name}` })}
+                >
+                  Discuss this tier
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Card>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }
