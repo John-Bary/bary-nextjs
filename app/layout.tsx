@@ -6,9 +6,18 @@ import "./globals.css";
 import { I18nProvider } from "@/components/i18n/I18nProvider";
 
 export const metadata: Metadata = {
-  title: "bary.lt | Business Consulting & Creative Services",
-  description: "Strategic consulting and creative services that drive measurable growth. We help businesses scale through planning, brand development, and digital innovation.",
-  keywords: ["business consulting", "creative services", "digital solutions", "brand development", "Lithuania", "Vilnius"],
+  title: "BARY | Conversion sites for Baltic B2B services",
+  description:
+    "Boutique team in Vilnius building conversion-focused sites, CRM journeys, and paid media for Baltic B2B service firms.",
+  keywords: [
+    "B2B services",
+    "Baltics",
+    "conversion rate",
+    "Webflow",
+    "HubSpot",
+    "lead generation",
+    "Vilnius",
+  ],
   authors: [{ name: "BARY" }],
   icons: {
     icon: [
@@ -19,8 +28,9 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "bary.lt | Business Consulting & Creative Services",
-    description: "Strategic consulting and creative services that drive measurable growth.",
+    title: "BARY | Conversion sites for Baltic B2B services",
+    description:
+      "Boutique team in Vilnius building conversion-focused sites, CRM journeys, and paid media for Baltic B2B service firms.",
     type: "website",
     locale: "en_US",
   },
@@ -41,6 +51,45 @@ export default function RootLayout({
           <div className="relative z-10">
             {children}
           </div>
+          <script
+            type="application/ld+json"
+            suppressHydrationWarning
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'Organization',
+                name: 'BARY',
+                url: 'https://bary.lt',
+                logo: 'https://bary.lt/web-app-manifest-192x192.png',
+                sameAs: ['https://www.linkedin.com'],
+                address: {
+                  '@type': 'PostalAddress',
+                  addressLocality: 'Vilnius',
+                  addressCountry: 'LT',
+                },
+              }),
+            }}
+          />
+          <script
+            type="application/ld+json"
+            suppressHydrationWarning
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'LocalBusiness',
+                name: 'BARY',
+                address: {
+                  '@type': 'PostalAddress',
+                  addressLocality: 'Vilnius',
+                  addressCountry: 'LT',
+                },
+                areaServed: 'Baltic region',
+                url: 'https://bary.lt',
+                image: 'https://bary.lt/web-app-manifest-192x192.png',
+                priceRange: '€€',
+              }),
+            }}
+          />
           <Analytics />
           <SpeedInsights />
           <Toaster position="top-center" richColors />

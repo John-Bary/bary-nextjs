@@ -8,11 +8,11 @@ const buttonVariants = {
   primary:
     "bg-[hsl(var(--primary))] text-[hsl(var(--primary-contrast))] shadow-[var(--shadow-md)] hover:bg-[hsl(var(--primary-hover))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--focus))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--bg))]",
   secondary:
-    "bg-[hsl(var(--surface-2))] text-[hsl(var(--text))] border border-[hsl(var(--border))] hover:border-[hsl(var(--primary))] hover:text-[hsl(var(--text))]",
+    "bg-[hsl(var(--surface-2))] text-[hsl(var(--text))] border border-[hsl(var(--border))] hover:border-[hsl(var(--primary))] hover:text-[hsl(var(--text))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--focus))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--bg))]",
   ghost:
-    "bg-transparent text-[hsl(var(--text))] hover:bg-[hsl(var(--surface-2))]",
+    "bg-transparent text-[hsl(var(--text))] hover:bg-[hsl(var(--surface-2))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--focus))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--bg))]",
   destructive:
-    "bg-[hsl(var(--danger))] text-[hsl(var(--primary-contrast))] hover:bg-[hsl(var(--danger))/0.9]",
+    "bg-[hsl(var(--danger))] text-[hsl(var(--primary-contrast))] hover:bg-[hsl(var(--danger))/0.9] focus-visible:ring-2 focus-visible:ring-[hsl(var(--focus))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--bg))]",
 };
 
 const buttonSizes = {
@@ -49,7 +49,7 @@ export const Button = React.forwardRef<React.ElementRef<"button">, ButtonProps>(
       <Comp
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-center gap-2 rounded-md font-semibold transition-colors duration-200",
+          "inline-flex items-center justify-center gap-2 rounded-md font-semibold transition-colors duration-200 focus-visible:outline-none",
           "focus-visible:outline-none disabled:opacity-60 disabled:cursor-not-allowed",
           "shadow-sm",
           buttonVariants[variant],
