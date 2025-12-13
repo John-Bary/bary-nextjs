@@ -11,8 +11,8 @@ export function HomeAbout() {
   return (
     <section className="py-16 md:py-20" id="about">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
-          <div className="space-y-4">
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div className="space-y-4 rounded-3xl border border-[hsl(var(--border))] bg-[hsl(var(--surface))]/80 p-7 shadow-[var(--shadow-md)]">
             <span className="text-primary text-sm font-medium tracking-wider uppercase block">
               {t.about.badge}
             </span>
@@ -21,10 +21,7 @@ export function HomeAbout() {
             </h2>
             <p className="text-muted-foreground leading-relaxed">{paragraphs[0]}</p>
             <p className="text-muted-foreground leading-relaxed">{paragraphs[1]}</p>
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80"
-            >
+            <Link href="/about" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80">
               {t.about.cta}
               <ArrowUpRight className="w-4 h-4" />
             </Link>
