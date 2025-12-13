@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Footer } from "@/components/landing/Footer";
+import { Navbar } from "@/components/landing/Navbar";
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <section className="space-y-3">
@@ -277,34 +279,38 @@ const policies: Policy[] = [
 
 export default function PrivacyPolicy() {
   return (
-    <main className="min-h-screen bg-background text-foreground py-16">
-      <div className="container mx-auto px-6 space-y-10">
-        <div className="text-center space-y-3">
-          <p className="text-sm uppercase tracking-wide text-primary">Privacy Policy</p>
-          <h1 className="font-heading text-3xl sm:text-4xl font-bold">Privacy & GDPR Notice</h1>
-          <p className="text-muted-foreground text-lg leading-relaxed">Last updated: January 2025</p>
-        </div>
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <Navbar />
+      <main id="main-content" className="pt-24 pb-20">
+        <div className="container mx-auto px-4 sm:px-6 space-y-10">
+          <div className="text-center space-y-3">
+            <p className="text-sm uppercase tracking-wide text-primary">Privacy Policy</p>
+            <h1 className="font-heading text-3xl sm:text-4xl font-bold">Privacy & GDPR Notice</h1>
+            <p className="text-muted-foreground text-lg leading-relaxed">Last updated: January 2025</p>
+          </div>
 
-        <div className="grid gap-8 lg:grid-cols-2">
-          {policies.map((policy) => (
-            <div key={policy.id} className="glass-card p-8 md:p-10 space-y-8">
-              <div className="space-y-3">
-                <p className="text-sm uppercase tracking-wide text-primary">{policy.id.toUpperCase()}</p>
-                <h2 className="font-heading text-2xl sm:text-3xl font-bold">{policy.heading}</h2>
-                <p className="text-muted-foreground text-lg leading-relaxed">{policy.intro}</p>
-              </div>
+          <div className="grid gap-8 lg:grid-cols-2">
+            {policies.map((policy) => (
+              <div key={policy.id} className="glass-card p-8 md:p-10 space-y-8">
+                <div className="space-y-3">
+                  <p className="text-sm uppercase tracking-wide text-primary">{policy.id.toUpperCase()}</p>
+                  <h2 className="font-heading text-2xl sm:text-3xl font-bold">{policy.heading}</h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed">{policy.intro}</p>
+                </div>
 
-              <div className="space-y-8">
-                {policy.sections.map((section) => (
-                  <Section key={section.title} title={section.title}>
-                    {section.content}
-                  </Section>
-                ))}
+                <div className="space-y-8">
+                  {policy.sections.map((section) => (
+                    <Section key={section.title} title={section.title}>
+                      {section.content}
+                    </Section>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+      <Footer />
+    </div>
   );
 }
