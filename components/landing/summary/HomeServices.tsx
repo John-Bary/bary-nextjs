@@ -60,7 +60,7 @@ export function HomeServices() {
   );
 }
 
-function ServiceGrid({ services }: { services: Service[] }) {
+function ServiceGrid({ services }: { services: ReadonlyArray<Service> }) {
   return (
     <div className="grid gap-4 md:auto-rows-fr md:grid-cols-2 lg:grid-cols-3">
       {services.map((service, index) => {
