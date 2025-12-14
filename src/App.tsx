@@ -12,7 +12,7 @@ export default function App() {
     if (!node) return;
 
     const randomizeVelocity = () => {
-      const speed = () => 80 + Math.random() * 140;
+      const speed = () => 60 + Math.random() * 80;
       const dir = () => (Math.random() > 0.5 ? 1 : -1);
       velocity.current = { x: speed() * dir(), y: speed() * dir() };
     };
@@ -27,7 +27,7 @@ export default function App() {
 
     const step = (time: number) => {
       if (lastTime.current === null) lastTime.current = time;
-      const delta = Math.min((time - lastTime.current) / 1000, 0.05);
+      const delta = Math.min((time - lastTime.current) / 1000, 0.02);
       lastTime.current = time;
 
       x += velocity.current.x * delta;
