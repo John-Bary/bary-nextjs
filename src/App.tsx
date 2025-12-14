@@ -77,6 +77,13 @@ export default function App() {
   return (
     <main className="screen">
       <div className="orb" aria-hidden />
+      <div className="bg-grid" aria-hidden />
+      <div className="rings" aria-hidden />
+      <div className="sparks" aria-hidden>
+        <span />
+        <span />
+        <span />
+      </div>
       <a className="floating-button" ref={buttonRef} href="mailto:bary@gmx.lt" aria-label="Email bary@gmx.lt">
         <span className="label">Email</span>
         <span className="address">bary@gmx.lt</span>
