@@ -84,9 +84,9 @@ export default function App() {
         <span />
         <span />
       </div>
-      <a className="floating-button" ref={buttonRef} href="mailto:bary@gmx.lt" aria-label="Email bary@gmx.lt">
+      <a className="floating-button" ref={buttonRef} href="mailto:bary@gmx.com" aria-label="Email bary@gmx.com">
         <span className="label">Email</span>
-        <span className="address">bary@gmx.lt</span>
+        <span className="address">bary@gmx.com</span>
       </a>
     </main>
   );

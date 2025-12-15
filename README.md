@@ -1,6 +1,6 @@
 # BARY React Site
 
-Fresh React + Vite scaffold focused on clarity and fast launches. Contact: **bary@gmx.lt**.
+Fresh React + Vite scaffold focused on clarity and fast launches. Contact: **bary@gmx.com**.
 
 ## Scripts
 
@@ -12,5 +12,5 @@ Fresh React + Vite scaffold focused on clarity and fast launches. Contact: **bar
 ## Notes
 
 - Built with React 18 and Vite.
-- Primary CTA is `mailto:bary@gmx.lt`; secondary link points to bary.lt.
+- Primary CTA is `mailto:bary@gmx.com`; secondary link points to bary.lt.
 - Update `src/App.tsx` and `src/index.css` to evolve the design.
