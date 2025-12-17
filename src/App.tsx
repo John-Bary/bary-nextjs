@@ -238,7 +238,9 @@ export default function App() {
                     Next step
                   </button>
                 </div>
-                <p className="flow-details-copy">{steps[activeStep].copy}</p>
+                <p className="flow-details-copy">
+                  Outcome: <span className="muted-strong">{steps[activeStep].copy}</span>
+                </p>
               </div>
             </div>
           </div>
