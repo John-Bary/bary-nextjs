@@ -1,277 +1,183 @@
-import { animate, createTimeline, random, stagger } from "animejs";
-import { type CSSProperties, useEffect, useMemo, useRef } from "react";
+import React from "react";
 
-const email = "bary@gmx.com";
+const contactEmail = "bary@gmx.com";
+
+const highlights = [
+  {
+    title: "Integrating technology and biology",
+    description:
+      "Pairing computation, automation, and experimentation to accelerate discoveries that matter for human health.",
+  },
+  {
+    title: "Interdisciplinary expertise",
+    description:
+      "Experience across wet lab science, data science, and venture-backed product launches informs every engagement.",
+  },
+  {
+    title: "Full-stack consulting",
+    description:
+      "From strategic positioning to technical roadmaps, we help founders and teams navigate complex, regulated markets.",
+  },
+];
+
+const pipeline = [
+  {
+    label: "Science",
+    title: "Reprogramming cell fate",
+    text: "Using small-molecule combinations to push cells toward regenerative, youthful states while preserving safety and control.",
+  },
+  {
+    label: "Platform",
+    title: "Computation meets discovery",
+    text: "High-throughput screening, machine learning models, and automated analysis surface the most promising directions fast.",
+  },
+  {
+    label: "Applications",
+    title: "Healthspan-oriented programs",
+    text: "Working on programs that target age-associated decline across tissues with translational potential in the near term.",
+  },
+];
+
+const updates = [
+  {
+    title: "Cellular rejuvenation with small molecules",
+    detail: "Recent results show transcriptional age reversal across multiple cell types with precise chemical cocktails.",
+  },
+  {
+    title: "Data-driven screening at scale",
+    detail: "Iterative wet lab cycles and ML scoring shrink timelines from months to weeks for prioritizing new interventions.",
+  },
+  {
+    title: "Collaboration-ready",
+    detail: "Partner with teams seeking strategic guidance or hands-on execution for marketing, positioning, and GTM for frontier science.",
+  },
+];
 
 export default function App() {
-  const sceneRef = useRef<HTMLDivElement>(null);
-
-  const sparkSeeds = useMemo(
-    () =>
-      Array.from({ length: 18 }, (_, index) => {
-        const angle = (index / 18) * Math.PI * 2;
-        const radius = 120 + Math.random() * 110;
-        const depth = -80 + Math.random() * 160;
-        return {
-          x: Math.cos(angle) * radius,
-          y: Math.sin(angle) * radius,
-          z: depth,
-        };
-      }),
-    []
-  );
-
-  const pillars = useMemo(
-    () => [
-      {
-        tag: "Decisions",
-        title: "Cut through the fog",
-        text: "Turn intent into a weekly plan with crisp trade-offs.",
-      },
-      {
-        tag: "Momentum",
-        title: "Ship every week",
-        text: "Hands-on execution with async updates and proof over promises.",
-      },
-      {
-        tag: "Signals",
-        title: "Clarity over noise",
-        text: "Surface what matters, remove layers, keep teams unblocked.",
-      },
-    ],
-    []
-  );
-
-  useEffect(() => {
-    const prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (prefersReduce.matches) return;
-
-    const handleMove = (event: PointerEvent) => {
-      const x = (event.clientX / window.innerWidth - 0.5) * 16;
-      const y = (event.clientY / window.innerHeight - 0.5) * 16;
-      document.documentElement.style.setProperty("--tilt-x", `${y}`);
-      document.documentElement.style.setProperty("--tilt-y", `${x}`);
-    };
-
-    window.addEventListener("pointermove", handleMove);
-    return () => window.removeEventListener("pointermove", handleMove);
-  }, []);
-
-  useEffect(() => {
-    const prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (prefersReduce.matches) return;
-    if (!sceneRef.current) return;
-
-    const pillarsEl = sceneRef.current.querySelectorAll<HTMLElement>(".pillar");
-    const ringsEl = sceneRef.current.querySelectorAll<HTMLElement>(".ring");
-    const sparksEl = sceneRef.current.querySelectorAll<HTMLElement>(".spark");
-    const cardEl = sceneRef.current.querySelector<HTMLElement>(".floating-card");
-
-    const intro = createTimeline({ autoplay: true, easing: "easeOutQuad" });
-
-    intro
-      .add({
-        targets: ringsEl,
-        scale: [0.5, 1],
-        opacity: [0, 0.9],
-        duration: 1100,
-        delay: stagger(120),
-      })
-      .add(
-        {
-          targets: pillarsEl,
-          translateY: [28, 0],
-          opacity: [0, 1],
-          duration: 900,
-          delay: stagger(160),
-        },
-        "-=650"
-      )
-      .add(
-        {
-          targets: cardEl,
-          translateY: [30, 0],
-          opacity: [0, 1],
-          duration: 750,
-        },
-        "-=500"
-      );
-
-    const orbit = animate({
-      targets: ringsEl,
-      rotateZ: "+=360",
-      duration: 18000,
-      easing: "linear",
-      loop: true,
-    });
-
-    const float = animate({
-      targets: pillarsEl,
-      translateY: stagger([-12, 12], { direction: "alternate" }),
-      rotateY: stagger([-8, 8], { direction: "alternate" }),
-      duration: 4200,
-      direction: "alternate",
-      easing: "easeInOutSine",
-      loop: true,
-      delay: stagger(180),
-    });
-
-    const sparkle = animate({
-      targets: sparksEl,
-      translateX: () => random(-140, 140),
-      translateY: () => random(-120, 120),
-      translateZ: () => random(-120, 120),
-      opacity: [{ value: 0.2, duration: 300 }, { value: 1, duration: 400 }, { value: 0, duration: 600 }],
-      scale: () => 0.6 + Math.random() * 0.6,
-      delay: stagger(140),
-      duration: 2300,
-      easing: "easeInOutSine",
-      loop: true,
-    });
-
-    return () => {
-      intro.pause();
-      orbit.pause();
-      float.pause();
-      sparkle.pause();
-    };
-  }, []);
-
   return (
     <div className="page">
-      <div className="bg-glow" aria-hidden />
-      <div className="bg-grid" aria-hidden />
-      <div className="bg-blobs" aria-hidden />
-
-      <header className="top-nav">
+      <header className="top-nav" id="top">
         <div className="shell nav-inner">
           <a className="brand" href="#top">
             Bary
           </a>
-          <div className="nav-actions">
-            <a className="nav-link" href="#work">
-              Workstyle
-            </a>
-            <a className="nav-link" href="#contact">
+          <nav className="nav-links">
+            <a href="#about">About</a>
+            <a href="#pipeline">Platform</a>
+            <a href="#updates">Updates</a>
+            <a className="btn ghost" href={`mailto:${contactEmail}`}>
               Contact
             </a>
-            <a className="btn primary" href={`mailto:${email}`}>
-              Contact Bary
-            </a>
-          </div>
+          </nav>
         </div>
       </header>
 
-      <main id="top">
+      <main>
         <section className="hero shell">
           <div className="hero-copy">
-            <p className="eyebrow">Based in Lithuania • Remote-friendly</p>
-            <h1>Operator for lean teams that want momentum.</h1>
-            <p className="subhead">Clear decisions, hands-on execution, and direct contact with the person doing the work.</p>
+            <p className="eyebrow">Marketing & Technology Consulting</p>
+            <h1>Integrated bioscience storytelling for ambitious teams.</h1>
+            <p className="lede">
+              We translate complex science into clear strategy, compelling narratives, and launch-ready plans inspired by the
+              breakthrough work at Integrated Biosciences.
+            </p>
             <div className="actions">
-              <a className="btn primary" href={`mailto:${email}?subject=${encodeURIComponent("Project with Bary")}`}>
-                Email bary@gmx.com
+              <a className="btn primary" href={`mailto:${contactEmail}?subject=${encodeURIComponent("Project inquiry")}`}>
+                Work with us
               </a>
-              <a className="btn ghost" href="#work">
-                See how I work
+              <a className="btn secondary" href="#updates">
+                Explore our approach
               </a>
             </div>
-            <div className="micro">
-              <span>Strategy + Ops</span>
-              <span>Marketing + Launch</span>
-              <span>Weekly delivery</span>
+            <div className="hero-tags">
+              <span>Computational discovery</span>
+              <span>Small-molecule innovation</span>
+              <span>Go-to-market clarity</span>
             </div>
           </div>
-
-          <div className="hero-visual" aria-hidden>
-            <div className="scene" ref={sceneRef}>
-              <div className="orb layer-a" />
-              <div className="orb layer-b" />
-              <div className="ring ring-a" />
-              <div className="ring ring-b" />
-              <div className="ring ring-c" />
-
-              <div className="pillars">
-                {pillars.map((item, index) => (
-                  <div key={item.title} className="pillar" style={{ ["--i" as "--i"]: index } as CSSProperties}>
-                    <p className="chip">{item.tag}</p>
-                    <strong>{item.title}</strong>
-                    <p className="muted tiny">{item.text}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="floating-card">
-                <p className="small">Direct line</p>
-                <strong>One operator, zero layers.</strong>
-              </div>
-
-              <div className="particles">
-                {sparkSeeds.map((spark, index) => (
-                  <span
-                    key={index}
-                    className="spark"
-                    style={
-                      {
-                        ["--spark-x" as "--spark-x"]: `${spark.x}px`,
-                        ["--spark-y" as "--spark-y"]: `${spark.y}px`,
-                        ["--spark-z" as "--spark-z"]: `${spark.z}px`,
-                      } as CSSProperties
-                    }
-                  />
-                ))}
-              </div>
+          <div className="hero-panel">
+            <div className="panel">Where computation meets biology to extend healthspan.</div>
+            <div className="panel muted">
+              We partner with founders commercializing frontier therapeutics and platforms—connecting scientific depth with
+              market-ready messaging and strategy.
             </div>
           </div>
         </section>
 
-        <section id="work" className="section shell">
+        <section id="about" className="section shell">
           <div className="section-head">
-            <div>
-              <p className="eyebrow">How I help</p>
-              <h2>Focused delivery, high signal.</h2>
-            </div>
-            <a className="btn ghost" href={`mailto:${email}?subject=${encodeURIComponent("Let’s talk scope")}`}>
-              Contact now
-            </a>
+            <p className="eyebrow">What drives us</p>
+            <h2>Building momentum for science-led companies.</h2>
+            <p className="muted">
+              Inspired by the mission and language of Integrated Biosciences, we specialize in packaging bold technical visions
+              into stories that resonate with investors, partners, and end users.
+            </p>
           </div>
-
-          <div className="grid">
-            <article className="tile">
-              <p className="tag">Strategy</p>
-              <h3>Align the plan</h3>
-              <p className="muted">Clear goals, smart constraints, crisp next moves.</p>
-            </article>
-            <article className="tile">
-              <p className="tag">Marketing</p>
-              <h3>Launch fast</h3>
-              <p className="muted">Simple offers, tight feedback loops, outcomes in view.</p>
-            </article>
-            <article className="tile">
-              <p className="tag">Operations</p>
-              <h3>Keep it moving</h3>
-              <p className="muted">Weekly delivery, async comms, proof over promises.</p>
-            </article>
+          <div className="grid three">
+            {highlights.map((item) => (
+              <article key={item.title} className="card">
+                <h3>{item.title}</h3>
+                <p className="muted">{item.description}</p>
+              </article>
+            ))}
           </div>
         </section>
 
-        <section id="contact" className="cta shell">
+        <section id="pipeline" className="section shell">
+          <div className="section-head">
+            <p className="eyebrow">Platform</p>
+            <h2>Full-stack support from discovery to delivery.</h2>
+            <p className="muted">A consulting practice shaped by the integrated, end-to-end mindset of modern bioscience teams.</p>
+          </div>
+          <div className="grid three">
+            {pipeline.map((step) => (
+              <article key={step.title} className="card">
+                <p className="chip">{step.label}</p>
+                <h3>{step.title}</h3>
+                <p className="muted">{step.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="updates" className="section shell">
+          <div className="section-head">
+            <p className="eyebrow">Narratives</p>
+            <h2>Messaging inspired by Integrated Biosciences.</h2>
+            <p className="muted">
+              We keep pace with the latest results across rejuvenation, screening, and translational programs to ensure your
+              marketing reflects the state of the art.
+            </p>
+          </div>
+          <div className="grid">
+            {updates.map((item) => (
+              <article key={item.title} className="tile">
+                <h3>{item.title}</h3>
+                <p className="muted">{item.detail}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="cta shell">
           <div className="cta-inner">
             <div>
-              <p className="eyebrow">Contact</p>
-              <h3>Ready when you are.</h3>
-              <p className="muted">Drop a note and expect a quick reply.</p>
+              <p className="eyebrow">Ready to collaborate</p>
+              <h3>Let’s bring your science to market.</h3>
+              <p className="muted">We offer tailored engagements for strategy, storytelling, and go-to-market execution.</p>
             </div>
-            <a className="btn primary" href={`mailto:${email}`}>
-              Contact bary@gmx.com
+            <a className="btn primary" href={`mailto:${contactEmail}`}>
+              Contact {contactEmail}
             </a>
           </div>
         </section>
       </main>
 
       <footer className="footer shell">
-        <a href={`mailto:${email}`}>{email}</a>
-        <span>© {new Date().getFullYear()} Bary</span>
+        <p>© {new Date().getFullYear()} Bary Consulting. Inspired by Integrated Biosciences.</p>
+        <a href={`mailto:${contactEmail}`} className="muted">
+          {contactEmail}
+        </a>
       </footer>
     </div>
   );
