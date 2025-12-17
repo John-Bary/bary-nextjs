@@ -1,8 +1,47 @@
-import { useEffect } from "react";
+import { animate, createTimeline, random, stagger } from "animejs";
+import { type CSSProperties, useEffect, useMemo, useRef } from "react";
 
 const email = "bary@gmx.com";
 
 export default function App() {
+  const sceneRef = useRef<HTMLDivElement>(null);
+
+  const sparkSeeds = useMemo(
+    () =>
+      Array.from({ length: 18 }, (_, index) => {
+        const angle = (index / 18) * Math.PI * 2;
+        const radius = 120 + Math.random() * 110;
+        const depth = -80 + Math.random() * 160;
+        return {
+          x: Math.cos(angle) * radius,
+          y: Math.sin(angle) * radius,
+          z: depth,
+        };
+      }),
+    []
+  );
+
+  const pillars = useMemo(
+    () => [
+      {
+        tag: "Decisions",
+        title: "Cut through the fog",
+        text: "Turn intent into a weekly plan with crisp trade-offs.",
+      },
+      {
+        tag: "Momentum",
+        title: "Ship every week",
+        text: "Hands-on execution with async updates and proof over promises.",
+      },
+      {
+        tag: "Signals",
+        title: "Clarity over noise",
+        text: "Surface what matters, remove layers, keep teams unblocked.",
+      },
+    ],
+    []
+  );
+
   useEffect(() => {
     const prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (prefersReduce.matches) return;
@@ -16,6 +55,86 @@ export default function App() {
 
     window.addEventListener("pointermove", handleMove);
     return () => window.removeEventListener("pointermove", handleMove);
+  }, []);
+
+  useEffect(() => {
+    const prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (prefersReduce.matches) return;
+    if (!sceneRef.current) return;
+
+    const pillarsEl = sceneRef.current.querySelectorAll<HTMLElement>(".pillar");
+    const ringsEl = sceneRef.current.querySelectorAll<HTMLElement>(".ring");
+    const sparksEl = sceneRef.current.querySelectorAll<HTMLElement>(".spark");
+    const cardEl = sceneRef.current.querySelector<HTMLElement>(".floating-card");
+
+    const intro = createTimeline({ autoplay: true, easing: "easeOutQuad" });
+
+    intro
+      .add({
+        targets: ringsEl,
+        scale: [0.5, 1],
+        opacity: [0, 0.9],
+        duration: 1100,
+        delay: stagger(120),
+      })
+      .add(
+        {
+          targets: pillarsEl,
+          translateY: [28, 0],
+          opacity: [0, 1],
+          duration: 900,
+          delay: stagger(160),
+        },
+        "-=650"
+      )
+      .add(
+        {
+          targets: cardEl,
+          translateY: [30, 0],
+          opacity: [0, 1],
+          duration: 750,
+        },
+        "-=500"
+      );
+
+    const orbit = animate({
+      targets: ringsEl,
+      rotateZ: "+=360",
+      duration: 18000,
+      easing: "linear",
+      loop: true,
+    });
+
+    const float = animate({
+      targets: pillarsEl,
+      translateY: stagger([-12, 12], { direction: "alternate" }),
+      rotateY: stagger([-8, 8], { direction: "alternate" }),
+      duration: 4200,
+      direction: "alternate",
+      easing: "easeInOutSine",
+      loop: true,
+      delay: stagger(180),
+    });
+
+    const sparkle = animate({
+      targets: sparksEl,
+      translateX: () => random(-140, 140),
+      translateY: () => random(-120, 120),
+      translateZ: () => random(-120, 120),
+      opacity: [{ value: 0.2, duration: 300 }, { value: 1, duration: 400 }, { value: 0, duration: 600 }],
+      scale: () => 0.6 + Math.random() * 0.6,
+      delay: stagger(140),
+      duration: 2300,
+      easing: "easeInOutSine",
+      loop: true,
+    });
+
+    return () => {
+      intro.pause();
+      orbit.pause();
+      float.pause();
+      sparkle.pause();
+    };
   }, []);
 
   return (
@@ -65,16 +184,43 @@ export default function App() {
           </div>
 
           <div className="hero-visual" aria-hidden>
-            <div className="orb layer-a" />
-            <div className="orb layer-b" />
-            <div className="prism">
-              <div className="prism-face" />
-              <div className="prism-face" />
-              <div className="prism-face" />
-            </div>
-            <div className="floating-card">
-              <p className="small">Direct line</p>
-              <strong>One operator, zero layers.</strong>
+            <div className="scene" ref={sceneRef}>
+              <div className="orb layer-a" />
+              <div className="orb layer-b" />
+              <div className="ring ring-a" />
+              <div className="ring ring-b" />
+              <div className="ring ring-c" />
+
+              <div className="pillars">
+                {pillars.map((item, index) => (
+                  <div key={item.title} className="pillar" style={{ ["--i" as "--i"]: index } as CSSProperties}>
+                    <p className="chip">{item.tag}</p>
+                    <strong>{item.title}</strong>
+                    <p className="muted tiny">{item.text}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="floating-card">
+                <p className="small">Direct line</p>
+                <strong>One operator, zero layers.</strong>
+              </div>
+
+              <div className="particles">
+                {sparkSeeds.map((spark, index) => (
+                  <span
+                    key={index}
+                    className="spark"
+                    style={
+                      {
+                        ["--spark-x" as "--spark-x"]: `${spark.x}px`,
+                        ["--spark-y" as "--spark-y"]: `${spark.y}px`,
+                        ["--spark-z" as "--spark-z"]: `${spark.z}px`,
+                      } as CSSProperties
+                    }
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
